@@ -1,0 +1,38 @@
+<main>
+  <mat-grid-list cols="10" rowHeight="75vh">
+    <mat-grid-tile
+      [colspan]="10"
+      [rowspan]="1"
+      [style.background]="'purple'"
+    >
+      <router-outlet></router-outlet>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="5" rowHeight="30vh">
+    <mat-grid-tile
+      [colspan]="5"
+      [rowspan]="1"
+      [style.background]="'red'"
+    >AAAhhh</mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+      [style.background]="'blue'"
+    >Bhhh</mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="1"
+      [style.background]="'green'"
+    >Bhhh</mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1"
+      [style.background]="'yellow'"
+    >Bhhh</mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="5"
+      [rowspan]="2"
+      [style.background]="'orange'"
+    >CCChhh</mat-grid-tile>
+  </mat-grid-list>
+</main>

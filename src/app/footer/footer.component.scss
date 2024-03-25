@@ -1,0 +1,21 @@
+:host {
+  footer {
+    background-color: red;
+
+    mat-grid-list {
+      mat-grid-tile {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
+        font-style: normal;
+
+        .center-text {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .border-landscape {
+    border: transparent 10px solid;
+  }
+}

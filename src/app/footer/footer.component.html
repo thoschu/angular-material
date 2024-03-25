@@ -1,0 +1,51 @@
+<footer [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
+  <mat-grid-list [cols]="10" [rowHeight]="'7vh'">
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="4"
+      [style.background]="'white'"
+    ></mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="4"
+      [style.background]="'white'"
+    >
+      <div class="center-text">
+        <p>Thomas Schulte</p>
+        <p>Holsteiner Chaussee 181</p>
+        <p>D - 22457 Hamburg</p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="4"
+      [style.background]="'white'"
+    ></mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="4"
+      [style.background]="'white'"
+    >
+      <div class="center-text">
+        <span>A</span> | <span>B</span> | <span>C</span>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="4"
+      [style.background]="'white'"
+    ></mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="10"
+      [rowspan]="4"
+      [style.background]="'lightgray'"
+    ></mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="10"
+      [rowspan]="1"
+      [style.background]="'#ebeef0'"
+    >
+      Copyright © Thomas L. Schulte - 2024  |  Impressum und Datenschutzerklärung
+    </mat-grid-tile>
+  </mat-grid-list>
+</footer>

@@ -1,0 +1,20 @@
+<header>
+  <mat-grid-list cols="1" rowHeight="25vh">
+    <nav>
+      <ul>
+        <li><a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+        <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
+      </ul>
+    </nav>
+  </mat-grid-list>
+  <hr>
+  <mat-grid-list cols="4" rowHeight="25vh">
+    @for (tile of tiles; track tile) {
+      <mat-grid-tile
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color"
+      >{{tile.text}}</mat-grid-tile>
+    }
+  </mat-grid-list>
+</header>
