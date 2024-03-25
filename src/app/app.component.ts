@@ -11,5 +11,8 @@ import { MatSliderModule } from '@angular/material/slider';
 })
 export class AppComponent {
   protected readonly title: string = 'Tom S.';
-  value = 0;
+
+  constructor() {}
+
+  private open(): void {}
 }
