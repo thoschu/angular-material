@@ -30,14 +30,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Further information
 
+- `npm install -g @angular/cli`
+- `npm ci`
+
+
 - `https://material.angular.io/`
 - `https://material.io/`
   - Specification: Material 3 is the latest version of Google’s open-source design system.
-- `https://github.com/FiloSottile/mkcert`
-- `npm install -g @angular/cli`
 - `ng new angular-material`
 - `https://fonts.google.com`
-- `https://fonts.google.com/icons
+- `https://fonts.google.com/icons`
+
+
+- `https://github.com/FiloSottile/mkcert`
 
 ## Content
 
