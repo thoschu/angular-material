@@ -5,8 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:development": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "http-server:browser": "npx http-server ./dist/angular-material/browser --cors true --log-ip true -c-1",
+    "ngrok": "npx ngrok http 4200"
   },
   "private": true,
   "dependencies": {
