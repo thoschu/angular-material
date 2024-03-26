@@ -5,5 +5,18 @@
     right: 0;
     bottom: 0;
     position: absolute;
+
+    mat-sidenav-content {
+      mat-toolbar {
+        button[mat-icon-button] {
+          display: none;
+        }
+
+        .center-container-elements {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
   }
 }
