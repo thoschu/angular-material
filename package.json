@@ -9,7 +9,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "http-server:browser": "npx http-server ./dist/angular-material/browser --cors true --log-ip true -c-1",
-    "ngrok": "npx ngrok http 4200"
+    "ngrok": "npx ngrok http 4200",
+    "rimraf:dist": "npx rimraf dist",
+    "rimraf:node_modules": "npx rimraf node_modules",
+    "clean:all": "npx concurrently 'npm run rimraf:dist' 'npm run rimraf:node_modules'"
   },
   "private": true,
   "dependencies": {
