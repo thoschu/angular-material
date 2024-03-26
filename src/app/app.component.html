@@ -1,5 +1,26 @@
-<h1>Hello, {{title}}</h1>
-<mat-slider min="0" max="100" step="5">
-  <input matSliderThumb #slider>
-</mat-slider>
-<p>{{slider.value}}</p>
+<mat-sidenav-container class="fullscreen-sidenav-container">
+  <mat-sidenav #sidenav>
+    <mat-nav-list (click)="sidenav.close()">
+      <a mat-list-item routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span>Link 1</span>
+      </a>
+      <a mat-list-item routerLink="#">
+        <mat-icon>question_answer</mat-icon>
+        <span>Link 2</span>
+      </a>
+      <a mat-list-item routerLink="#">
+        <mat-icon>star</mat-icon>
+        <span>Link 3</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="none">
+      <button mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
