@@ -5,7 +5,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
 import { FormBuilder } from '@angular/forms';
-import {MatListItem, MatNavList} from "@angular/material/list";
+import { MatListItem, MatNavList } from '@angular/material/list';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+
+import { OneComponent } from './one/one.component';
+import { TwoComponent } from './two/two.component';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +17,13 @@ import {MatListItem, MatNavList} from "@angular/material/list";
   imports: [
     MatSidenavModule, MatToolbarModule, MatIconModule,
     MatIconButton, MatNavList, MatListItem,
-    RouterLink, RouterOutlet
+    RouterLink, RouterOutlet, MatTabGroup, MatTab, OneComponent, TwoComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   protected readonly title: string = 'Tom S.';
-  options = this._formBuilder.group({
-    bottom: 0,
-    fixed: false,
-    top: 0,
-  });
 
-
-  constructor(private readonly _formBuilder: FormBuilder) {
-  }
+  constructor(private readonly _formBuilder: FormBuilder) {}
 }
