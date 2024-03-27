@@ -1,20 +1,61 @@
 <header>
-  <mat-grid-list cols="1" rowHeight="25vh">
-    <nav>
-      <ul>
-        <li><a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
-        <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
-      </ul>
-    </nav>
-  </mat-grid-list>
-  <hr>
-  <mat-grid-list cols="4" rowHeight="25vh">
-    @for (tile of tiles; track tile) {
+  @if(wideScreen) {
+    <mat-grid-list cols="1" rowHeight="65px">
       <mat-grid-tile
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color"
-      >{{tile.text}}</mat-grid-tile>
-    }
-  </mat-grid-list>
+        [colspan]="'1'"
+        [rowspan]="'1'"
+        [style.background]="'blue'"
+      >
+        <mat-toolbar color="none">
+          <div class="center-container-elements">
+            <a mat-button routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>home</mat-icon>Home</a>|
+            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>account_circle</mat-icon>User</a>|
+            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>account_circle</mat-icon>User 2</a>|
+            <a mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon>Menu</a>
+            <mat-menu #menu>
+              <button mat-menu-item routerLink="/">
+                <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+                <span>OK</span>
+              </button>
+              <button mat-menu-item routerLink="#">Item 2</button>
+            </mat-menu>
+          </div>
+        </mat-toolbar>
+      </mat-grid-tile>
+    </mat-grid-list>
+  } @else {
+    <mat-grid-list cols="1" [rowHeight]="rowHeightSmallDevice + 'px'">
+      <mat-grid-tile
+        [colspan]="'1'"
+        [rowspan]="'1'"
+        [style.background]="'blue'"
+      >
+        <mat-sidenav-container class="fullscreen-sidenav-container">
+          <mat-sidenav #sidenav style="width: 100vw; text-align: center;">
+            <mat-nav-list (click)="closeSidenav(sidenav)">
+              <a mat-list-item routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <mat-icon>home</mat-icon>
+                <span>Link 1</span>
+              </a>
+              <a mat-list-item routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <mat-icon>question_answer</mat-icon>
+                <span>Link 2</span>
+              </a>
+              <a mat-list-item routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <mat-icon>star</mat-icon>
+                <span>Link 3</span>
+              </a>
+            </mat-nav-list>
+          </mat-sidenav>
+          <mat-sidenav-content>
+            <mat-toolbar color="none">
+              <button #burger mat-icon-button (click)="openSidenav(sidenav)">
+                <mat-icon>menu</mat-icon>
+              </button>
+            </mat-toolbar>
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+      </mat-grid-tile>
+    </mat-grid-list>
+  }
 </header>

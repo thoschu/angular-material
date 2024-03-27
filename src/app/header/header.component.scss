@@ -1,5 +1,24 @@
 :host {
   header {
-    background-color: green;
+    background-color: transparent;
+
+    .center-container-elements {
+      text-align: center;
+      width: 100%;
+    }
+
+    .fullscreen-sidenav-container {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+
+      mat-toolbar {
+        button[mat-icon-button] {
+          display: block;
+        }
+      }
+    }
   }
 }
