@@ -21,6 +21,13 @@
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
-    <router-outlet />
+    <mat-tab-group>
+      <mat-tab label="First">
+        <app-one></app-one>
+      </mat-tab>
+      <mat-tab label="Second">
+        <app-two></app-two>
+      </mat-tab>
+    </mat-tab-group>
   </mat-sidenav-content>
 </mat-sidenav-container>
