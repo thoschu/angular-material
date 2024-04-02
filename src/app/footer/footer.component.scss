@@ -1,21 +1,38 @@
+@import 'ol/ol.css';
+
 :host {
+  color: #5b5b5b;
+
   footer {
-    background-color: red;
+    background-color: #ababab;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 900;
+    font-style: normal;
 
     mat-grid-list {
       mat-grid-tile {
-        font-family: 'Roboto', sans-serif;
-        font-weight: 900;
-        font-style: normal;
+        #map {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+        }
 
         .center-text {
           text-align: center;
+        }
+
+        &:last-of-type {
+          p {
+            margin-top: 20px;
+          }
         }
       }
     }
   }
 
   .border-landscape {
-    border: transparent 10px solid;
+    border: transparent 0 solid;
   }
 }

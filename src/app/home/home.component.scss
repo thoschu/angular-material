@@ -1,0 +1,54 @@
+@mixin text {
+  color: #5b5b5b;
+  font-family: "Comfortaa", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+@container (min-inline-size: 1200px) {
+  section {
+    p {
+      font-size: clamp(.25rem, .5rem + .7vw, 2.5rem) !important;
+    }
+  }
+}
+
+:host {
+  padding: 30px 50px 0;
+  position: absolute;
+  top: 0;
+  width: 90vw;
+
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeIn;
+  animation-duration: 2s;
+
+  p, h2, h4 {
+    @include text;
+  }
+
+  section {
+    container-type: inline-size;
+    margin-top: 10px;
+
+    p {
+      //font-size: 1em;
+      font-size: clamp(.25rem, .85rem + .25vh, 1.5rem);
+
+      &:last-of-type {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 600;
+  }
+}

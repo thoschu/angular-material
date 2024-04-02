@@ -8,7 +8,7 @@ import {lensProp, view} from "ramda";
 })
 export class AppService {
   private readonly breakpointStates: string[] = [
-    // '(max-width: 959px)',
+    // '(max-width: 1700px)',
     '(orientation: portrait)',
     '(orientation: landscape)',
     Breakpoints.XSmall,
@@ -52,6 +52,9 @@ export class AppService {
             case view(lensProp(Breakpoints.XLarge), breakpoints):
               result = {'Breakpoints.XLarge': Breakpoints.XLarge};
               break;
+            default:
+              result = {'Breakpoints.XXLarge': 'null'};
+              break;
           }
 
           return result;
@@ -79,6 +82,9 @@ export class AppService {
               break;
             case view(lensProp(Breakpoints.XLarge), breakpoints):
               result = {'Breakpoints.XLarge': Breakpoints.XLarge};
+              break;
+            default:
+              result = {'Breakpoints.XXLarge': 'null'};
               break;
           }
 

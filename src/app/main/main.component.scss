@@ -1,5 +1,63 @@
+@mixin white-gradient {
+  background: linear-gradient(to right,  rgb(171, 171, 171) 0%,rgba(255,255,255,0) 100%);
+}
+
+$animationSpeed: 80s;
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-250px * 42))}
+}
+
 :host {
-  header {
-    background-color: blue;
+  img {
+    &#id {
+      //transform: scale(5vw + 15%);
+      //scale: clamp(.25%, 5% + 5vw, 100%);
+      object-fit: cover;
+    }
+  }
+
+
+  .slider {
+    background: transparent;
+    //box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+
+    &::before,
+    &::after {
+      @include white-gradient;
+      content: "";
+      height: 100px;
+      position: absolute;
+      width: 100px;
+      z-index: 2;
+    }
+
+    &::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+    }
+
+    .slide-track {
+      animation: scroll $animationSpeed linear infinite;
+      display: flex;
+      width: calc(250px * 42);
+    }
+
+    .slide {
+      height: 100px;
+      min-width: 250px;
+    }
   }
 }

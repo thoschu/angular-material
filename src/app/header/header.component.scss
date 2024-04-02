@@ -1,10 +1,29 @@
 :host {
+  position: relative;
+
   header {
     background-color: transparent;
+
+    a, span {
+      font-family: "Comfortaa", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1em;
+    }
 
     .center-container-elements {
       text-align: center;
       width: 100%;
+      color: #ababab;
+
+      a {
+        color: #ababab;
+      }
+
+      .active {
+        color: #5b5b5b;
+      }
     }
 
     .fullscreen-sidenav-container {

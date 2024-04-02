@@ -1,1 +1,37 @@
-<img ngSrc="https://gieldon.de/baustelle.gif" width="400" height="200" priority alt="under-construction">
+<mat-tab-group class="animate__animated animate__fadeIn" [color]="'primary'" [animationDuration]="'1000ms'" [dynamicHeight]="'true'"  mat-stretch-tabs="false" mat-align-tabs="center">
+  <mat-tab label="First">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">start</mat-icon>
+      First
+    </ng-template>
+    <img ngSrc="https://gieldon.de/baustelle.gif" width="400" height="200" priority alt="under-construction">
+  </mat-tab>
+  <mat-tab label="Second">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">thumb_up</mat-icon>
+      Second
+    </ng-template>
+    <img ngSrc="https://static.vecteezy.com/system/resources/thumbnails/001/214/905/small_2x/under-construction-sign-with-hat-on-traffic-cone.jpg" width="400" height="200" priority alt="under-construction">
+  </mat-tab>
+  <mat-tab label="Third">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">star</mat-icon>
+      Next
+    </ng-template>
+    <img ngSrc="https://i.pinimg.com/originals/c9/ef/4d/c9ef4d8eea3b9ae322c0163480be7c7c.gif" width="400" height="200" priority alt="under-construction">
+  </mat-tab>
+  <mat-tab label="ddd-1">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">star</mat-icon>
+      DDD 1
+    </ng-template>
+    <img ngSrc="assets/img/ddd.png" width="400" height="200" priority alt="under-construction">
+  </mat-tab>
+  <mat-tab label="ddd-2">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">star</mat-icon>
+      DDD 2
+    </ng-template>
+    <img ngSrc="assets/img/ddd-2.png" width="400" height="200" priority alt="under-construction">
+  </mat-tab>
+</mat-tab-group>

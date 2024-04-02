@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AsyncPipe, ViewportScroller, NgOptimizedImage } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDrawerToggleResult, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,11 +24,14 @@ import { AppService } from '../app.service';
     MatSidenavModule, MatToolbarModule, MatIconModule,
     MatIconButton, MatNavList, MatListItem, MatAnchor,
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
-    RouterLinkActive, MatGridTile, AsyncPipe,
+    RouterLinkActive, MatGridTile, AsyncPipe, NgOptimizedImage
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  exportAs: 'appHeader'
+  exportAs: 'appHeader',
+  animations: [
+    HeaderComponent.trigger
+  ]
 })
 export class HeaderComponent implements OnDestroy, OnInit {
   private landscapeSubscription?: Subscription;
@@ -42,10 +46,34 @@ export class HeaderComponent implements OnDestroy, OnInit {
     </svg>
   `;
 
+  private static trigger: AnimationTriggerMetadata = trigger('fixedStatic', [
+    state('fixed', style({
+      position: 'fixed',
+      top: 0,
+      height: '65px',
+      'z-index': 10000000,
+      background: '#FFFFFF'
+    })),
+    state('static', style({
+      position: 'static',
+      background: 'transparent',
+      height: '0',
+    })),
+    transition('fixed => static', [
+      animate('.5s')
+    ]),
+    transition('static => fixed', [
+      animate('1s')
+    ])
+  ])
+
+  isFixedPosition = true;
+
   constructor(
-    private readonly iconRegistry: MatIconRegistry,
     private readonly sanitizer: DomSanitizer,
-    protected readonly appService: AppService
+    private readonly iconRegistry: MatIconRegistry,
+    protected readonly appService: AppService,
+    protected readonly viewportScroller: ViewportScroller
   ) {
     this.iconRegistry.addSvgIconLiteral('thumbs-up', this.sanitizer.bypassSecurityTrustHtml(HeaderComponent.THUMBUP_ICON));
   }
@@ -109,5 +137,12 @@ export class HeaderComponent implements OnDestroy, OnInit {
     }).catch((): void => {
       this.rowHeightSmallDevice = 65;
     });
+  }
+
+  @HostListener('window:scroll', [])
+  private onScroll(): void {
+    const scrollPosition: number = window.scrollY;
+
+    this.isFixedPosition = scrollPosition < 500;
   }
 }

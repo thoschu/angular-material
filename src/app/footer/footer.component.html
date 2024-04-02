@@ -1,51 +1,73 @@
 <footer [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
-  <mat-grid-list [cols]="10" [rowHeight]="'7vh'">
+  <mat-grid-list [cols]="10" [rowHeight]="'7vh'" gutterSize="0">
     <mat-grid-tile
       [colspan]="2"
       [rowspan]="4"
-      [style.background]="'white'"
+      [style.background]="'transparent'"
     ></mat-grid-tile>
     <mat-grid-tile
       [colspan]="2"
       [rowspan]="4"
-      [style.background]="'white'"
+      [style.background]="'transparent'"
     >
       <div class="center-text">
         <p>Thomas Schulte</p>
         <p>Holsteiner Chaussee 181</p>
         <p>D - 22457 Hamburg</p>
+        <p>thoschulte&#64;gmail.com</p>
       </div>
     </mat-grid-tile>
     <mat-grid-tile
       [colspan]="2"
       [rowspan]="4"
-      [style.background]="'white'"
+      [style.background]="'transparent'"
     ></mat-grid-tile>
     <mat-grid-tile
       [colspan]="2"
       [rowspan]="4"
-      [style.background]="'white'"
+      [style.background]="'transparent'"
     >
       <div class="center-text">
-        <span>A</span> | <span>B</span> | <span>C</span>
+        <a href="//github.com/thoschu" target="_blank" title="" rel="nofollow"  matTooltip="GitHub">
+          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/github" alt="github" priority>
+        </a>
+        &nbsp;
+        <a href="//www.npmjs.com/~thoschu" target="_blank" title="" rel="nofollow" matTooltip="NPM">
+          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/npm" alt="npm" priority>
+        </a>
+        &nbsp;
+        <a href="//hub.docker.com/u/thoschu" target="_blank" title="" rel="nofollow" matTooltip="DockerHub">
+          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/docker" alt="docker-hub" priority>
+        </a>
+        &nbsp;
+        <a href="//www.youtube.com/channel/UCPmHCApqPmpKrpNRf-0MpdQ" title="" target="_blank" rel="nofollow" matTooltip="youtube.de">
+          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/youtube" alt="youtube" priority>
+        </a>
+<!--        &nbsp;-->
+<!--        <a href="//www.thomas-schulte.de/start.html" target="_blank" title="" rel="nofollow" matTooltip="thomas-schulte.de">-->
+<!--          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/googlehome/white" alt="thomas-schulte.de" priority>-->
+<!--        </a>-->
       </div>
     </mat-grid-tile>
     <mat-grid-tile
       [colspan]="2"
       [rowspan]="4"
-      [style.background]="'white'"
+      [style.background]="'transparent'"
     ></mat-grid-tile>
     <mat-grid-tile
       [colspan]="10"
-      [rowspan]="4"
-      [style.background]="'lightgray'"
-    ></mat-grid-tile>
+      [rowspan]="6"
+      [style.background]="'transparent'"
+    >
+      <div id="map"></div>
+    </mat-grid-tile>
     <mat-grid-tile
       [colspan]="10"
       [rowspan]="1"
-      [style.background]="'#ebeef0'"
+      [style.background]="'transparent'"
     >
-      Copyright © Thomas L. Schulte - 2024  |  Impressum und Datenschutzerklärung
+      <p>Copyright © Thomas L. Schulte - 2024</p>
+<!--      <p>Impressum und Datenschutzerklärung</p>-->
     </mat-grid-tile>
   </mat-grid-list>
 </footer>

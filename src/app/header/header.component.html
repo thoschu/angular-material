@@ -1,23 +1,28 @@
-<header>
+<header id="topAnchor">
   @if(wideScreen) {
     <mat-grid-list cols="1" rowHeight="65px">
       <mat-grid-tile
         [colspan]="'1'"
         [rowspan]="'1'"
-        [style.background]="'blue'"
+        [style.background]="'transparent'"
       >
-        <mat-toolbar color="none">
+        <mat-toolbar [@fixedStatic]="isFixedPosition ? 'static' : 'fixed'" color="none">
           <div class="center-container-elements">
-            <a mat-button routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>home</mat-icon>Home</a>|
-            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>account_circle</mat-icon>User</a>|
-            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page"><mat-icon>account_circle</mat-icon>User 2</a>|
+            <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>home</mat-icon>Home</a>|
+            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>view_comfy_alt</mat-icon>Themen</a>|
+            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>gpp_maybe</mat-icon>Technologien</a>|
             <a mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon>Menu</a>
             <mat-menu #menu>
               <button mat-menu-item routerLink="/">
                 <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
                 <span>OK</span>
               </button>
-              <button mat-menu-item routerLink="#">Item 2</button>
+              <button mat-menu-item routerLink="#">
+                <span>Github</span>
+              </button>
+              <a mat-button href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <img height="32" width="32" ngSrc="https://cdn.simpleicons.org/keycloak" alt="iam.techstach.ch" priority>
+              </a>
             </mat-menu>
           </div>
         </mat-toolbar>
@@ -28,14 +33,14 @@
       <mat-grid-tile
         [colspan]="'1'"
         [rowspan]="'1'"
-        [style.background]="'blue'"
+        [style.background]="'transparent'"
       >
         <mat-sidenav-container class="fullscreen-sidenav-container">
           <mat-sidenav #sidenav style="width: 100vw; text-align: center;">
             <mat-nav-list (click)="closeSidenav(sidenav)">
               <a mat-list-item routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
                 <mat-icon>home</mat-icon>
-                <span>Link 1</span>
+                <span>Home</span>
               </a>
               <a mat-list-item routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">
                 <mat-icon>question_answer</mat-icon>
@@ -44,6 +49,9 @@
               <a mat-list-item routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">
                 <mat-icon>star</mat-icon>
                 <span>Link 3</span>
+              </a>
+              <a mat-list-item href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow" routerLinkActive="active" ariaCurrentWhenActive="page">
+                <img height="32" width="32" ngSrc="https://cdn.simpleicons.org/keycloak" alt="iam.techstach.ch" priority>
               </a>
             </mat-nav-list>
           </mat-sidenav>
