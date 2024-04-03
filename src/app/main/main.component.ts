@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
-import {NgOptimizedImage, UpperCasePipe} from '@angular/common';
+import { NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 import { RouterOutlet } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs';
+import { MatTooltip } from '@angular/material/tooltip';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
-import {MatTooltip} from "@angular/material/tooltip";
+import {MatIcon} from "@angular/material/icon";
+import {MatMenuItem} from "@angular/material/menu";
+import {TranslocoDirective} from "@jsverse/transloco";
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
     MatGridList, MatTabGroup, MatGridTile,
-    RouterOutlet, NgOptimizedImage, MatTooltip, UpperCasePipe
+    RouterOutlet, NgOptimizedImage, MatTooltip, UpperCasePipe, MatIcon, MatMenuItem, TranslocoDirective
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',

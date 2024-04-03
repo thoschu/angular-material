@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
-import {filter, map, never, Observable} from "rxjs";
-import {lensProp, view} from "ramda";
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { filter, map, Observable } from 'rxjs';
+import { lensProp, view } from 'ramda';
 
 @Injectable({
   providedIn: 'root'

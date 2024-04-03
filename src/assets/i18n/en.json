@@ -11,12 +11,15 @@
     "imprint": "Imprint",
     "references": "References",
     "technologies": "Technologies",
+    "links": "Links",
     "modus": "Modus",
     "dark_mode": "Dark",
     "light_mode": "Light",
     "language": "Language",
     "other": "Other"
   },
-  "main": {},
+  "main": {
+    "softwareEngineering": "Software-Engineering"
+  },
   "footer": {}
 }

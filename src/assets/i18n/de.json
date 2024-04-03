@@ -11,12 +11,15 @@
     "imprint": "Impressum",
     "references": "Referenzen",
     "technologies": "Technologien",
+    "links": "Links",
     "modus": "Modus",
-    "dark_mode": "Dunkel",
-    "light_mode": "Hell",
+    "dark": "Dunkel",
+    "light": "Hell",
     "language": "Sprache",
     "other": "Weitere"
   },
-  "main": {},
+  "main": {
+    "softwareEngineering": "Softwaretechnik"
+  },
   "footer": {}
 }

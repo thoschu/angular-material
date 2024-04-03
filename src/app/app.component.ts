@@ -3,12 +3,14 @@ import { AsyncPipe } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { CdkObserveContent } from '@angular/cdk/observers';
+import {
+  MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
+} from '@angular/material/snack-bar';
 
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-root',
@@ -31,7 +33,7 @@ export class AppComponent implements OnInit {
     private readonly _mediaMatcher: MediaMatcher,
     private readonly _snackBar: MatSnackBar
   ) {
-    this._snackBar.open('Under Construction', 'OK', {
+    this._snackBar.open('🚨 Under Construction 🚨', 'OK', {
       horizontalPosition: this._horizontalPosition,
       verticalPosition: this._verticalPosition,
       duration: 5000,

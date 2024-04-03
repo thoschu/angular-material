@@ -17,6 +17,7 @@ import { head, keys } from 'ramda';
 import { AppService } from '../app.service';
 import {TranslocoHttpLoader} from "../transloco-loader";
 import {Translation, TranslocoDirective, TranslocoService} from "@jsverse/transloco";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-header',
@@ -26,7 +27,7 @@ import {Translation, TranslocoDirective, TranslocoService} from "@jsverse/transl
     MatSidenavModule, MatToolbarModule, MatIconModule,
     MatIconButton, MatNavList, MatListItem, MatAnchor,
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
-    RouterLinkActive, MatGridTile, AsyncPipe, NgOptimizedImage, TranslocoDirective
+    RouterLinkActive, MatGridTile, AsyncPipe, NgOptimizedImage, TranslocoDirective, MatTooltip
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
