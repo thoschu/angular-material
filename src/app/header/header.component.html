@@ -4,10 +4,30 @@
       <mat-grid-tile [colspan]="'1'" [rowspan]="'1'" [style.background]="'transparent'">
         <mat-toolbar [@fixedStatic]="isFixedPosition ? 'static' : 'fixed'" color="none">
           <div class="center-container-elements">
-            <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>home</mat-icon>Home</a>┃
-            <a mat-button routerLink="/imprint" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>view_comfy_alt</mat-icon>Impressum</a>┃
-            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>star</mat-icon>Referenzen</a>┃
-            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>gpp_maybe</mat-icon>Technologien</a>┃
+            <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+              <mat-icon>home</mat-icon>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <span>{{ t('home') }}</span>
+              </ng-container>
+            </a>┃
+            <a mat-button routerLink="/imprint" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+              <mat-icon>view_comfy_alt</mat-icon>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <span>{{ t('imprint') }}</span>
+              </ng-container>
+            </a>┃
+            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+              <mat-icon>star</mat-icon>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <span>{{ t('references') }}</span>
+              </ng-container>
+            </a>┃
+            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+              <mat-icon>gpp_maybe</mat-icon>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <span>{{ t('technologies') }}</span>
+              </ng-container>
+            </a>┃
             <a mat-button [matMenuTriggerFor]="more"><mat-icon>more_vert</mat-icon>Links</a>
             <mat-menu #more>
 <!--              <button mat-menu-item routerLink="/">-->
@@ -36,11 +56,11 @@
                 <mat-icon>language</mat-icon><span> Sprache</span>
               </button>
               <mat-menu #language>
-                <button mat-menu-item>🇩🇪 DE</button>
-                <button mat-menu-item>🇬🇧 EN</button>
+                <button mat-menu-item (click)="translocoService.setActiveLang('de')"> 🇩🇪 DE </button>
+                <button mat-menu-item (click)="translocoService.setActiveLang('en')"> 🇬🇧 EN </button>
               </mat-menu>
               <button mat-menu-item [matMenuTriggerFor]="other">
-                <mat-icon>info</mat-icon><span> Weitere</span>
+                <mat-icon>info</mat-icon><span>Weitere</span>
               </button>
               <mat-menu #other>
                 <a mat-menu-item href="//chat.techstack.ch" target="_blank" title="Keycloak" rel="nofollow">

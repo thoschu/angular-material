@@ -1,1 +1,22 @@
-{}
+{
+  "name": "My name is {{name}}",
+  "foo": "Foo",
+  "bar": "Bar",
+  "dashboard": {
+    "title": "Dashboard Title",
+    "desc": "Dashboard Desc"
+  },
+  "header": {
+    "home": "Home",
+    "imprint": "Imprint",
+    "references": "References",
+    "technologies": "Technologies",
+    "modus": "Modus",
+    "dark_mode": "Dark",
+    "light_mode": "Light",
+    "language": "Language",
+    "other": "Other"
+  },
+  "main": {},
+  "footer": {}
+}

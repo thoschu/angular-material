@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
+import {TranslocoHttpLoader} from "../transloco-loader";
+import {Translation, TranslocoDirective, TranslocoService} from "@jsverse/transloco";
 
 @Component({
   selector: 'app-header',
@@ -24,7 +26,7 @@ import { AppService } from '../app.service';
     MatSidenavModule, MatToolbarModule, MatIconModule,
     MatIconButton, MatNavList, MatListItem, MatAnchor,
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
-    RouterLinkActive, MatGridTile, AsyncPipe, NgOptimizedImage
+    RouterLinkActive, MatGridTile, AsyncPipe, NgOptimizedImage, TranslocoDirective
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -73,9 +75,15 @@ export class HeaderComponent implements OnDestroy, OnInit {
     private readonly sanitizer: DomSanitizer,
     private readonly iconRegistry: MatIconRegistry,
     protected readonly appService: AppService,
-    protected readonly viewportScroller: ViewportScroller
+    protected readonly viewportScroller: ViewportScroller,
+    protected readonly translocoHttpLoader: TranslocoHttpLoader,
+    protected readonly translocoService: TranslocoService
   ) {
     this.iconRegistry.addSvgIconLiteral('thumbs-up', this.sanitizer.bypassSecurityTrustHtml(HeaderComponent.THUMBUP_ICON));
+
+    this.translocoHttpLoader.getTranslation('en').subscribe((translation: Translation): void => {
+      console.log(translation);
+    });
   }
 
   ngOnDestroy(): void {

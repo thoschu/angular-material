@@ -1,0 +1,22 @@
+{
+  "name": "Mein Name ist {{name}}",
+  "foo": "Foo",
+  "bar": "Bar",
+  "dashboard": {
+    "title": "Dashboard Title",
+    "desc": "Dashboard Desc"
+  },
+  "header": {
+    "home": "Home",
+    "imprint": "Impressum",
+    "references": "Referenzen",
+    "technologies": "Technologien",
+    "modus": "Modus",
+    "dark_mode": "Dunkel",
+    "light_mode": "Hell",
+    "language": "Sprache",
+    "other": "Weitere"
+  },
+  "main": {},
+  "footer": {}
+}

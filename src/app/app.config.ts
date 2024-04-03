@@ -1,11 +1,11 @@
-import {APP_INITIALIZER, ApplicationConfig, isDevMode} from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, isDevMode } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import { provideTransloco } from '@jsverse/transloco';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
-import { provideTransloco } from '@jsverse/transloco';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,21 +15,24 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       useFactory: () => () => new Promise((resolve, reject): void => {
 
-        setTimeout(() => {
+        setTimeout((): void => {
           resolve(true);
         }, 1000);
 
       }),
       multi: true
-    }, provideHttpClient(), provideTransloco({
-        config: { 
-          availableLangs: ['en'],
-          defaultLang: 'en',
-          // Remove this option if your application doesn't support changing language in runtime.
-          reRenderOnLangChange: true,
-          prodMode: !isDevMode(),
-        },
-        loader: TranslocoHttpLoader
-      })
+    },
+    provideHttpClient(),
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'de'],
+        fallbackLang: 'en',
+        defaultLang: 'de',
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+        failedRetries: 1,
+      },
+      loader: TranslocoHttpLoader
+    })
   ]
 };
