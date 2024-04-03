@@ -5,7 +5,7 @@
       [rowspan]="1"
       [style.background]="'#ababab'"
     >
-      <svg class="animate__animated animate__pulse animate__repeat-2" width="256" height="256" xmlns="http://www.w3.org/2000/svg">
+      <svg class="glow-svg" width="256" height="256" xmlns="http://www.w3.org/2000/svg">
         <g>
           <g id="svg_1">
             <g>
@@ -67,15 +67,15 @@
       [rowspan]="1"
       [style.background]="'#ababab'"
     >
-      <p class="animate__animated animate__backInDown animate__flash animate__delay-1s"
+      <p class="bounceInUp-text"
         style="text-align: center; font-family: 'Comfortaa', sans-serif; font-optical-sizing: auto; font-weight: 500; font-style: normal; font-size: 40px; line-height: normal; color: #f5f5f5;">
         Softwaretechnik
       </p>
     </mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list cols="1" rowHeight="{{routerOutletGridListRowHeight}}px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'transparent'">
-      <router-outlet  />
+    <mat-grid-tile class="glow-text animate__animated animate__fadeIn animate__delay-1s" [colspan]="1" [rowspan]="1" [style.background]="'transparent'">
+      <router-outlet />
     </mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list cols="5" rowHeight="30vh" gutterSize="0">
@@ -91,136 +91,16 @@
       [style.background]="'#ababab'"
     >
       <div class="slider">
-        <div class="slide-track" style="background-color: transparent">
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/googlehome" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/amazonaws" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/angular" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/ansible" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/docker" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/assemblyscript" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/atlassian" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/auth0" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/css3" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/cucumber" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/deno" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/dependabot" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/directus" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/duckduckgo" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/electron" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/eslint" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/esbuild" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/express" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/git" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/github" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/githubcopilot" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/gitlab" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/google" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/googlechrome" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/grafana" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/gulp" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/harbor" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/helm" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/htmx" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/html5" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jaeger" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/javascript" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jasmine" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jenkins" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jest" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jfrog" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jquery" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/jss" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/less" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/meteor" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/mocha" alt="thomas-schulte.de" priority>
-          </div>
-          <div class="slide">
-            <img height="100" width="100" ngSrc="//cdn.simpleicons.org/typescript" alt="thomas-schulte.de" priority>
-          </div>
-<!--          <div class="slide">-->
-<!--            <img ngSrc="//s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />-->
-<!--          </div>-->
+        <div class="slide-track">
+          @for (image of images; track image) {
+            <div class="slide">
+              <img height="100" width="100" ngSrc="//cdn.simpleicons.org/{{image}}" alt="{{image}}-image" priority>
+            </div>
+          } @empty {
+            <div class="slide">
+              <img ngSrc="//s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="default-icon" priority>
+            </div>
+          }
         </div>
       </div>
     </mat-grid-tile>

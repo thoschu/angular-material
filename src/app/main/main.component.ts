@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 import { RouterOutlet } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
-import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-main',
@@ -20,6 +20,12 @@ import {NgOptimizedImage} from "@angular/common";
 })
 export class MainComponent {
   protected routerOutletGridListRowHeight: number = 0;
+  protected readonly images: string[] = [
+    'googlehome', 'amazonaws', 'angular', 'ansible', 'docker', 'assemblyscript', 'atlassian', 'auth0', 'css3', 'cucumber',
+    'deno', 'dependabot', 'directus', 'duckduckgo', 'electron', 'eslint', 'esbuild', 'express', 'git', 'less', 'meteor', 'mocha',
+    'typescript', 'github', 'githubcopilot', 'gitla', 'google', 'googlechrome', 'grafana', 'gulp', 'harbor',
+    'helm', 'htmx', 'html5', 'jaeger', 'javascript', 'jasmine', 'jenkins', 'jest', 'jfrog', 'jquery', 'jss'
+  ];
 
   constructor(protected readonly appService: AppService) {
     appService.breakpointsLandscape$.subscribe((res: Record<string, string>): void => {

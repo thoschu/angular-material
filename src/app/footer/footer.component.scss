@@ -22,10 +22,16 @@
         .center-text {
           text-align: center;
         }
+      }
 
-        &:last-of-type {
+      &:last-of-type {
+        mat-grid-tile {
           p {
             margin-top: 20px;
+          }
+
+          a {
+            color: #5b5b5b;
           }
         }
       }

@@ -1,73 +1,118 @@
 <footer [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
-  <mat-grid-list [cols]="10" [rowHeight]="'7vh'" gutterSize="0">
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="4"
-      [style.background]="'transparent'"
-    ></mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="4"
-      [style.background]="'transparent'"
-    >
+  <mat-grid-list [cols]="10" [rowHeight]="'70px'" gutterSize="0">
+    <mat-grid-tile [colspan]="firstFooterArea[0]" [rowspan]="4" [style.background]="'transparent'"></mat-grid-tile>
+    <mat-grid-tile [colspan]="firstFooterArea[1]" [rowspan]="4" [style.background]="'transparent'">
       <div class="center-text">
-        <p>Thomas Schulte</p>
-        <p>Holsteiner Chaussee 181</p>
-        <p>D - 22457 Hamburg</p>
-        <p>thoschulte&#64;gmail.com</p>
+        <svg width="256" height="256" viewBox="0 0 256 256"  xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <g id="svg_1">
+              <g id="svg_2">
+                <path id="svg_3" fill="#5b5b5b"
+                      d="m62.8,106.6c-0.9,-5 -4.9,-11.3 -15.5,-11.3c-8.2,0 -15.3,5.7 -15.3,13.7c0,6.3 4.4,11.1 11.6,12.5l5.8,1.1c2.8,0.5 4.6,2.1 4.6,4.3c0,2.6 -2.3,4.4 -6,4.4c-5.8,0 -8.4,-3.4 -8.8,-7.3l-8.7,2.1c0.6,6 5.6,13.6 17.4,13.6c10.1,0 15.7,-6.8 15.7,-13.4c0,-6.1 -4.2,-11.3 -12.3,-12.8l-5.7,-1.1c-2.9,-0.5 -4.2,-2 -4.2,-4.1c0,-2.3 2.3,-4.6 5.8,-4.6c5.2,0 6.8,3.4 7.1,5.3l8.5,-2.4z"
+                      class="st0"/>
+              </g>
+              <g id="svg_4">
+                <path id="svg_5" fill="#5b5b5b"
+                      d="m81.5,116.4c3.5,0 5.3,2.2 6,4.4l8.1,-2.5c-1.3,-5.3 -6.1,-10.4 -14.3,-10.4c-8.7,0 -15.7,6.5 -15.7,15.8c0,9.2 7.1,15.8 16,15.8c8,0 12.9,-5.2 14.2,-10.4l-8,-2.5c-0.7,2.2 -2.6,4.4 -6.2,4.4c-3.8,0 -6.9,-2.6 -6.9,-7.4c0,-4.6 3,-7.2 6.8,-7.2"
+                      class="st0"/>
+              </g>
+              <g id="svg_6">
+                <path id="svg_7" fill="#5b5b5b"
+                      d="m108.1,121.2c0.2,-2.8 2,-4.8 4.9,-4.8c3.3,0 4.9,2.2 4.9,5.2l0,-2.4l9.1,0l0,0.9c0,-6.5 -3.5,-11.9 -11.3,-11.9c-2.6,0 -5.8,0.8 -7.6,2.7l0,-15.6l-9.1,0l0,43.4l9.1,0l0,-17.5z"
+                      class="st0"/>
+              </g>
+              <g id="svg_8">
+                <path id="svg_9" fill="#5b5b5b"
+                      d="m137.4,138.7l8.7,0c-0.1,-0.5 -0.3,-2.6 -0.3,-5.3l0,-24.4l-9.1,0l0,17c0,3 -1.9,5.1 -5,5.1c-3.2,0 -4.8,-2.3 -4.8,-5.2l-0.1,-7.1l-9.1,0l0.1,9c0,6.4 4.1,11.6 11.3,11.6c3,0 6.4,-1.1 8,-3.7c0.1,0.8 0.2,2.5 0.3,3"
+                      class="st0"/>
+              </g>
+            </g>
+            <g id="svg_10">
+              <rect id="svg_11" fill="#5b5b5b" height="43.4" width="9.1" class="st0" y="95.3" x="150.2"/>
+            </g>
+            <g id="svg_12">
+              <g id="svg_13">
+                <path id="svg_14" fill="#5b5b5b"
+                      d="m176.9,100.2l-8.1,0l0,3.8c0,2.8 -1.5,4.9 -4.6,4.9l-1.5,0l0,8l5.3,0l0,12.8c0,5.9 3.8,9.6 9.9,9.6c2.9,0 4.4,-0.7 4.7,-0.8l0,-7.5c-0.5,0.1 -1.4,0.3 -2.4,0.3c-2,0 -3.3,-0.7 -3.3,-3.1l0,-11.1l5.8,0l0,-8l-5.8,0l0,-8.9z"
+                      class="st0"/>
+              </g>
+              <path id="svg_15" fill="#5b5b5b"
+                    d="m214.6,123.3c0,-9.6 -5.7,-15.3 -14.9,-15.3c-7.7,0 -14.9,6.1 -14.9,15.7c0,10 7.3,15.9 15.5,15.9c7.5,0 12.3,-4.3 13.7,-9.5l-7.6,-2.2c-0.8,2.3 -2.7,3.9 -6,3.9c-3.5,0 -6.6,-2.4 -6.8,-5.8l20.7,0c0.2,-0.1 0.3,-1.4 0.3,-2.7zm-20.7,-3.1c0.2,-2.2 2.1,-5 5.9,-5c4.3,0 5.9,2.8 6,5l-11.9,0z"
+                    class="st0"/>
+            </g>
+            <g id="svg_16">
+              <path id="svg_17" fill="#5b5b5b" d="m217.3,134.76822l0,3.4l-0.8,0l0,-3.4l-1.3,0l0,-0.8l3.4,0l0,0.8l-1.3,0z"
+                    class="st0"/>
+            </g>
+            <g id="svg_18">
+              <g id="svg_19">
+                <path id="svg_20" fill="#5b5b5b"
+                      d="m216.9,140.37199c-2.3,0 -4.2,-1.9 -4.2,-4.2c0,-2.3 1.9,-4.2 4.2,-4.2s4.2,1.9 4.2,4.2c0,2.3 -1.9,4.2 -4.2,4.2zm0,-7.7c-1.9,0 -3.4,1.5 -3.4,3.4s1.5,3.4 3.4,3.4s3.4,-1.5 3.4,-3.4s-1.5,-3.4 -3.4,-3.4z"
+                      class="st0"/>
+              </g>
+            </g>
+          </g>
+          <style>
+            .heavy {
+              font: bold 18px "Comfortaa", sans-serif;
+            }
+          </style>
+          <text x="16" y="170" fill="#5b5b5b" class="heavy">
+            <a xlink:href="mailto:contact@techstack.ch">contact&#64;techstack.ch</a>
+          </text>
+        </svg>
       </div>
+<!--      <address class="center-text">-->
+<!--        Written by <a href="mailto:thoschulte@gmail.com">Thomas-Laurenz Schulte</a>.<br>-->
+<!--        Visit me at:<br>-->
+<!--        www.techstack.ch<br>-->
+<!--        Box 564, Disneyland<br>-->
+<!--        USA-->
+<!--      </address>-->
     </mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="4"
-      [style.background]="'transparent'"
-    ></mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="4"
-      [style.background]="'transparent'"
-    >
+    <mat-grid-tile [colspan]="firstFooterArea[2]" [rowspan]="4" [style.background]="'transparent'"></mat-grid-tile>
+    <mat-grid-tile [colspan]="firstFooterArea[3]" [rowspan]="4" [style.background]="'transparent'">
       <div class="center-text">
-        <a href="//github.com/thoschu" target="_blank" title="" rel="nofollow"  matTooltip="GitHub">
+        <a href="//github.com/thoschu" target="_blank" title="" rel="nofollow"  matTooltip="www.github.com">
           <img height="32" width="32" ngSrc="//cdn.simpleicons.org/github" alt="github" priority>
         </a>
         &nbsp;
-        <a href="//www.npmjs.com/~thoschu" target="_blank" title="" rel="nofollow" matTooltip="NPM">
+        <a href="//www.npmjs.com/~thoschu" target="_blank" title="" rel="nofollow" matTooltip="www.npmjs.com">
           <img height="32" width="32" ngSrc="//cdn.simpleicons.org/npm" alt="npm" priority>
         </a>
         &nbsp;
-        <a href="//hub.docker.com/u/thoschu" target="_blank" title="" rel="nofollow" matTooltip="DockerHub">
+        <a href="//hub.docker.com/u/thoschu" target="_blank" title="" rel="nofollow" matTooltip="www.docker.com">
           <img height="32" width="32" ngSrc="//cdn.simpleicons.org/docker" alt="docker-hub" priority>
         </a>
         &nbsp;
-        <a href="//www.youtube.com/channel/UCPmHCApqPmpKrpNRf-0MpdQ" title="" target="_blank" rel="nofollow" matTooltip="youtube.de">
+        <a href="//www.youtube.com/channel/UCPmHCApqPmpKrpNRf-0MpdQ" title="" target="_blank" rel="nofollow" matTooltip="www.youtube.de">
           <img height="32" width="32" ngSrc="//cdn.simpleicons.org/youtube" alt="youtube" priority>
         </a>
-<!--        &nbsp;-->
-<!--        <a href="//www.thomas-schulte.de/start.html" target="_blank" title="" rel="nofollow" matTooltip="thomas-schulte.de">-->
-<!--          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/googlehome/white" alt="thomas-schulte.de" priority>-->
-<!--        </a>-->
+        &nbsp;
+        <a href="//www.thomas-schulte.de/start.html" target="_blank" title="" rel="nofollow" matTooltip="www.thomas-schulte.de">
+          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/googlehome/white" alt="thomas-schulte.de" priority>
+        </a>
+        &nbsp;
+        <a href="//www.linkedin.com/in/thomas-l-schulte-3988a078/" target="_blank" title="" rel="nofollow" matTooltip="www.linkedin.com">
+          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/linkedin" alt="thomas-schulte.de" priority>
+        </a>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="4"
-      [style.background]="'transparent'"
-    ></mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="10"
-      [rowspan]="6"
-      [style.background]="'transparent'"
-    >
+    <mat-grid-tile [colspan]="firstFooterArea[4]" [rowspan]="4" [style.background]="'transparent'"></mat-grid-tile>
+    <mat-grid-tile [colspan]="10" [rowspan]="6" [style.background]="'transparent'">
       <div id="map"></div>
     </mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="10"
-      [rowspan]="1"
-      [style.background]="'transparent'"
-    >
-      <p>Copyright © Thomas L. Schulte - 2024</p>
-<!--      <p>Impressum und Datenschutzerklärung</p>-->
+  </mat-grid-list>
+  <mat-grid-list [cols]="6" [rowHeight]="lastFooterArea[2]" gutterSize="0">
+    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1" [style.background]="'transparent'"></mat-grid-tile>
+    <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1" [style.background]="'transparent'">
+      <p class="center-text">Hamburg © 2024</p>
     </mat-grid-tile>
+    <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1" [style.background]="'transparent'">
+      <a class="center-text" href="//www.linkedin.com/in/thomas-l-schulte-3988a078/" title="Disclaimer" >
+        Impressum und Datenschutzerklärung
+      </a>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1" [style.background]="'transparent'"></mat-grid-tile>
   </mat-grid-list>
 </footer>

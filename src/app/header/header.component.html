@@ -8,11 +8,12 @@
       >
         <mat-toolbar [@fixedStatic]="isFixedPosition ? 'static' : 'fixed'" color="none">
           <div class="center-container-elements">
-            <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>home</mat-icon>Home</a>|
-            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>view_comfy_alt</mat-icon>Themen</a>|
-            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>gpp_maybe</mat-icon>Technologien</a>|
-            <a mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon>Menu</a>
-            <mat-menu #menu>
+            <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>home</mat-icon>Home</a>┃
+            <a mat-button routerLink="/imprint" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>view_comfy_alt</mat-icon>Impressum</a>┃
+            <a mat-button routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>star</mat-icon>Referenzen</a>┃
+            <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>gpp_maybe</mat-icon>Technologien</a>┃
+            <a mat-button [matMenuTriggerFor]="more"><mat-icon>more_vert</mat-icon>Links</a>
+            <mat-menu #more>
               <button mat-menu-item routerLink="/">
                 <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
                 <span>OK</span>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material/icon';
+import { MatIcon, MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AsyncPipe, NgClass, NgOptimizedImage } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -13,8 +13,10 @@ import proj4 from 'proj4';
 import { ScaleLine } from 'ol/control.js';
 import { fromLonLat, transformExtent } from 'ol/proj.js';
 import { register } from 'ol/proj/proj4.js';
+import { prop } from 'ramda';
 
 import { AppService } from '../app.service';
+import {Layer} from "ol/layer";
 
 @Component({
   selector: 'app-footer',
@@ -23,13 +25,15 @@ import { AppService } from '../app.service';
     AsyncPipe,
     MatGridList, MatGridTile,
     NgClass, NgOptimizedImage,
-    MatTooltipModule
+    MatTooltipModule, MatIcon
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
   exportAs: 'appFooter'
 })
 export class FooterComponent implements OnInit {
+  protected firstFooterArea: number[] = [2, 2, 2, 2, 2];
+  protected lastFooterArea: (string | number)[] = [2, 1, '70px'];
   private map?: Map;
   constructor(
     protected readonly appService: AppService,
@@ -58,6 +62,7 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.map = new Map({
+      controls: [],
       layers: [
         new TileLayer({
           source: new OSM(),
@@ -65,18 +70,33 @@ export class FooterComponent implements OnInit {
       ],
       target: 'map',
       view: new View({
-        projection: 'Indiana-East',
-        center: fromLonLat([-85.685, 39.891], 'Indiana-East'),
-        zoom: 7,
-        extent: transformExtent(
-          [-172.54, 23.81, -47.74, 86.46],
-          'EPSG:4326',
-          'Indiana-East',
-        ),
-        minZoom: 6,
-      }),
+        center: fromLonLat([9.993682, 53.551086]),
+        zoom: 10,
+        minZoom: 7
+      })
     });
 
-    this.map.addControl(new ScaleLine({units: 'us'}));
+    this.map.addControl(new ScaleLine({units: 'imperial'}));
+
+    this.appService.breakpointsPortrait$.subscribe((res: Record<string, string>): void => {
+      const xSmall: string = prop<string, Record<string, string>>('Breakpoints.XSmall', res);
+      const small: string = prop<string, Record<string, string>>('Breakpoints.XSmall', res);
+
+      if(xSmall || small) {
+        console.log('breakpointsPortrait$');
+        this.lastFooterArea = [0, 6, '40px'];
+        this.firstFooterArea = [0, 10, 0, 10, 0]
+      }
+    });
+    this.appService.breakpointsLandscape$.subscribe((res: Record<string, string>): void => {
+      const xSmall: string = prop<string, Record<string, string>>('Breakpoints.Small', res);
+      const small: string = prop<string, Record<string, string>>('Breakpoints.Small', res);
+
+      if(xSmall || small) {
+        console.log('breakpointsLandscape$');
+        this.lastFooterArea = [0, 6, '25px'];
+        this.firstFooterArea = [0, 10, 0, 10, 0]
+      }
+    });
   }
 }
