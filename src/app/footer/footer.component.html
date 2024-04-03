@@ -1,9 +1,9 @@
 <footer [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
   <mat-grid-list [cols]="10" [rowHeight]="'70px'" gutterSize="0">
-    <mat-grid-tile [colspan]="firstFooterArea[0]" [rowspan]="4" [style.background]="'transparent'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="firstFooterArea[1]" [rowspan]="4" [style.background]="'transparent'">
+    <mat-grid-tile [colspan]="firstFooterArea[0]" [rowspan]="4"></mat-grid-tile>
+    <mat-grid-tile [colspan]="firstFooterArea[1]" [rowspan]="4">
       <div class="center-text">
-        <svg width="256" height="256" viewBox="0 0 256 256"  xmlns="http://www.w3.org/2000/svg">
+        <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
           <g>
             <g id="svg_1">
               <g id="svg_2">
@@ -62,57 +62,32 @@
           </text>
         </svg>
       </div>
-<!--      <address class="center-text">-->
-<!--        Written by <a href="mailto:thoschulte@gmail.com">Thomas-Laurenz Schulte</a>.<br>-->
-<!--        Visit me at:<br>-->
-<!--        www.techstack.ch<br>-->
-<!--        Box 564, Disneyland<br>-->
-<!--        USA-->
-<!--      </address>-->
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="firstFooterArea[2]" [rowspan]="4" [style.background]="'transparent'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="firstFooterArea[3]" [rowspan]="4" [style.background]="'transparent'">
+    <mat-grid-tile [colspan]="firstFooterArea[2]" [rowspan]="4"></mat-grid-tile>
+    <mat-grid-tile [colspan]="firstFooterArea[3]" [rowspan]="4">
       <div class="center-text">
-        <a href="//github.com/thoschu" target="_blank" title="" rel="nofollow"  matTooltip="www.github.com">
-          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/github" alt="github" priority>
-        </a>
-        &nbsp;
-        <a href="//www.npmjs.com/~thoschu" target="_blank" title="" rel="nofollow" matTooltip="www.npmjs.com">
-          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/npm" alt="npm" priority>
-        </a>
-        &nbsp;
-        <a href="//hub.docker.com/u/thoschu" target="_blank" title="" rel="nofollow" matTooltip="www.docker.com">
-          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/docker" alt="docker-hub" priority>
-        </a>
-        &nbsp;
-        <a href="//www.youtube.com/channel/UCPmHCApqPmpKrpNRf-0MpdQ" title="" target="_blank" rel="nofollow" matTooltip="www.youtube.de">
-          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/youtube" alt="youtube" priority>
-        </a>
-        &nbsp;
-        <a href="//www.thomas-schulte.de/start.html" target="_blank" title="" rel="nofollow" matTooltip="www.thomas-schulte.de">
-          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/googlehome/white" alt="thomas-schulte.de" priority>
-        </a>
-        &nbsp;
-        <a href="//www.linkedin.com/in/thomas-l-schulte-3988a078/" target="_blank" title="" rel="nofollow" matTooltip="www.linkedin.com">
-          <img height="32" width="32" ngSrc="//cdn.simpleicons.org/linkedin" alt="thomas-schulte.de" priority>
-        </a>
+        @for (item of iconsList; track item.id) {
+          <a class="icons" [href]="item.href" target="_blank" title="" rel="nofollow" [matTooltip]="item.matTooltip">
+            <img height="32" width="32" [ngSrc]="item.src" [alt]="item.matTooltip" priority>
+          </a>
+        }
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="firstFooterArea[4]" [rowspan]="4" [style.background]="'transparent'"></mat-grid-tile>
+    <mat-grid-tile [colspan]="firstFooterArea[4]" [rowspan]="4"></mat-grid-tile>
     <mat-grid-tile [colspan]="10" [rowspan]="6" [style.background]="'transparent'">
       <div id="map"></div>
     </mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list [cols]="6" [rowHeight]="lastFooterArea[2]" gutterSize="0">
-    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1" [style.background]="'transparent'"></mat-grid-tile>
-    <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1" [style.background]="'transparent'">
+    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
       <p class="center-text">Hamburg © 2024</p>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1" [style.background]="'transparent'">
+    <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
       <a class="center-text" href="//www.linkedin.com/in/thomas-l-schulte-3988a078/" title="Disclaimer" >
         Impressum und Datenschutzerklärung
       </a>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1" [style.background]="'transparent'"></mat-grid-tile>
+    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1"></mat-grid-tile>
   </mat-grid-list>
 </footer>

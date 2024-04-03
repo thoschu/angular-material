@@ -29,14 +29,21 @@ $animationSpeed: 80s;
 
     .glow-svg {
       display: inline-block;
-      animation: glow 1.5s ease-in-out infinite alternate, 3s bounceInDown;
+      animation: glow 1s ease-in-out infinite alternate, 3s bounceInDown;
     }
 
     .bounceInUp-text {
       display: inline-block;
       animation: 3s 1s bounceInUp;
+      text-align: center;
+      font-family: 'Comfortaa', sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 40px;
+      line-height: normal;
+      color: #f5f5f5;
     }
-
 
     .slider {
       background: transparent;

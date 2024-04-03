@@ -11,12 +11,13 @@ import TileLayer from 'ol/layer/Tile.js';
 import View from 'ol/View.js';
 import proj4 from 'proj4';
 import { ScaleLine } from 'ol/control.js';
-import { fromLonLat, transformExtent } from 'ol/proj.js';
+import { fromLonLat } from 'ol/proj.js';
 import { register } from 'ol/proj/proj4.js';
 import { prop } from 'ramda';
 
 import { AppService } from '../app.service';
-import {Layer} from "ol/layer";
+
+type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', string>;
 
 @Component({
   selector: 'app-footer',
@@ -32,9 +33,44 @@ import {Layer} from "ol/layer";
   exportAs: 'appFooter'
 })
 export class FooterComponent implements OnInit {
+  private map?: Map;
+  private simpleIconsCdn: string = '//cdn.simpleicons.org/';
   protected firstFooterArea: number[] = [2, 2, 2, 2, 2];
   protected lastFooterArea: (string | number)[] = [2, 1, '70px'];
-  private map?: Map;
+  protected readonly iconsList: FooterIcons[] = [
+    {
+      id: 1,
+      href: '//github.com/thoschu',
+      matTooltip: 'www.github.com',
+      src: `${this.simpleIconsCdn}github`
+    }, {
+      id: 2,
+      href: '//www.npmjs.com/~thoschu',
+      matTooltip: 'www.npmjs.com',
+      src: `${this.simpleIconsCdn}npm`
+    }, {
+      id: 3,
+      href: '//hub.docker.com/u/thoschu',
+      matTooltip: 'hub.docker.com',
+      src: `${this.simpleIconsCdn}docker`
+    }, {
+      id: 4,
+      href: '//www.youtube.com/channel/UCPmHCApqPmpKrpNRf-0MpdQ',
+      matTooltip: 'www.youtube.de',
+      src: `${this.simpleIconsCdn}youtube`
+    }, {
+      id: 5,
+      href: '//www.thomas-schulte.de/start.html',
+      matTooltip: 'www.thomas-schulte.de',
+      src: `${this.simpleIconsCdn}googlehome/white`
+    }, {
+      id: 6,
+      href: '//www.linkedin.com/in/thomas-l-schulte-3988a078/',
+      matTooltip: 'www.linkedin.com',
+      src: `${this.simpleIconsCdn}linkedin`
+    }
+  ];
+
   constructor(
     protected readonly appService: AppService,
     private readonly domSanitizer: DomSanitizer,
@@ -83,7 +119,7 @@ export class FooterComponent implements OnInit {
       const small: string = prop<string, Record<string, string>>('Breakpoints.XSmall', res);
 
       if(xSmall || small) {
-        console.log('breakpointsPortrait$');
+        // console.log('breakpointsPortrait$');
         this.lastFooterArea = [0, 6, '40px'];
         this.firstFooterArea = [0, 10, 0, 10, 0]
       }
@@ -93,7 +129,7 @@ export class FooterComponent implements OnInit {
       const small: string = prop<string, Record<string, string>>('Breakpoints.Small', res);
 
       if(xSmall || small) {
-        console.log('breakpointsLandscape$');
+        // console.log('breakpointsLandscape$');
         this.lastFooterArea = [0, 6, '25px'];
         this.firstFooterArea = [0, 10, 0, 10, 0]
       }

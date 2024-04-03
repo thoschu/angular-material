@@ -33,10 +33,9 @@
       bottom: 0;
       position: absolute;
 
-      mat-toolbar {
-        button[mat-icon-button] {
-          display: block;
-        }
+      mat-sidenav {
+        width: 100vw;
+        text-align: center;
       }
     }
   }

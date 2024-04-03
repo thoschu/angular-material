@@ -1,4 +1,4 @@
-@import 'ol/ol.css';
+// @import 'ol/ol.css';
 
 :host {
   color: #5b5b5b;
@@ -21,6 +21,10 @@
 
         .center-text {
           text-align: center;
+        }
+
+        .icons {
+          margin: 7px;
         }
       }
 

@@ -1,11 +1,7 @@
 <header id="topAnchor">
   @if(wideScreen) {
     <mat-grid-list cols="1" rowHeight="65px">
-      <mat-grid-tile
-        [colspan]="'1'"
-        [rowspan]="'1'"
-        [style.background]="'transparent'"
-      >
+      <mat-grid-tile [colspan]="'1'" [rowspan]="'1'" [style.background]="'transparent'">
         <mat-toolbar [@fixedStatic]="isFixedPosition ? 'static' : 'fixed'" color="none">
           <div class="center-container-elements">
             <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>home</mat-icon>Home</a>┃
@@ -14,16 +10,46 @@
             <a mat-button routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')"><mat-icon>gpp_maybe</mat-icon>Technologien</a>┃
             <a mat-button [matMenuTriggerFor]="more"><mat-icon>more_vert</mat-icon>Links</a>
             <mat-menu #more>
-              <button mat-menu-item routerLink="/">
-                <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-                <span>OK</span>
-              </button>
-              <button mat-menu-item routerLink="#">
-                <span>Github</span>
-              </button>
-              <a mat-button href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow" routerLinkActive="active" ariaCurrentWhenActive="page">
-                <img height="32" width="32" ngSrc="https://cdn.simpleicons.org/keycloak" alt="iam.techstach.ch" priority>
+<!--              <button mat-menu-item routerLink="/">-->
+<!--                <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>-->
+<!--              </button>-->
+              <a mat-menu-item href="//portainer.techstack.ch" target="_blank" title="Portainer" rel="nofollow">
+                <img height="20" width="20" ngSrc="//cdn.simpleicons.org/portainer/black" alt="portainer.techstach.ch" priority>&nbsp;&nbsp;&nbsp;&nbsp;<span>Portainer</span>
               </a>
+              <a mat-menu-item href="//jenkins.techstack.ch" target="_blank" title="Jenkins" rel="nofollow">
+                <img height="20" width="20" ngSrc="//cdn.simpleicons.org/jenkins/black" alt="iam.techstach.ch" priority>&nbsp;&nbsp;&nbsp;&nbsp;<span>Jenkins</span>
+              </a>
+              <a mat-menu-item href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow">
+                <img height="20" width="20" ngSrc="//cdn.simpleicons.org/keycloak/black" alt="iam.techstach.ch" priority>&nbsp;&nbsp;&nbsp;&nbsp;<span>Keycloak</span>
+              </a>
+              <a mat-menu-item href="//analytics.thomas-schulte.de" target="_blank" title="Keycloak" rel="nofollow">
+                <img height="20" width="20" ngSrc="//cdn.simpleicons.org/matomo/black" alt="analytics.thomas-schulte.de" priority>&nbsp;&nbsp;&nbsp;&nbsp;<span>Matomo</span>
+              </a>
+              <a mat-menu-item [matMenuTriggerFor]="contrast">
+                <mat-icon>contrast</mat-icon><span>Modus</span>
+              </a>
+              <mat-menu #contrast>
+                <button mat-menu-item><mat-icon>dark_mode</mat-icon>Dark</button>
+                <button mat-menu-item><mat-icon>light_mode</mat-icon>Light</button>
+              </mat-menu>
+              <button mat-menu-item [matMenuTriggerFor]="language">
+                <mat-icon>language</mat-icon><span> Sprache</span>
+              </button>
+              <mat-menu #language>
+                <button mat-menu-item>🇩🇪 DE</button>
+                <button mat-menu-item>🇬🇧 EN</button>
+              </mat-menu>
+              <button mat-menu-item [matMenuTriggerFor]="other">
+                <mat-icon>info</mat-icon><span> Weitere</span>
+              </button>
+              <mat-menu #other>
+                <a mat-menu-item href="//chat.techstack.ch" target="_blank" title="Keycloak" rel="nofollow">
+                  <mat-icon>chat</mat-icon><span>WebRTC Chat</span>
+                </a>
+                <a mat-menu-item href="//techstack.ch/snake/" target="_blank" title="Keycloak" rel="nofollow">
+                  <mat-icon>videogame_asset</mat-icon><span>Game</span>
+                </a>
+              </mat-menu>
             </mat-menu>
           </div>
         </mat-toolbar>
@@ -31,34 +57,27 @@
     </mat-grid-list>
   } @else {
     <mat-grid-list cols="1" [rowHeight]="rowHeightSmallDevice + 'px'">
-      <mat-grid-tile
-        [colspan]="'1'"
-        [rowspan]="'1'"
-        [style.background]="'transparent'"
-      >
+      <mat-grid-tile [colspan]="'1'" [rowspan]="'1'" [style.background]="'transparent'">
         <mat-sidenav-container class="fullscreen-sidenav-container">
-          <mat-sidenav #sidenav style="width: 100vw; text-align: center;">
+          <mat-sidenav #sidenav>
             <mat-nav-list (click)="closeSidenav(sidenav)">
-              <a mat-list-item routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-                <mat-icon>home</mat-icon>
-                <span>Home</span>
+              <a mat-list-item routerLink="/">
+                <mat-icon>home</mat-icon><span>Home</span>
               </a>
-              <a mat-list-item routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">
-                <mat-icon>question_answer</mat-icon>
-                <span>Link 2</span>
+              <a mat-list-item routerLink="/first-component">
+                <mat-icon>question_answer</mat-icon><span>Link 2</span>
               </a>
-              <a mat-list-item routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">
-                <mat-icon>star</mat-icon>
-                <span>Link 3</span>
+              <a mat-list-item routerLink="/second-component">
+                <mat-icon>star</mat-icon><span>Link 3</span>
               </a>
-              <a mat-list-item href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow" routerLinkActive="active" ariaCurrentWhenActive="page">
-                <img height="32" width="32" ngSrc="https://cdn.simpleicons.org/keycloak" alt="iam.techstach.ch" priority>
+              <a mat-list-item href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow">
+                <img height="32" width="32" ngSrc="//cdn.simpleicons.org/keycloak" alt="iam.techstach.ch" priority>
               </a>
             </mat-nav-list>
           </mat-sidenav>
           <mat-sidenav-content>
             <mat-toolbar color="none">
-              <button #burger mat-icon-button (click)="openSidenav(sidenav)">
+              <button mat-icon-button (click)="openSidenav(sidenav)">
                 <mat-icon>menu</mat-icon>
               </button>
             </mat-toolbar>

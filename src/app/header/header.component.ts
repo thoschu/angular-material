@@ -121,11 +121,11 @@ export class HeaderComponent implements OnDestroy, OnInit {
 
   protected openSidenav(sidenav: MatSidenav): void {
     sidenav.open().then((res: MatDrawerToggleResult): void =>{
-      while(this.rowHeightSmallDevice <= 160 && res === 'open') {
+      while(this.rowHeightSmallDevice <= 200 && res === 'open') {
         this.rowHeightSmallDevice++;
       }
     }).catch((): void => {
-      this.rowHeightSmallDevice = 160;
+      this.rowHeightSmallDevice = 200;
     });
   }
 
