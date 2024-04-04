@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @import '@angular/cdk/overlay-prebuilt.css';
 
 @media only screen and (max-width: 1300px) {
@@ -6,5 +7,19 @@
   }
 }
 
+$app-primary: mat.define-palette(mat.$grey-palette, 500, 100, 900);
+$app-accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400);
+$app-warn: mat.define-palette(mat.$red-palette);
+
+$default-light-theme: mat.define-light-theme($app-primary, $app-accent, $app-warn);
+
+$dark-theme:mat.define-dark-theme($app-primary, $app-accent, $app-warn);
+
 html, body { height: 100%; scroll-behavior: smooth; }
-body { margin: 0; font-family: Comfortaa, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Comfortaa, sans-serif; }
+
+.dark-mode {
+  @include mat.all-component-colors($dark-theme);
+}
+
+@include mat.all-component-themes($default-light-theme);

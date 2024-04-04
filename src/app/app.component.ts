@@ -3,9 +3,8 @@ import { AsyncPipe } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { CdkObserveContent } from '@angular/cdk/observers';
-import {
-  MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
-} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { TranslocoService } from '@jsverse/transloco';
 
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
@@ -26,17 +25,18 @@ import { LoaderComponent } from './loader/loader.component';
 })
 export class AppComponent implements OnInit {
   protected readonly title: string = 'Tom S.';
-  private readonly _horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  private readonly _verticalPosition: MatSnackBarVerticalPosition = 'top';
+  private readonly _horizontalPosition: MatSnackBarHorizontalPosition = 'start';
+  private readonly _verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(
     private readonly _mediaMatcher: MediaMatcher,
-    private readonly _snackBar: MatSnackBar
+    private readonly _snackBar: MatSnackBar,
+    protected readonly translocoService: TranslocoService
   ) {
     this._snackBar.open('🚨 Under Construction 🚨', 'OK', {
       horizontalPosition: this._horizontalPosition,
       verticalPosition: this._verticalPosition,
-      duration: 5000,
+      duration: 13000,
       politeness: 'assertive'
     });
   }

@@ -1,6 +1,6 @@
 import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe, ViewportScroller, NgOptimizedImage } from '@angular/common';
+import {AsyncPipe, ViewportScroller, NgOptimizedImage, NgStyle, NgClass} from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDrawerToggleResult, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,14 +10,12 @@ import { MatListItem, MatNavList } from '@angular/material/list';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
-
+import { MatTooltip } from '@angular/material/tooltip';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { Subscription } from 'rxjs';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
-import {TranslocoHttpLoader} from "../transloco-loader";
-import {Translation, TranslocoDirective, TranslocoService} from "@jsverse/transloco";
-import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-header',
@@ -27,18 +25,18 @@ import {MatTooltip} from "@angular/material/tooltip";
     MatSidenavModule, MatToolbarModule, MatIconModule,
     MatIconButton, MatNavList, MatListItem, MatAnchor,
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
-    RouterLinkActive, MatGridTile, AsyncPipe, NgOptimizedImage, TranslocoDirective, MatTooltip
+    RouterLinkActive, MatGridTile, AsyncPipe,
+    NgOptimizedImage, TranslocoDirective, MatTooltip, NgStyle, NgClass
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   exportAs: 'appHeader',
-  animations: [
-    HeaderComponent.trigger
-  ]
+  animations: [ HeaderComponent.trigger ]
 })
 export class HeaderComponent implements OnDestroy, OnInit {
   private landscapeSubscription?: Subscription;
   private portraitSubscription?: Subscription;
+  protected isFixedPosition: boolean = true;
   protected wideScreen: boolean = true;
   protected rowHeightSmallDevice: number = 65;
   protected readonly title: string = 'Tom S.';
@@ -68,23 +66,17 @@ export class HeaderComponent implements OnDestroy, OnInit {
     transition('static => fixed', [
       animate('1s')
     ])
-  ])
-
-  isFixedPosition = true;
+  ]);
 
   constructor(
     private readonly sanitizer: DomSanitizer,
     private readonly iconRegistry: MatIconRegistry,
     protected readonly appService: AppService,
     protected readonly viewportScroller: ViewportScroller,
-    protected readonly translocoHttpLoader: TranslocoHttpLoader,
     protected readonly translocoService: TranslocoService
   ) {
     this.iconRegistry.addSvgIconLiteral('thumbs-up', this.sanitizer.bypassSecurityTrustHtml(HeaderComponent.THUMBUP_ICON));
-
-    this.translocoHttpLoader.getTranslation('en').subscribe((translation: Translation): void => {
-      console.log(translation);
-    });
+  console.log(this.translocoService.getActiveLang());
   }
 
   ngOnDestroy(): void {
@@ -108,8 +100,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
           break;
         }
       }
-
     });
+
     this.portraitSubscription = this.appService.breakpointsPortrait$.subscribe((portrait: Record<string, string>): void => {
       switch(head<string>(keys<Record<string, string>>(portrait))) {
         case 'Breakpoints.XSmall':
@@ -126,6 +118,11 @@ export class HeaderComponent implements OnDestroy, OnInit {
         }
       }
     });
+  }
+
+  protected setActiveLang(lang: string): void {
+    this.translocoService.setActiveLang(lang);
+    this.appService.setItem('lang', lang);
   }
 
   protected openSidenav(sidenav: MatSidenav): void {

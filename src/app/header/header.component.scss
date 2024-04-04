@@ -31,7 +31,7 @@ $active-color: #5b5b5b;
           color: darken($active-color, 25%);
 
           span {
-            font-size: 1rem;
+            font-size: 1.2rem;
           }
         }
       }
@@ -56,6 +56,26 @@ $active-color: #5b5b5b;
         width: 100vw;
         text-align: center;
       }
+    }
+  }
+}
+
+@keyframes example {
+  from {filter: drop-shadow(0 0 0 rgba(0, 0, 0, 1));}
+  to {filter: drop-shadow(0 0 7px rgba(0, 0, 0, 1));}
+}
+
+button[mat-menu-item] {
+  &.active-lang {
+    background-color: lighten(#ababab, 25%);
+    display: inline-block;
+
+    span {
+      animation-name: example;
+      animation-duration: .7s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
     }
   }
 }

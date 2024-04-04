@@ -7,6 +7,7 @@ import { lensProp, view } from 'ramda';
   providedIn: 'root'
 })
 export class AppService {
+  private darkMode: boolean = false;
   private readonly breakpointStates: string[] = [
     // '(max-width: 1700px)',
     '(orientation: portrait)',
@@ -91,5 +92,35 @@ export class AppService {
           return result;
         })
       );
+  }
+
+  public setItem(key: string, value: string): void {
+    localStorage.setItem(key, value);
+  }
+
+  public getItem(key: string): string | null {
+    return localStorage.getItem(key);
+  }
+
+  public removeItem(key: string): void {
+    localStorage.removeItem(key);
+  }
+
+  public clear(): void {
+    localStorage.clear();
+  }
+
+  public isDarkMode(): boolean {
+    return this.darkMode;
+  }
+
+  public setMode(darkMode: boolean): void {
+    this.darkMode = darkMode;
+
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
   }
 }

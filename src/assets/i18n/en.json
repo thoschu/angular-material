@@ -13,13 +13,20 @@
     "technologies": "Technologies",
     "links": "Links",
     "modus": "Modus",
-    "dark_mode": "Dark",
-    "light_mode": "Light",
+    "dark": "Dark",
+    "light": "Light",
     "language": "Language",
     "other": "Other"
   },
   "main": {
-    "softwareEngineering": "Software-Engineering"
+    "softwareEngineering": "Software-Engineering",
+    "home": {
+      "welcome": "Welcome",
+      "p1": "As a Full-Stack Developer with specialized expertise in JavaScript and TypeScript, I offer a comprehensive range of development and consulting services. My focus is on development with Angular in the MEAN stack (MongoDB, Express.js, Angular, Node.js), complemented by a deep foundation in IT infrastructure design, which includes both cloud-native and cloud-agnostic solutions. My approach integrates best practices in software architecture, with a particular emphasis on Domain-Driven Design, to ensure that each solution is not only technically advanced but also business-sensible and adaptable.",
+      "p2": "Furthermore, my specialization extends to the field of Observability within the MEAN stack, where I utilize techniques and tools such as OpenTelemetry to provide precise monitoring and a comprehensive tracing and logging infrastructure. This expertise enables me not only to respond to requirements in real-time but also to take proactive measures to optimize the performance, reliability, and scalability of applications.",
+      "p3": "As your technical partner, I understand the importance of reliability, scalability, and user experience. I am qualified to deliver innovative solutions that support your business objectives and give you a competitive edge in your industry. Let's work together to shape the future of technology and create exceptional experiences for your users.",
+      "p4": "I invite you to get in touch with me to discuss how I can support your business with customized software solutions. Let's shape the future of your IT together."
+    }
   },
   "footer": {}
 }
