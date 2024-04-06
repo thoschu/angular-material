@@ -55,8 +55,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 | 5        | responsive-design                   | Responsive Design With Angular Material |
 | 6        | tree-component                      | Angular Material Tree Component         |
 | 7        | virtual-scrolling-and-custom-themes | Virtual Scrolling and Custom Themes     |
-| 8        | other                               | Other Angular Material stuff            |
-| 9        | master                              | Production-ready Website                |
+| 8        | theming-and-elevation               | Theming and Helpers                     |
+| 9        | other                               | Other Angular Material stuff            |
+| 10       | master                              | Production-ready Website                |
 
 ## Images
 
