@@ -1,4 +1,5 @@
-$active-color: #5b5b5b;
+$background-color: #5b5b5b;
+$active-color: #ababab;
 
 :host {
   position: relative;
@@ -17,10 +18,10 @@ $active-color: #5b5b5b;
     .center-container-elements {
       text-align: center;
       width: 100%;
-      color: #ababab;
+      color: $active-color;
 
       a {
-        color: #ababab;
+        color: $active-color;
 
         span {
           font-size: .5rem;
@@ -38,6 +39,8 @@ $active-color: #5b5b5b;
 
       .active {
         color: $active-color;
+        text-decoration: underline;
+        text-underline-offset: 7px;
 
         span {
           font-size: 1rem;
@@ -67,7 +70,7 @@ $active-color: #5b5b5b;
 
 button[mat-menu-item] {
   &.active-lang {
-    background-color: lighten(#ababab, 25%);
+    background-color: lighten($active-color, 25%);
     display: inline-block;
 
     span {

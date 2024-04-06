@@ -76,7 +76,6 @@ export class HeaderComponent implements OnDestroy, OnInit {
     protected readonly translocoService: TranslocoService
   ) {
     this.iconRegistry.addSvgIconLiteral('thumbs-up', this.sanitizer.bypassSecurityTrustHtml(HeaderComponent.THUMBUP_ICON));
-  console.log(this.translocoService.getActiveLang());
   }
 
   ngOnDestroy(): void {

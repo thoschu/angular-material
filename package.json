@@ -28,6 +28,8 @@
     "@angular/router": "^17.1.0",
     "@jsverse/transloco": "^7.1.0",
     "animate.css": "^4.1.1",
+    "cookieconsent": "^3.1.1",
+    "ngx-cookieconsent": "^6.0.0",
     "ol": "^9.1.0",
     "proj4": "^2.11.0",
     "ramda": "^0.29.1",

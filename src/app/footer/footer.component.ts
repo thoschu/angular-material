@@ -16,6 +16,8 @@ import { register } from 'ol/proj/proj4.js';
 import { prop } from 'ramda';
 
 import { AppService } from '../app.service';
+import {MatAnchor} from "@angular/material/button";
+import {TranslocoDirective} from "@jsverse/transloco";
 
 type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', string>;
 
@@ -26,7 +28,7 @@ type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', 
     AsyncPipe,
     MatGridList, MatGridTile,
     NgClass, NgOptimizedImage,
-    MatTooltipModule, MatIcon
+    MatTooltipModule, MatIcon, MatAnchor, TranslocoDirective
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',

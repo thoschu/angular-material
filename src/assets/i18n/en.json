@@ -2,6 +2,7 @@
   "name": "My name is {{name}}",
   "foo": "Foo",
   "bar": "Bar",
+  "hello": "Hi",
   "dashboard": {
     "title": "Dashboard Title",
     "desc": "Dashboard Desc"
@@ -28,5 +29,12 @@
       "p4": "I invite you to get in touch with me to discuss how I can support your business with customized software solutions. Let's shape the future of your IT together."
     }
   },
-  "footer": {}
+  "footer": {
+    "imprint-link": "Imprint and GDPR",
+    "imprint": "Imprint",
+    "gdpr": "GDPR"
+  },
+  "cookie": {
+
+  }
 }

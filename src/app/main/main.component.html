@@ -60,24 +60,24 @@
     <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="backgroundMainColor">
       <ng-container *transloco="let t; prefix: 'main'">
         <p class="bounceInUp-text">
-          <span [innerText]="t('softwareEngineering')"></span>
+          <span [matTooltip]="'Software made in Germany'" [innerText]="t('softwareEngineering')"></span>
         </p>
       </ng-container>
     </mat-grid-tile>
   </mat-grid-list>
-  <mat-grid-list cols="1" rowHeight="{{routerOutletGridListRowHeight}}px">
+  <mat-grid-list cols="1" rowHeight="fit" [ngStyle]="{'height.vh': containerHeight}">
     <mat-grid-tile class="animate__animated animate__fadeIn animate__delay-1s" [colspan]="1" [rowspan]="1" [style.background]="'transparent'">
       <router-outlet />
     </mat-grid-tile>
   </mat-grid-list>
   <mat-grid-list cols="5" rowHeight="30vh" gutterSize="0">
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="backgroundMainColor">&nbsp;</mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="backgroundMainColor">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#d6d6d6'">&nbsp;</mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'#d6d6d6'">
       <div class="slider">
         <div class="slide-track">
           @for (image of images; track image) {
             <div class="slide">
-              <img height="100" width="100" ngSrc="//cdn.simpleicons.org/{{image}}" alt="{{image}}-image" matTooltip="{{image | uppercase}}" priority>
+              <img style="filter: drop-shadow(0 0 1px black);" height="100" width="100" ngSrc="//cdn.simpleicons.org/{{image}}" alt="{{image}}-image" matTooltip="{{image | uppercase}}" priority>
             </div>
           } @empty {
             <div class="slide">
@@ -87,7 +87,7 @@
         </div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="backgroundMainColor">&nbsp;</mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="'#d6d6d6'">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="5" [rowspan]="1">&nbsp;
       <img id="qr" ngSrc="./assets/img/qr.svg" width="200" height="200" priority alt="qr-code-image">
     </mat-grid-tile>

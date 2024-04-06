@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage, UpperCasePipe } from '@angular/common';
+import {NgOptimizedImage, NgStyle, UpperCasePipe} from '@angular/common';
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 import { RouterOutlet } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs';
@@ -16,7 +16,7 @@ import {TranslocoDirective} from "@jsverse/transloco";
   standalone: true,
   imports: [
     MatGridList, MatTabGroup, MatGridTile,
-    RouterOutlet, NgOptimizedImage, MatTooltip, UpperCasePipe, MatIcon, MatMenuItem, TranslocoDirective
+    RouterOutlet, NgOptimizedImage, MatTooltip, UpperCasePipe, MatIcon, MatMenuItem, TranslocoDirective, NgStyle
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
@@ -30,6 +30,7 @@ export class MainComponent {
     'helm', 'htmx', 'html5', 'jaeger', 'javascript', 'jasmine', 'jenkins', 'jest', 'jfrog', 'jquery', 'jss', 'dotenv', 'chartdotjs'
   ];
   protected routerOutletGridListRowHeight: number = 0;
+  protected containerHeight: number = 0;
   protected readonly images: string[] = this.fisherYatesShuffleArray<string>(this._images);
   protected readonly backgroundMainColor: string = '#ababab';
 
@@ -38,33 +39,45 @@ export class MainComponent {
       switch(head(keys(res))) {
         case 'Breakpoints.XSmall': {
           this.routerOutletGridListRowHeight = 200;
+          this.containerHeight = 135;
           break;
         }
         case 'Breakpoints.Small': {
           this.routerOutletGridListRowHeight = 580;
+          this.containerHeight = 90;
           break;
         }
         case 'Breakpoints.Medium': {
           this.routerOutletGridListRowHeight = 560;
+          this.containerHeight = 80;
           break;
         }
         case 'Breakpoints.Large':
+          this.containerHeight = 80;
+          break;
         case 'Breakpoints.XLarge':
+          this.containerHeight = 70;
+          break;
         default: {
           this.routerOutletGridListRowHeight = 630;
+          this.containerHeight = 80;
           break;
         }
       }
+
+      console.log('Landscape$', res);
     });
 
     appService.breakpointsPortrait$.subscribe((res: Record<string, string>): void => {
       switch(head(keys(res))) {
         case 'Breakpoints.XSmall': {
           this.routerOutletGridListRowHeight = 1370;
+          this.containerHeight = 175;
           break;
         }
         case 'Breakpoints.Small': {
           this.routerOutletGridListRowHeight = 770;
+          this.containerHeight = 110;
           break;
         }
         case 'Breakpoints.Medium': {
@@ -78,6 +91,8 @@ export class MainComponent {
           break;
         }
       }
+
+      console.log('Portrait$', res);
     });
 
     const test = {

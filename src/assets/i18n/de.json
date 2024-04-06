@@ -2,6 +2,7 @@
   "name": "Mein Name ist {{name}}",
   "foo": "Foo",
   "bar": "Bar",
+  "hello": "Moin",
   "dashboard": {
     "title": "Dashboard Title",
     "desc": "Dashboard Desc"
@@ -22,11 +23,15 @@
     "softwareEngineering": "Softwaretechnik",
     "home": {
       "welcome": "Willkommen",
-      "p1": "Als Full-Stack-Entwickler mit einer spezialisierten Expertise in JavaScript und TypeScript, biete ich eine umfassende Palette an Entwicklungs- und Beratungsdienstleistungen an. Mein Fokus liegt auf der Entwicklung mit Angular im MEAN-Stack (MongoDB, Express.js, Angular, Node.js), ergänzt durch eine tiefe Verwurzelung in IT-Infrastrukturkonzeption, die sowohl cloud-native als auch cloud-agnostische Lösungen umfasst. Mein Ansatz integriert Best Practices in Softwarearchitektur, wobei ich ein besonderes Augenmerk auf Domain-Driven Design lege, um sicherzustellen, dass jede Lösung nicht nur technisch fortschrittlich, sondern auch geschäftlich sinnvoll und anpassungsfähig ist.",
+      "p1": "Als Full-Stack-Entwickler mit einer spezialisierten Expertise in JavaScript und TypeScript, biete ich eine umfassende Palette an Entwicklungs- und Beratungsdienstleistungen an. Mein Fokus liegt auf der Entwicklung mit Angular vornehmlich im MEAN-Stack (MongoDB, Express.js, Angular, Node.js), ergänzt durch eine tiefe Verwurzelung in IT-Infrastrukturkonzeption, die sowohl cloud-native als auch cloud-agnostische Lösungen umfasst. Mein Ansatz integriert Best Practices in Softwarearchitektur, wobei ich ein besonderes Augenmerk auf Domain-Driven Design lege, um sicherzustellen, dass jede Lösung nicht nur technisch fortschrittlich, sondern auch geschäftlich sinnvoll und anpassungsfähig ist.",
       "p2": "Meine Spezialisierung erstreckt sich darüber hinaus auf das Feld der Observability innerhalb des MEAN-Stacks, wobei ich Techniken und Tools wie OpenTelemetry nutze, um ein präzises Monitoring und eine umfassende Tracing- und Logging-Infrastruktur bereitzustellen. Diese Expertise ermöglicht es mir, nicht nur auf Anforderungen in Echtzeit zu reagieren, sondern auch proaktive Maßnahmen zu ergreifen, um die Leistung, Zuverlässigkeit und Skalierbarkeit von Anwendungen zu optimieren.",
       "p3": "Als Ihr technischer Partner verstehe ich die Bedeutung von Zuverlässigkeit, Skalierbarkeit und Benutzererfahrung. Ich bin qualifiziert, innovative Lösungen zu liefern, die Ihre Geschäftsziele unterstützen und Ihnen einen Wettbewerbsvorteil in Ihrer Branche verschaffen. Lassen Sie uns zusammenarbeiten, um die Zukunft der Technologie zu gestalten und außergewöhnliche Erlebnisse für Ihre Nutzer zu schaffen.",
       "p4": "Ich lade Sie ein, mit mir in Kontakt zu treten, um zu besprechen, wie ich Ihr Unternehmen mit maßgeschneiderten Softwarelösungen unterstützen kann. Lassen Sie uns gemeinsam die Zukunft Ihrer IT gestalten."
     }
   },
-  "footer": {}
+  "footer": {
+    "imprint-link": "Impressum und DSGVO",
+    "imprint": "Impressum",
+    "gdpr": "DSGVO"
+  }
 }
