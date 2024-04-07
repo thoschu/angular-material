@@ -58,7 +58,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 | 8        | theming-and-elevation               | Theming and Helpers                     |
 | 9        | other                               | Other Angular Material stuff            |
 | 10       | master                              | Production-ready Website                |
-
-## Images
-
-![image 1](./src/assets/img/angular-material.jpg)
