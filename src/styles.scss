@@ -70,9 +70,21 @@ $my-light-theme: mat.define-light-theme((
     accent: $my-accent-light,
     warn: $my-warn,
   ),
-  typography: mat.define-typography-config(),
+  typography: mat.define-typography-config(
+    $font-family: 'Roboto',
+  ),
   density: -2,
 ));
+
+$my-dark-level: mat.define-typography-level(
+  $font-family: 'Honk',
+  $font-weight: 400,
+  $font-size: 1rem,
+  $line-height: 1,
+  $letter-spacing: normal,
+);
+
+$my-dark-typography: mat.define-typography-config($body-1: $my-dark-level);
 
 $my-dark-theme: mat.define-light-theme((
   color: (
@@ -80,7 +92,9 @@ $my-dark-theme: mat.define-light-theme((
     accent: $my-accent-dark,
     warn: $my-warn,
   ),
-  typography: mat.define-typography-config(),
+  typography: mat.define-typography-config(
+    $font-family: 'Honk',
+  ),
   density: 0,
 ));
 
@@ -125,7 +139,6 @@ $my-dark-theme: mat.define-light-theme((
 //@include mat.all-component-themes($my-dark-theme);
 // @include mat.all-component-themes($my-light-theme);
 
-
 @include mat.core-color($my-dark-theme);
 @include mat.all-component-themes($my-dark-theme);
 @include carousel.theme($my-dark-theme);
@@ -134,14 +147,12 @@ $my-dark-theme: mat.define-light-theme((
 @include mat.strong-focus-indicators-color(red);
 
 :root {
-  --main-bg-color: yellow;
+  --main-bg-color: mat.get-theme-color($my-dark-theme, primary, default);
 }
-
-
 
 html, body { height: 100%; }
 body {
-  $dark-primary-default: mat.get-theme-color($my-dark-theme, primary, default);
+  $dark-primary-default: var(--main-bg-color);
   $dark-primary-darker: mat.get-theme-color($my-dark-theme, primary, darker);
   $dark-accent-lighter-contrast: mat.get-theme-color($my-dark-theme, accent, lighter-contrast);
   $dark-warn-default: mat.get-theme-color($my-dark-theme, warn, default);
@@ -163,6 +174,7 @@ body {
   font: mat.get-theme-typography($dark-theme, body-1);
   color: $dark-accent-lighter-contrast;
   background-color: mat.get-theme-color($my-dark-theme, foreground, card);
+  @include mat.elevation(2, red, 1);
 }
 
 @media (prefers-color-scheme: light) {
@@ -170,8 +182,10 @@ body {
   // typography and density styles.
   @include mat.core-color($my-light-theme);
   @include mat.all-component-themes($my-light-theme);
+  @include mat.all-component-typographies($my-light-theme);
   @include mat.strong-focus-indicators-theme($my-light-theme);
   @include carousel.theme($my-light-theme);
+
 
   $light-primary-default: mat.get-theme-color($my-light-theme, primary, default);
   $light-accent-a100: mat.get-theme-color($my-light-theme, accent, A200);
@@ -181,5 +195,6 @@ body {
   body {
     background-color: mat.get-theme-color($my-dark-theme, background);
     color: $light-accent-a100;
+    @include mat.elevation(2);
   }
 }

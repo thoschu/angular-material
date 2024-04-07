@@ -18,6 +18,7 @@ import {MatInput} from "@angular/material/input";
 export class AppComponent {
   protected readonly title: string = 'Tom S.';
   value = 0;
+  isActive: boolean = true;
   constructor() {
     console.log(window.matchMedia('(prefers-color-scheme: dark)').matches)
   }

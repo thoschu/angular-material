@@ -1,4 +1,6 @@
-<h1>Hello, {{title}}</h1>
+<div [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+  <h1>Hello, {{title}}</h1>
+</div>
 <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Favorite food</mat-label>
