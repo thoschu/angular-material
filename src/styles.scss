@@ -5,10 +5,11 @@
 // includes prerequisite styles for common features used by multiple components, such as ripples.
 @include mat.core();
 
+// @include mat.strong-focus-indicators();
 @include mat.strong-focus-indicators((
-  border-style: dotted,
-  border-width: 4px,
-  border-radius: 2px
+  border-style: solid,
+  border-width: 3px,
+  border-radius: 5px
 ));
 
 $mat-indigo-palette: mat.$indigo-palette;
@@ -51,11 +52,11 @@ $example-grey-palette: (
 
 // returns a complete angular material theming-palette.
 // "default" hue, a "lighter" hue, a "darker" hue, and a "text" hue.
-$my-primary-light: mat.define-palette($mat-indigo-palette, 500, 400, 600, 500);
+$my-primary-light: mat.define-palette($mat-indigo-palette, 500, 400, 800, 500);
 $my-accent-light: mat.define-palette(mat.$blue-palette, A200);
 //
 $my-primary-dark: mat.define-palette($example-grey-palette, 500, 400, 600, 500);
-$my-accent-dark: mat.define-palette(mat.$brown-palette, A200, A400);
+$my-accent-dark: mat.define-palette(mat.$brown-palette, A100, A200, A400, A700);
 
 // The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$red-palette);
@@ -126,19 +127,31 @@ $my-dark-theme: mat.define-light-theme((
 
 @include mat.core-color($my-dark-theme);
 @include mat.all-component-themes($my-dark-theme);
-@include mat.strong-focus-indicators-theme(purple);
+
+//@include mat.strong-focus-indicators-theme($my-dark-theme);
+@include mat.strong-focus-indicators-color(red);
+
+:root {
+  --main-bg-color: yellow;
+}
 
 html, body { height: 100%; }
 body {
   $dark-primary-default: mat.get-theme-color($my-dark-theme, primary, default);
-  $dark-accent-a100: mat.get-theme-color($my-dark-theme, accent, A200);
-  $dark-warn-500-contrast: mat.get-theme-color($my-dark-theme, warn, 500-contrast);
+  $dark-primary-darker: mat.get-theme-color($my-dark-theme, primary, darker);
+  $dark-accent-lighter-contrast: mat.get-theme-color($my-dark-theme, accent, lighter-contrast);
+  $dark-warn-default: mat.get-theme-color($my-dark-theme, warn, default);
   $dark-theme: mat.define-dark-theme($my-dark-theme);
 
+  $type: mat.get-theme-type($dark-theme);
+  $custom-background: if($type == dark, #030, #dfd);
+
   margin: 0;
-  font-family: Roboto, sans-serif, "Helvetica Neue", serif;
-  color: $dark-accent-a100;
-  background-color: mat.get-theme-color($my-light-theme, background);
+  // font-family: "Helvetica Neue", serif;
+  // letter-spacing: mat.get-theme-typography($dark-theme, body-1, letter-spacing);
+  font: mat.get-theme-typography($dark-theme, body-1);
+  color: $dark-accent-lighter-contrast;
+  background-color: mat.get-theme-color($my-dark-theme, foreground, card);
 }
 
 @media (prefers-color-scheme: light) {
@@ -146,7 +159,7 @@ body {
   // typography and density styles.
   @include mat.core-color($my-light-theme);
   @include mat.all-component-themes($my-light-theme);
-  @include mat.strong-focus-indicators-theme(purple);
+  @include mat.strong-focus-indicators-theme($my-light-theme);
 
   $light-primary-default: mat.get-theme-color($my-light-theme, primary, default);
   $light-accent-a100: mat.get-theme-color($my-light-theme, accent, A200);
