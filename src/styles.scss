@@ -1,25 +1,65 @@
 @use '@angular/material' as mat;
 @import '@angular/cdk/overlay-prebuilt.css';
 
+// mat.$theme-ignore-duplication-warnings: true;
+
+@include mat.core();
+
+$light-primary: mat.define-palette(mat.$grey-palette, 500, 400, 600);
+$light-accent: mat.define-palette(mat.$grey-palette, A200, A100, A400);
+$dark-primary: mat.define-palette(mat.$grey-palette, 700, 600, 800);
+$dark-accent: mat.define-palette(mat.$grey-palette, A400, A200, A700);
+$default-warn: mat.define-palette(mat.$red-palette);
+
+$custom-typography-config: mat.define-typography-config(
+  $body-1: mat.define-typography-level(inherit, inherit, inherit, $font-family: 'Comfortaa'),
+);
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent,
+    warn: $default-warn,
+  ),
+  typography: $custom-typography-config,
+  density: 0,
+));
+
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $default-warn,
+  ),
+  typography: $custom-typography-config,
+  density: 0,
+));
+
+html, body { height: 100%; scroll-behavior: smooth; }
+body { margin: 0; font-family: Comfortaa, sans-serif; }
+
+@include mat.core-color($light-theme);
+@include mat.all-component-themes($light-theme);
+@include mat.all-component-typographies($light-theme);
+@include mat.strong-focus-indicators-theme($light-theme);
+
+.dark-theme {
+  @include mat.core-color($dark-theme);
+  @include mat.all-component-colors($dark-theme);
+  @include mat.tabs-color($light-theme);
+}
+
+//@media (prefers-color-scheme: light) {
+//  //@include mat.core-color($light-theme);
+//  //@include mat.all-component-themes($light-theme);
+//  //@include mat.all-component-typographies($light-theme);
+//  //@include mat.strong-focus-indicators-theme($light-theme);
+//
+//  @include mat.all-component-colors($light-theme);
+//}
+
 @media only screen and (max-width: 1300px) {
   body {
     background-color: transparent;
   }
 }
-
-$app-primary: mat.define-palette(mat.$grey-palette, 500, 100, 900);
-$app-accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400);
-$app-warn: mat.define-palette(mat.$red-palette);
-
-$default-light-theme: mat.define-light-theme($app-primary, $app-accent, $app-warn);
-
-$dark-theme:mat.define-dark-theme($app-primary, $app-accent, $app-warn);
-
-html, body { height: 100%; scroll-behavior: smooth; }
-body { margin: 0; font-family: Comfortaa, sans-serif; }
-
-.dark-mode {
-  @include mat.all-component-colors($dark-theme);
-}
-
-@include mat.all-component-themes($default-light-theme);
