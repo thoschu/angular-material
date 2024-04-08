@@ -1,6 +1,10 @@
 @use '@angular/material' as mat;
 @import '@angular/cdk/overlay-prebuilt.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // mat.$theme-ignore-duplication-warnings: true;
 
 @include mat.core();

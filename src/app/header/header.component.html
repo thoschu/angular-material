@@ -152,10 +152,9 @@
                   <mat-radio-button
                     class="example-margin" value="primary"
                     #de
-                    [class.glow] = "de.checked"
                     [checked]="activeLang === 'de'"
                     [matTooltip]="activeLang === 'de' ? 'Deutsch' : 'German'"
-                    [ngClass]="{'active-lang': activeLang === 'de'}"
+                    [ngClass]="{'active-lang': activeLang === 'de', 'glow': de.checked}"
                     (click)="this.setActiveLang('de')"
                   >
                     <span>🇩🇪</span>
@@ -163,10 +162,9 @@
                   <mat-radio-button
                     class="example-margin" value="accent"
                     #en
-                    [class.glow] = "en.checked"
                     [checked]="activeLang === 'en'"
                     [matTooltip]="activeLang=== 'en' ? 'English' : 'Englisch'"
-                    [ngClass]="{'active-lang': activeLang === 'en'}"
+                    [ngClass]="{'active-lang': activeLang === 'en', 'glow': en.checked}"
                     (click)="this.setActiveLang('en')"
                   >
                     <span>🇬🇧</span>

@@ -1,6 +1,6 @@
 <footer [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
-  <mat-grid-list [cols]="10" [rowHeight]="'70px'" gutterSize="0" [style.background]="'#d6d6d6'">
-    <mat-grid-tile [colspan]="firstFooterArea[0]" [rowspan]="4"></mat-grid-tile>
+  <mat-grid-list id="top" [cols]="10" [rowHeight]="'60px'" gutterSize="0">
+    <mat-grid-tile [colspan]="firstFooterArea[0]" [rowspan]="4">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="firstFooterArea[1]" [rowspan]="4">
       <div class="center-text">
         <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +63,7 @@
         </svg>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="firstFooterArea[2]" [rowspan]="4"></mat-grid-tile>
+    <mat-grid-tile [colspan]="firstFooterArea[2]" [rowspan]="4">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="firstFooterArea[3]" [rowspan]="4">
       <div class="center-text">
         @for (item of iconsList; track item.id) {
@@ -73,23 +73,27 @@
         }
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="firstFooterArea[4]" [rowspan]="4"></mat-grid-tile>
-    <mat-grid-tile [colspan]="10" [rowspan]="6" [style.background]="'transparent'">
+    <mat-grid-tile [colspan]="firstFooterArea[4]" [rowspan]="4">&nbsp;</mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list [cols]="1" [rowHeight]="'60px'" gutterSize="0">
+    <mat-grid-tile [colspan]="1" [rowspan]="6">
       <div id="map"></div>
     </mat-grid-tile>
   </mat-grid-list>
-  <mat-grid-list [cols]="6" [rowHeight]="lastFooterArea[2]" gutterSize="0" [style.background]="'#ababab'">
-    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1"></mat-grid-tile>
+  <mat-grid-list [cols]="6" [rowHeight]="lastFooterRowHeight" gutterSize="0">
+    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
-      <p class="center-text" matTooltip="Software made in 🇩🇪">⚓ Hamburg © 2024</p>
+      <p class="center-text" matTooltip="Made in 🇩🇪">
+        <span>⚓</span> Hamburg © 2024
+      </p>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
       <ng-container *transloco="let t; prefix: 'footer'">
-        <a class="center-text" href="/imprint" title="">
+        <a href="/imprint" title="">
           <span [innerText]="t('imprint-link')"></span>
         </a>
       </ng-container>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1"></mat-grid-tile>
+    <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1">&nbsp;</mat-grid-tile>
   </mat-grid-list>
 </footer>

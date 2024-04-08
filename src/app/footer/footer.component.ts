@@ -38,7 +38,8 @@ export class FooterComponent implements OnInit {
   private map?: Map;
   private simpleIconsCdn: string = '//cdn.simpleicons.org/';
   protected firstFooterArea: number[] = [2, 2, 2, 2, 2];
-  protected lastFooterArea: (string | number)[] = [2, 1, '70px'];
+  protected lastFooterArea: (string | number)[] = [2, 1];
+  protected lastFooterRowHeight: string = '100px';
   protected readonly iconsList: FooterIcons[] = [
     {
       id: 1,
@@ -110,7 +111,8 @@ export class FooterComponent implements OnInit {
       view: new View({
         center: fromLonLat([9.993682, 53.551086]),
         zoom: 10,
-        minZoom: 7
+        minZoom: 7,
+        multiWorld: true
       })
     });
 
@@ -122,7 +124,8 @@ export class FooterComponent implements OnInit {
 
       if(xSmall || small) {
         // console.log('breakpointsPortrait$');
-        this.lastFooterArea = [0, 6, '40px'];
+        this.lastFooterArea = [1, 6];
+        this.lastFooterRowHeight = '30px';
         this.firstFooterArea = [0, 10, 0, 10, 0]
       }
     });
@@ -132,9 +135,11 @@ export class FooterComponent implements OnInit {
 
       if(xSmall || small) {
         // console.log('breakpointsLandscape$');
-        this.lastFooterArea = [0, 6, '25px'];
+        this.lastFooterArea = [1, 6];
+        this.lastFooterRowHeight = '40px';
         this.firstFooterArea = [0, 10, 0, 10, 0]
       }
     });
   }
 }
+

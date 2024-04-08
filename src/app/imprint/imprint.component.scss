@@ -6,10 +6,10 @@
   left: 0;
 
   .virtual-scroll-viewport {
-    height: 60vh;
+    height: 545px;
     min-width: 100vw;
 
-    .impressum, .dsgvo {
+    .imprint, .gdpr {
       padding: 20px;
 
       h2 {
@@ -20,7 +20,7 @@
       }
 
       * {
-        font-family: "Comfortaa", sans-serif;
+        font-family: 'Comfortaa', sans-serif;
       }
     }
   }

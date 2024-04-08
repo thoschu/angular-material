@@ -3,6 +3,7 @@
 }
 
 $animationSpeed: 80s;
+$dark-primary: #ababab;
 
 :host {
   @keyframes scroll {
@@ -15,6 +16,41 @@ $animationSpeed: 80s;
       filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0))}
     to {
       filter: drop-shadow(0 0 5px #fff)
+    }
+  }
+
+  mat-grid-list {
+    &:first-of-type {
+      mat-grid-tile {
+        background-color: $dark-primary;
+      }
+    }
+
+    &:nth-child(3) {
+      //border: red solid 1px;
+    }
+
+    &+mat-grid-list {
+      mat-grid-tile {
+        background-color: $dark-primary;
+        overflow: visible;
+      }
+    }
+
+    &:last-of-type {
+      mat-grid-tile {
+        &:first-of-type {
+          background-color: #d6d6d6;
+        }
+
+        &:nth-child(2), &:nth-child(3) {
+          background-color: #d6d6d6;
+        }
+
+        &:last-of-type {
+          background-color: white;
+        }
+      }
     }
   }
 

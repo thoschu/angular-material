@@ -1,13 +1,14 @@
 // @import 'ol/ol.css';
 
 :host {
-  color: #5b5b5b;
+  color: #555;
 
   footer {
     background-color: #ababab;
     font-family: 'Comfortaa', sans-serif;
     font-weight: 900;
     font-style: normal;
+    font-size: inherit;
 
     mat-grid-list {
       mat-grid-tile {
@@ -21,6 +22,10 @@
 
         .center-text {
           text-align: center;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
         }
 
         .icons {
@@ -28,14 +33,24 @@
         }
       }
 
+      &:first-of-type {
+        background-color: #c0c0c0;
+      }
+
       &:last-of-type {
+        background-color: #ababab;
+
         mat-grid-tile {
           p {
-            margin-top: 20px;
+            margin-top: 17px;
+
+            span {
+              mix-blend-mode: color-burn;
+            }
           }
 
           a {
-            color: #5b5b5b;
+            color: #555;
           }
         }
       }

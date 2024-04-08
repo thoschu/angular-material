@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {NgOptimizedImage, NgStyle, UpperCasePipe} from '@angular/common';
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 import { RouterOutlet } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenuItem } from '@angular/material/menu';
+import { TranslocoDirective } from '@jsverse/transloco';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
-import {MatIcon} from "@angular/material/icon";
-import {MatMenuItem} from "@angular/material/menu";
-import {TranslocoDirective} from "@jsverse/transloco";
 
 @Component({
   selector: 'app-main',
   standalone: true,
   imports: [
     MatGridList, MatTabGroup, MatGridTile,
-    RouterOutlet, NgOptimizedImage, MatTooltip, UpperCasePipe, MatIcon, MatMenuItem, TranslocoDirective, NgStyle
+    RouterOutlet, NgOptimizedImage, MatTooltip,
+    UpperCasePipe, MatIcon, MatMenuItem,
+    TranslocoDirective, NgStyle
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
@@ -29,69 +31,16 @@ export class MainComponent {
     'typescript', 'github', 'githubcopilot', 'gitlab', 'google', 'googlechrome', 'grafana', 'gulp', 'harbor', 'chai',
     'helm', 'htmx', 'html5', 'jaeger', 'javascript', 'jasmine', 'jenkins', 'jest', 'jfrog', 'jquery', 'jss', 'dotenv', 'chartdotjs'
   ];
-  protected routerOutletGridListRowHeight: number = 0;
-  protected containerHeight: number = 0;
+  protected routerOutletGridListRowHeight: number = 600;
+  protected routerOutletGridListHeight: string = `${this.routerOutletGridListRowHeight}px`;
   protected readonly images: string[] = this.fisherYatesShuffleArray<string>(this._images);
-  protected readonly backgroundMainColor: string = '#ababab';
 
   constructor(protected readonly appService: AppService) {
     appService.breakpointsLandscape$.subscribe((res: Record<string, string>): void => {
-      switch(head(keys(res))) {
-        case 'Breakpoints.XSmall': {
-          this.routerOutletGridListRowHeight = 200;
-          this.containerHeight = 135;
-          break;
-        }
-        case 'Breakpoints.Small': {
-          this.routerOutletGridListRowHeight = 580;
-          this.containerHeight = 90;
-          break;
-        }
-        case 'Breakpoints.Medium': {
-          this.routerOutletGridListRowHeight = 560;
-          this.containerHeight = 80;
-          break;
-        }
-        case 'Breakpoints.Large':
-          this.containerHeight = 80;
-          break;
-        case 'Breakpoints.XLarge':
-          this.containerHeight = 70;
-          break;
-        default: {
-          this.routerOutletGridListRowHeight = 630;
-          this.containerHeight = 80;
-          break;
-        }
-      }
-
       console.log('Landscape$', res);
     });
 
     appService.breakpointsPortrait$.subscribe((res: Record<string, string>): void => {
-      switch(head(keys(res))) {
-        case 'Breakpoints.XSmall': {
-          this.routerOutletGridListRowHeight = 1370;
-          this.containerHeight = 175;
-          break;
-        }
-        case 'Breakpoints.Small': {
-          this.routerOutletGridListRowHeight = 770;
-          this.containerHeight = 110;
-          break;
-        }
-        case 'Breakpoints.Medium': {
-          this.routerOutletGridListRowHeight = 600;
-          break;
-        }
-        case 'Breakpoints.Large':
-        case 'Breakpoints.XLarge':
-        default: {
-          this.routerOutletGridListRowHeight = 750;
-          break;
-        }
-      }
-
       console.log('Portrait$', res);
     });
 
@@ -101,6 +50,11 @@ export class MainComponent {
         return this.count++;
       }
     }
+  }
+
+  protected onActivate(event: Component): void {
+    const componentName: string = event.constructor.name;
+    console.log(componentName);
   }
 
   private fisherYatesShuffleArray<T>(array: T[]): T[] {

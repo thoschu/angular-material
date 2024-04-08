@@ -1,6 +1,6 @@
 @mixin text {
   color: #5b5b5b;
-  font-family: "Comfortaa", sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 400;
@@ -8,24 +8,14 @@
   text-align: justify;
 }
 
-@container (min-inline-size: 1200px) {
-  section {
-    p {
-      font-size: clamp(.25rem, .5rem + .7vw, 2.5rem) !important;
-    }
-  }
-}
-
 :host {
   padding: 30px 50px 0;
   position: absolute;
   top: 0;
   width: 90vw;
-
-
-
   animation: fadeIn;
   animation-duration: 2s;
+  height: 100%;
 
   p, h2, h4 {
     @include text;
@@ -36,8 +26,7 @@
     margin-top: 10px;
 
     p {
-      //font-size: 1em;
-      font-size: clamp(.25rem, .85rem + .25vh, 1.5rem);
+      font-size: clamp(50%, 50% + .75vw, 200%);
 
       &:last-of-type {
         margin-top: 10px;
