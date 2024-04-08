@@ -50,12 +50,11 @@ export class AppComponent implements OnDestroy, OnInit {
       politeness: 'assertive'
     });
 
-    this._translocoService.selectTranslate('header.imprint')
-      .subscribe(value =>   console.log(value));
+    this._translocoService.selectTranslate('cookie.message')
+      .subscribe((value) => {
+        console.log(value);
 
-    this._translocoService.langChanges$.subscribe((lang: string) => {
-
-    });
+      });
 
     this._translocoService.load('en').subscribe(console.log);
 
@@ -88,48 +87,63 @@ export class AppComponent implements OnDestroy, OnInit {
     this._subscriptions.push(this._cookieService.popupOpen$.subscribe(
     (res) => {
       // you can use this.cookieService.getConfig() to do stuff...
-      console.log('popupOpen$', res);
+      console.log('1--------------popupOpen$');
     }));
 
-    this._subscriptions.push(this._cookieService.popupClose$.subscribe((res) => {
+    this._subscriptions.push(this._cookieService.popupClose$.subscribe(() => {
       // you can use this.cookieService.getConfig() to do stuff...
-      console.log('popupClose$', res);
+      console.log('2--------------popupClose$');
     }));
 
     this._subscriptions.push(this._cookieService.initializing$.subscribe((event: NgcInitializingEvent) => {
       // the cookieconsent is initilializing... Not yet safe to call methods like `NgcCookieConsentService.hasAnswered()`
-      console.log(`initializing$: `, `${JSON.stringify(event)}`);
+      console.log(`3--------------initializing$: `, `${JSON.stringify(event)}`);
     }));
 
     this._subscriptions.push(this._cookieService.initialized$.subscribe((res) => {
         // the cookieconsent has been successfully initialized.
         // It's now safe to use methods on NgcCookieConsentService that require it, like `hasAnswered()` for eg...
-        console.log(`initialized$: `, `${JSON.stringify(event)}`);
+        console.log(`4--------------initialized$: `, `${JSON.stringify(event)}`);
       }));
 
     this._subscriptions.push(this._cookieService.initializationError$.subscribe(
       (event: NgcInitializationErrorEvent) => {
         // the cookieconsent has failed to initialize...
-        console.log(`initializationError$: ${JSON.stringify(event.error?.message)}`);
+        console.log(`5--------------initializationError$: ${JSON.stringify(event.error?.message)}`);
       }));
 
     this._subscriptions.push(this._cookieService.statusChange$.subscribe(
       (event: NgcStatusChangeEvent) => {
         // you can use this.cookieService.getConfig() to do stuff...
-        console.log(`statusChange$: `, `${JSON.stringify(event)}`);
+        console.log(`6--------------statusChange$: `, `${JSON.stringify(event)}`);
       }));
 
     this._subscriptions.push(this._cookieService.revokeChoice$.subscribe(
       (res) => {
         // you can use this.cookieService.getConfig() to do stuff...
-        console.log(`revokeChoice$: `, res);
+        console.log(`7--------------revokeChoice$: `, res);
       }));
 
     this._subscriptions.push( this._cookieService.noCookieLaw$.subscribe(
       (event: NgcNoCookieLawEvent) => {
         // you can use this.cookieService.getConfig() to do stuff...
-        console.log(`noCookieLaw$: `, event);
+        console.log(`8--------------noCookieLaw$: `, event);
       }));
+
+    this._subscriptions.push(this._translocoService.selectTranslateObject('cookie').subscribe((res) => {
+      //this._cookieService.getConfig().content.message = 'thomas';
+      this._cookieService.getConfig().content = {
+        message: res.message,
+        dismiss: res.dismiss,
+        deny: res.deny,
+        link: res.link,
+        href: res.href,
+        policy: res.policy
+      };
+
+      this._cookieService.destroy();
+      this._cookieService.init(this._cookieService.getConfig());
+    }));
   }
 
   ngOnDestroy(): void {
@@ -137,14 +151,14 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   protected footerContentChanged(event: MutationRecord[]): void {
-    console.log(event[0]);
+    // console.log(event[0]);
   }
 
   protected mainContentChanged(event: MutationRecord[]): void {
-    console.log(event[0]);
+    // console.log(event[0]);
   }
 
   protected headerContentChanged(event: MutationRecord[]): void {
-    console.log(event[0]);
+    // console.log(event[0]);
   }
 }

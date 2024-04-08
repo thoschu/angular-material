@@ -33,5 +33,13 @@
     "imprint-link": "Impressum und DSGVO",
     "imprint": "Impressum",
     "gdpr": "DSGVO"
+  },
+  "cookie": {
+    "message": "This website uses cookies to ensure you get the best experience on our website...",
+    "dismiss": "OK",
+    "deny": "Cookies ablehnen",
+    "link": "Mehr...",
+    "href": "https://cookiesandyou.com",
+    "policy": "Cookie Policy"
   }
 }

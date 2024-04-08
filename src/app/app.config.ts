@@ -2,14 +2,13 @@ import { APP_INITIALIZER, ApplicationConfig, isDevMode } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import { provideServiceWorker } from '@angular/service-worker';
 import { provideTransloco, TranslocoService } from '@jsverse/transloco';
 import { NgcCookieConsentConfig, provideNgcCookieConsent } from 'ngx-cookieconsent';
 
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './transloco-loader';
-import {AppService} from "./app.service";
-import { provideServiceWorker } from '@angular/service-worker';
-
+import { AppService } from './app.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -66,23 +65,11 @@ export const appConfig: ApplicationConfig = {
                 "border": "transparent"
             }
         },
-        "type": "info",
-        "content": {
-            "message": "This website uses cookies to ensure you get the best experience on our website.",
-            "dismiss": "Got it!",
-            "deny": "Refuse cookies",
-            "link": "Learn more",
-            "href": "https://cookiesandyou.com",
-            "policy": "Cookie Policy"
-        }
-    }),
-    provideServiceWorker('ngsw-worker.js', {
-        enabled: !isDevMode(),
-        registrationStrategy: 'registerWhenStable:30000'
+        "type": "info"
     }),
     provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
     })
-]
+  ]
 };
