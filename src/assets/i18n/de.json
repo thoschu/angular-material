@@ -35,8 +35,8 @@
     "gdpr": "DSGVO"
   },
   "cookie": {
-    "message": "This website uses cookies to ensure you get the best experience on our website...",
-    "dismiss": "OK",
+    "message": "Diese Website verwendet Cookies, um sicherzustellen, dass Sie das beste Erlebnis auf unserer Website erhalten.",
+    "dismiss": "Verstanden",
     "deny": "Cookies ablehnen",
     "link": "Mehr...",
     "href": "https://cookiesandyou.com",
