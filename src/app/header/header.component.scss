@@ -63,18 +63,15 @@ $active-color: #ababab;
   }
 }
 
-@keyframes example {
+@keyframes glow {
   from {filter: drop-shadow(0 0 0 rgba(0, 0, 0, 1));}
   to {filter: drop-shadow(0 0 7px rgba(0, 0, 0, 1));}
 }
 
-button[mat-menu-item] {
+button[mat-menu-item], mat-radio-button.glow {
   &.active-lang {
-    background-color: lighten($active-color, 25%);
-    display: inline-block;
-
     span {
-      animation-name: example;
+      animation-name: glow;
       animation-duration: .7s;
       animation-iteration-count: infinite;
       animation-direction: alternate;

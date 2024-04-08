@@ -110,17 +110,11 @@ export class AppService {
     localStorage.clear();
   }
 
-  public isDarkMode(): boolean {
-    return this.darkMode;
-  }
-
-  public setMode(darkMode: boolean): void {
-    this.darkMode = darkMode;
-
+  public setThemeMode(darkMode: boolean): void {
     if (darkMode) {
-      document.body.classList.add('dark-mode');
+      document.body.classList.add('dark-theme');
     } else {
-      document.body.classList.remove('dark-mode');
+      document.body.classList.remove('dark-theme');
     }
   }
 }

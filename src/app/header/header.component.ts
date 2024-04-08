@@ -1,6 +1,6 @@
 import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import {AsyncPipe, ViewportScroller, NgOptimizedImage, NgStyle, NgClass} from '@angular/common';
+import { AsyncPipe, ViewportScroller, NgOptimizedImage, NgStyle, NgClass, NgIf } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDrawerToggleResult, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,6 +11,8 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { Subscription } from 'rxjs';
 import { head, keys } from 'ramda';
@@ -26,7 +28,8 @@ import { AppService } from '../app.service';
     MatIconButton, MatNavList, MatListItem, MatAnchor,
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
     RouterLinkActive, MatGridTile, AsyncPipe,
-    NgOptimizedImage, TranslocoDirective, MatTooltip, NgStyle, NgClass
+    NgOptimizedImage, TranslocoDirective, MatTooltip, NgStyle,
+    NgClass, MatSlideToggle, MatRadioGroup, MatRadioButton, NgIf
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -126,11 +129,11 @@ export class HeaderComponent implements OnDestroy, OnInit {
 
   protected openSidenav(sidenav: MatSidenav): void {
     sidenav.open().then((res: MatDrawerToggleResult): void =>{
-      while(this.rowHeightSmallDevice <= 200 && res === 'open') {
+      while(this.rowHeightSmallDevice <= 250 && res === 'open') {
         this.rowHeightSmallDevice++;
       }
     }).catch((): void => {
-      this.rowHeightSmallDevice = 200;
+      this.rowHeightSmallDevice = 250;
     });
   }
 
@@ -149,5 +152,14 @@ export class HeaderComponent implements OnDestroy, OnInit {
     const scrollPosition: number = window.scrollY;
 
     this.isFixedPosition = scrollPosition < 500;
+  }
+
+  protected toggleTheme(darkMode: boolean, evt: Event): void {
+    // evt.stopPropagation();
+    this.appService.setThemeMode(darkMode);
+  }
+
+  toggleLanguage() {
+    console.log();
   }
 }

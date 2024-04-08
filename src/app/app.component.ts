@@ -13,6 +13,8 @@ import {
 } from 'ngx-cookieconsent';
 import { Subscription } from 'rxjs';
 
+import { AppService } from './app.service';
+
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
@@ -38,7 +40,8 @@ export class AppComponent implements OnDestroy, OnInit {
     private readonly _mediaMatcher: MediaMatcher,
     private readonly _snackBar: MatSnackBar,
     private readonly _cookieService: NgcCookieConsentService,
-    private readonly _translocoService: TranslocoService
+    private readonly _translocoService: TranslocoService,
+    private readonly appService: AppService
   ) {
     this._snackBar.open('🚨 Under Construction 🚨', 'OK', {
       horizontalPosition: this._horizontalPosition,
@@ -55,6 +58,26 @@ export class AppComponent implements OnDestroy, OnInit {
     });
 
     this._translocoService.load('en').subscribe(console.log);
+
+    if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+      const mediaQueryListDark: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+      const scheme: 'dark' | 'light' = mediaQueryListDark.matches ? 'dark' : 'light';
+
+      if(scheme === 'dark') {
+        this.appService.setThemeMode(true);
+      }
+
+      mediaQueryListDark
+        .addEventListener('change',({ matches }: Record<'matches', boolean>): void => {
+          if (matches) {
+            this.appService.setThemeMode(true);
+          } else {
+            this.appService.setThemeMode(false);
+          }
+        })
+    } else {
+      this.appService.setThemeMode(false);
+    }
   }
 
   ngOnInit(): void {

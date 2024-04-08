@@ -63,13 +63,13 @@
               </ng-container>
               <mat-menu #contrast>
                 <ng-container *transloco="let t; prefix: 'header'">
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="toggleTheme(true, $event)">
                     <mat-icon>dark_mode</mat-icon>
                     <span [innerText]="t('dark')"></span>
                   </button>
                 </ng-container>
                 <ng-container *transloco="let t; prefix: 'header'">
-                  <button mat-menu-item>
+                  <button mat-menu-item (click)="toggleTheme(false, $event)">
                     <mat-icon>light_mode</mat-icon>
                     <span [innerText]="t('light')"></span>
                   </button>
@@ -82,8 +82,20 @@
                 </button>
               </ng-container>
               <mat-menu #language>
-                <button mat-menu-item matTooltipPosition="right" [matTooltip]="translocoService.getActiveLang() === 'de' ? 'Deutsch' : 'German'" [ngClass]="{'active-lang': translocoService.getActiveLang() === 'de'}" (click)="this.setActiveLang('de')"><span>🇩🇪</span>&nbsp;&nbsp;&nbsp;&nbsp; DE</button>
-                <button mat-menu-item matTooltipPosition="right" [matTooltip]="translocoService.getActiveLang() === 'en' ? 'English' : 'Englisch'" [ngClass]="{'active-lang': translocoService.getActiveLang() === 'en'}" (click)="this.setActiveLang('en')"><span>🇬🇧</span>&nbsp;&nbsp;&nbsp;&nbsp; EN</button>
+                <button
+                  mat-menu-item matTooltipPosition="right"
+                  [matTooltip]="translocoService.getActiveLang() === 'de' ? 'Deutsch' : 'German'"
+                  [ngClass]="{'active-lang': translocoService.getActiveLang() === 'de'}"
+                  (click)="this.setActiveLang('de')">
+                  <span>🇩🇪</span>&nbsp;&nbsp;&nbsp;&nbsp; DE
+                </button>
+                <button
+                  mat-menu-item matTooltipPosition="right"
+                  [matTooltip]="translocoService.getActiveLang() === 'en' ? 'English' : 'Englisch'"
+                  [ngClass]="{'active-lang': translocoService.getActiveLang() === 'en'}"
+                  (click)="this.setActiveLang('en')">
+                  <span>🇬🇧</span>&nbsp;&nbsp;&nbsp;&nbsp; EN
+                </button>
               </mat-menu>
               <ng-container *transloco="let t; prefix: 'header'">
                 <button mat-menu-item [matMenuTriggerFor]="other">
@@ -112,18 +124,55 @@
         <mat-sidenav-container class="fullscreen-sidenav-container">
           <mat-sidenav #sidenav>
             <mat-nav-list (click)="closeSidenav(sidenav)">
-              <a mat-list-item routerLink="/">
-                <mat-icon>home</mat-icon><span>Home</span>
-              </a>
-              <a mat-list-item routerLink="/first-component">
-                <mat-icon>question_answer</mat-icon><span>Link 2</span>
-              </a>
-              <a mat-list-item routerLink="/second-component">
-                <mat-icon>star</mat-icon><span>Link 3</span>
-              </a>
-              <a mat-list-item href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow">
-                <img height="32" width="32" ngSrc="//cdn.simpleicons.org/keycloak" alt="iam.techstach.ch" priority>
-              </a>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <a mat-list-item routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+                  <mat-icon color="primary" [matTooltip]="t('home')">home</mat-icon>
+                </a>
+              </ng-container>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <a mat-list-item routerLink="/imprint" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+                  <mat-icon color="primary" [matTooltip]="t('imprint')">view_comfy_alt</mat-icon>
+                </a>
+              </ng-container>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <a mat-list-item routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+                  <mat-icon color="primary" [matTooltip]="t('references')">star</mat-icon>
+                </a>
+              </ng-container>
+              <ng-container *transloco="let t; prefix: 'header'">
+                <a mat-list-item routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+                  <mat-icon color="primary" [matTooltip]="t('technologies')">gpp_maybe</mat-icon>
+                </a>
+              </ng-container>
+              <section class="example-section">
+                <mat-radio-group
+                  *ngIf="translocoService.getActiveLang() as activeLang"
+                  (change)="toggleLanguage()"
+                >
+                  <mat-radio-button
+                    class="example-margin" value="primary"
+                    #de
+                    [class.glow] = "de.checked"
+                    [checked]="activeLang === 'de'"
+                    [matTooltip]="activeLang === 'de' ? 'Deutsch' : 'German'"
+                    [ngClass]="{'active-lang': activeLang === 'de'}"
+                    (click)="this.setActiveLang('de')"
+                  >
+                    <span>🇩🇪</span>
+                  </mat-radio-button>
+                  <mat-radio-button
+                    class="example-margin" value="accent"
+                    #en
+                    [class.glow] = "en.checked"
+                    [checked]="activeLang === 'en'"
+                    [matTooltip]="activeLang=== 'en' ? 'English' : 'Englisch'"
+                    [ngClass]="{'active-lang': activeLang === 'en'}"
+                    (click)="this.setActiveLang('en')"
+                  >
+                    <span>🇬🇧</span>
+                  </mat-radio-button>
+                </mat-radio-group>
+              </section>
             </mat-nav-list>
           </mat-sidenav>
           <mat-sidenav-content>
