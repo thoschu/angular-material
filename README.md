@@ -57,7 +57,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 | 7        | virtual-scrolling-and-custom-themes | Virtual Scrolling and Custom Themes     |
 | 8        | other                               | Other Angular Material stuff            |
 | 9        | master                              | Production-ready Website                |
-
-## Images
-
-![image 1](./src/assets/img/angular-material.jpg)
