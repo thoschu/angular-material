@@ -4,6 +4,7 @@
 
 $animationSpeed: 80s;
 $dark-primary: #ababab;
+$light-primary: #d6d6d6;
 
 :host {
   @keyframes scroll {
@@ -17,6 +18,10 @@ $dark-primary: #ababab;
     to {
       filter: drop-shadow(0 0 5px #fff)
     }
+  }
+
+  @keyframes color_change {
+    50% { filter: drop-shadow(0 0 1px black) contrast(1.75) }
   }
 
   mat-grid-list {
@@ -40,11 +45,11 @@ $dark-primary: #ababab;
     &:last-of-type {
       mat-grid-tile {
         &:first-of-type {
-          background-color: #d6d6d6;
+          background-color: $light-primary;
         }
 
         &:nth-child(2), &:nth-child(3) {
-          background-color: #d6d6d6;
+          background-color: $light-primary;
         }
 
         &:last-of-type {
@@ -83,12 +88,21 @@ $dark-primary: #ababab;
 
     .slider {
       background: transparent;
-      //box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
       height: 100px;
       margin: auto;
       overflow: hidden;
       position: relative;
       width: 100vw;
+
+      .slide-track {
+        .slide {
+          img {
+            &:hover {
+              animation: color_change 2s infinite;
+            }
+          }
+        }
+      }
 
       &::before,
       &::after {

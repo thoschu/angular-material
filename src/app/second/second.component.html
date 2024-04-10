@@ -25,9 +25,9 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <iframe src="assets/pdf/expose.pdf"
-            width="100%"
-            height="1000vh"
-             frameborder="0"></iframe>
+      width="100%"
+      height="1000vh"
+      frameborder="0"></iframe>
   </mat-expansion-panel>
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
@@ -39,19 +39,15 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <object data='assets/pdf/expose.pdf'
-            type='application/pdf'
-            width='100%'
-            height='700px'></object>
+      type='application/pdf'
+      width='100%'
+      height='700px'></object>
   </mat-expansion-panel>
   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        X
-      </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
+      <mat-panel-title>X</mat-panel-title>
+      <mat-panel-description>Currently I am {{panelOpenState ? 'open' : 'closed'}}</mat-panel-description>
     </mat-expansion-panel-header>
-    <img ngSrc="https://www.thomas-schulte.de/images/made_with_love.gif" width="48" height="48" priority alt="under-construction">
+    <img ngSrc="//www.thomas-schulte.de/images/made_with_love.gif" width="48" height="48" priority alt="under-construction">
   </mat-expansion-panel>
 </mat-accordion>

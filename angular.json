@@ -35,6 +35,7 @@
             "styles": [
               "node_modules/cookieconsent/build/cookieconsent.min.css",
               "node_modules/animate.css/animate.css",
+              "node_modules/highlight.js/styles/github.css",
               "src/styles.scss"
             ],
             "scripts": [

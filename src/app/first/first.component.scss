@@ -1,7 +1,19 @@
+@import 'highlight.js/styles/github.css';
+
 :host {
   width: 100vw;
   position: absolute;
   top: 0;
+
+  .viewport {
+    height: 490px;
+    width: 98vw;
+    margin: 1rem;
+
+    mat-divider {
+      margin: 1em 0;
+    }
+  }
 
   img {
     display: block;

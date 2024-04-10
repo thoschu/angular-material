@@ -1,4 +1,31 @@
 <app-loader />
-<app-header (cdkObserveContent)="headerContentChanged($event)"></app-header>
-<app-main (cdkObserveContent)="mainContentChanged($event)"></app-main>
-<app-footer (cdkObserveContent)="footerContentChanged($event)"></app-footer>
+
+@defer (on viewport; on timer(7s)) {
+  <app-header (cdkObserveContent)="headerContentChanged($event)" />
+} @placeholder {
+  <p>⒫ ⒧ ⒜ ⒞ ⒠ ⒣ ⒪ ⒧ ⒟ ⒠ ⒭</p>
+} @loading (after 100ms; minimum 4s) {
+  <img alt="loading..." ngSrc="assets/img/loading.svg" height="256" width="256" priority>
+} @error {
+  <p>Failed to load the app-header</p>
+}
+
+@defer (on viewport; on timer(7s)) {
+  <app-main (cdkObserveContent)="mainContentChanged($event)" />
+} @placeholder {
+  <p>⒫ ⒧ ⒜ ⒞ ⒠ ⒣ ⒪ ⒧ ⒟ ⒠ ⒭</p>
+} @loading (after 100ms; minimum 3s) {
+  <img alt="loading..." ngSrc="assets/img/loading.svg" height="256" width="256" priority>
+} @error {
+  <p>Failed to load the app-main</p>
+}
+
+@defer (on viewport; on timer(7s)) {
+  <app-footer (cdkObserveContent)="footerContentChanged($event)" />
+} @placeholder {
+  <p>⒫ ⒧ ⒜ ⒞ ⒠ ⒣ ⒪ ⒧ ⒟ ⒠ ⒭</p>
+} @loading (after 100ms; minimum 2s) {
+  <img alt="loading..." ngSrc="assets/img/loading.svg" height="256" width="256" priority>
+} @error {
+  <p>Failed to load the app-footer</p>
+}

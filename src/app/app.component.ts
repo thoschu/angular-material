@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import {AsyncPipe, NgOptimizedImage} from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { CdkObserveContent } from '@angular/cdk/observers';
@@ -25,7 +25,7 @@ import { LoaderComponent } from './loader/loader.component';
   standalone: true,
   imports: [
     RouterOutlet, HeaderComponent, MainComponent, FooterComponent,
-    CdkObserveContent, AsyncPipe, LoaderComponent
+    CdkObserveContent, AsyncPipe, LoaderComponent, NgOptimizedImage
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -52,8 +52,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
     this._translocoService.selectTranslate('cookie.message')
       .subscribe((value) => {
-        console.log(value);
-
+        // console.log(value);
       });
 
     this._translocoService.load('en').subscribe(console.log);
@@ -81,53 +80,53 @@ export class AppComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     const mediaQueryList: MediaQueryList = this._mediaMatcher.matchMedia(Breakpoints.Tablet);
-    console.log(mediaQueryList);
+    // console.log(mediaQueryList);
 
     // subscribe to cookieconsent observables to react to main events
     this._subscriptions.push(this._cookieService.popupOpen$.subscribe(
     (res) => {
       // you can use this.cookieService.getConfig() to do stuff...
-      console.log('1--------------popupOpen$');
+      // console.log('1--------------popupOpen$');
     }));
 
     this._subscriptions.push(this._cookieService.popupClose$.subscribe(() => {
       // you can use this.cookieService.getConfig() to do stuff...
-      console.log('2--------------popupClose$');
+      // console.log('2--------------popupClose$');
     }));
 
     this._subscriptions.push(this._cookieService.initializing$.subscribe((event: NgcInitializingEvent) => {
       // the cookieconsent is initilializing... Not yet safe to call methods like `NgcCookieConsentService.hasAnswered()`
-      console.log(`3--------------initializing$: `, `${JSON.stringify(event)}`);
+      // console.log(`3--------------initializing$: `, `${JSON.stringify(event)}`);
     }));
 
     this._subscriptions.push(this._cookieService.initialized$.subscribe((res) => {
         // the cookieconsent has been successfully initialized.
         // It's now safe to use methods on NgcCookieConsentService that require it, like `hasAnswered()` for eg...
-        console.log(`4--------------initialized$: `, `${JSON.stringify(event)}`);
+        // console.log(`4--------------initialized$: `, `${JSON.stringify(event)}`);
       }));
 
     this._subscriptions.push(this._cookieService.initializationError$.subscribe(
       (event: NgcInitializationErrorEvent) => {
         // the cookieconsent has failed to initialize...
-        console.log(`5--------------initializationError$: ${JSON.stringify(event.error?.message)}`);
+        // console.log(`5--------------initializationError$: ${JSON.stringify(event.error?.message)}`);
       }));
 
     this._subscriptions.push(this._cookieService.statusChange$.subscribe(
       (event: NgcStatusChangeEvent) => {
         // you can use this.cookieService.getConfig() to do stuff...
-        console.log(`6--------------statusChange$: `, `${JSON.stringify(event)}`);
+        // console.log(`6--------------statusChange$: `, `${JSON.stringify(event)}`);
       }));
 
     this._subscriptions.push(this._cookieService.revokeChoice$.subscribe(
       (res) => {
         // you can use this.cookieService.getConfig() to do stuff...
-        console.log(`7--------------revokeChoice$: `, res);
+        // console.log(`7--------------revokeChoice$: `, res);
       }));
 
     this._subscriptions.push( this._cookieService.noCookieLaw$.subscribe(
       (event: NgcNoCookieLawEvent) => {
         // you can use this.cookieService.getConfig() to do stuff...
-        console.log(`8--------------noCookieLaw$: `, event);
+        // console.log(`8--------------noCookieLaw$: `, event);
       }));
 
     this._subscriptions.push(this._translocoService.selectTranslateObject('cookie').subscribe((res) => {

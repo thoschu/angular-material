@@ -1,21 +1,114 @@
 <mat-tab-group color="primary" class="animate__animated animate__fadeIn" [color]="'primary'" [animationDuration]="'1000ms'" [dynamicHeight]="'true'"  mat-stretch-tabs="false" mat-align-tabs="center">
   <mat-tab label="SOLID">
-    <ng-template mat-tab-label>
-      SOLID
-    </ng-template>
-    <img ngSrc="https://gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
+    <ng-template mat-tab-label>SOLID</ng-template>
+    <mat-tab-group>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="text-lg subpixel-antialiased" [matTooltip]="'Single Responsibility Principle'">Ⓢ</span>
+        </ng-template>
+        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
+          <pre><code><b>Single Responsibility Principle (SRP)</b></code></pre>
+          <pre><code>Eine Klasse sollte nur eine einzige Verantwortlichkeit haben.</code></pre>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <pre>❌<code [highlightAuto]="codeBadSRP" [startFrom]="1" lineNumbers></code></pre>
+          <mat-divider />
+          <pre>✅<code [highlightAuto]="codeGoodSRP" lineNumbers></code></pre>
+        </cdk-virtual-scroll-viewport>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="text-lg subpixel-antialiased" [matTooltip]="'Open Closed Principle'">Ⓞ</span>
+        </ng-template>
+        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
+          <pre><code><b>Open Closed Principle (OCP)</b></code></pre>
+          <pre><code>Eine Klasse sollte für Erweiterungen offen, aber für Modifikationen geschlossen sein.</code></pre>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <pre><code [highlightAuto]="code" [startFrom]="1" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+          <pre><code [highlightAuto]="code" lineNumbers></code></pre>
+        </cdk-virtual-scroll-viewport>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="text-lg subpixel-antialiased" [matTooltip]="'Liskov Substitution Principle'">Ⓛ</span>
+        </ng-template>
+        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
+          <pre><code><b>Liskov Substitution Principle (LSP)</b></code></pre>
+          <pre><code>Objekte einer Superklasse sollten durch Objekte ihrer Unterklassen ersetzbar sein, ohne dass sich die Korrektheit des Programms ändert.</code></pre>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
+        </cdk-virtual-scroll-viewport>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="text-lg subpixel-antialiased" [matTooltip]="'Interface Segregation Principle'">Ⓘ</span>
+        </ng-template>
+        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
+          <pre><code><b>Interface Segregation Principle (ISP)</b></code></pre>
+          <pre><code>Es ist besser, viele spezifische Schnittstellen zu haben, als eine allgemeine Schnittstelle, die von den Klienten nicht vollständig genutzt wird.</code></pre>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
+        </cdk-virtual-scroll-viewport>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="text-lg subpixel-antialiased" [matTooltip]="'Dependency Inversion Principle'">Ⓓ</span>
+        </ng-template>
+        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
+          <pre><code><b>Dependency Inversion Principle (DIP)</b></code></pre>
+          <pre><code>Abhängigkeiten sollten von abstrakten Klassen oder Schnittstellen abhängen, nicht von konkreten Implementierungen.</code></pre>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
+        </cdk-virtual-scroll-viewport>
+      </mat-tab>
+
+    </mat-tab-group>
   </mat-tab>
   <mat-tab label="Second">
     <ng-template mat-tab-label>
       12 Factor App
     </ng-template>
-    <img ngSrc="https://static.vecteezy.com/system/resources/thumbnails/001/214/905/small_2x/under-construction-sign-with-hat-on-traffic-cone.jpg" width="400" height="200" priority alt="under-construction">
+    <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
   </mat-tab>
   <mat-tab label="Third">
     <ng-template mat-tab-label>
       Atomic Design
     </ng-template>
-    <img ngSrc="https://i.pinimg.com/originals/c9/ef/4d/c9ef4d8eea3b9ae322c0163480be7c7c.gif" width="400" height="200" priority alt="under-construction">
+    <img ngSrc="//i.pinimg.com/originals/c9/ef/4d/c9ef4d8eea3b9ae322c0163480be7c7c.gif" width="400" height="200" priority alt="under-construction">
   </mat-tab>
   <mat-tab label="ddd-1">
     <ng-template mat-tab-label>

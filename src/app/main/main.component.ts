@@ -1,5 +1,5 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {NgOptimizedImage, NgStyle, UpperCasePipe} from '@angular/common';
+import { Component, isDevMode } from '@angular/core';
+import { NgOptimizedImage, NgStyle, UpperCasePipe } from '@angular/common';
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 import { RouterOutlet } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs';
@@ -7,7 +7,6 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuItem } from '@angular/material/menu';
 import { TranslocoDirective } from '@jsverse/transloco';
-import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
 
@@ -37,11 +36,11 @@ export class MainComponent {
 
   constructor(protected readonly appService: AppService) {
     appService.breakpointsLandscape$.subscribe((res: Record<string, string>): void => {
-      console.log('Landscape$', res);
+      // if(isDevMode()) console.log('Landscape$', res);
     });
 
     appService.breakpointsPortrait$.subscribe((res: Record<string, string>): void => {
-      console.log('Portrait$', res);
+      // if(isDevMode()) console.log('Portrait$', res);
     });
 
     const test = {
@@ -54,7 +53,7 @@ export class MainComponent {
 
   protected onActivate(event: Component): void {
     const componentName: string = event.constructor.name;
-    console.log(componentName);
+    // if(isDevMode()) console.log(componentName);
   }
 
   private fisherYatesShuffleArray<T>(array: T[]): T[] {

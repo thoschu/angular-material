@@ -1,4 +1,4 @@
-<footer [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
+<footer class="animate__animated animate__fadeInUpBig animate__slower" [ngClass]="{'border-landscape': (appService.breakpointsLandscape$ | async)}">
   <mat-grid-list id="top" [cols]="10" [rowHeight]="'60px'" gutterSize="0">
     <mat-grid-tile [colspan]="firstFooterArea[0]" [rowspan]="4">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="firstFooterArea[1]" [rowspan]="4">
@@ -83,7 +83,7 @@
   <mat-grid-list [cols]="6" [rowHeight]="lastFooterRowHeight" gutterSize="0">
     <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
-      <p class="center-text" matTooltip="Made in 🇩🇪">
+      <p class="center-text" matTooltip="🇩🇪">
         <span>⚓</span> Hamburg © 2024
       </p>
     </mat-grid-tile>

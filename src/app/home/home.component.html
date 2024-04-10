@@ -1,13 +1,11 @@
 <ng-container *transloco="let t; prefix: 'main.home'">
   <h2 [innerText]="t('welcome')"></h2>
+  <hr>
+  <section>
+      <p [innerText]="t('p1')"></p>
+      <p [innerText]="t('p2')"></p>
+      <p [innerText]="t('p3')"></p>
+      <mat-divider />
+      <p [innerText]="t('p4')"></p>
+  </section>
 </ng-container>
-<hr>
-<section>
-  <ng-container *transloco="let t; prefix: 'main.home'">
-    <p [innerText]="t('p1')"></p>
-    <p [innerText]="t('p2')"></p>
-    <p [innerText]="t('p3')"></p>
-    <mat-divider />
-    <p [innerText]="t('p4')"></p>
-  </ng-container>
-</section>

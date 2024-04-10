@@ -1,71 +1,77 @@
 $background-color: #5b5b5b;
 $active-color: #ababab;
 
+@keyframes glow {
+  from {filter: drop-shadow(0 0 0 rgba(0, 0, 0, 1));}
+  to {filter: drop-shadow(0 0 7px rgba(0, 0, 0, 1));}
+}
+
 :host {
   position: relative;
 
   header {
     background-color: transparent;
 
-    a, span {
-      font-family: "Comfortaa", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-      font-size: 1em;
-    }
+    mat-grid-list {
+      a, span {
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1em;
+      }
 
-    .center-container-elements {
-      text-align: center;
-      width: 100%;
-      color: $active-color;
-
-      a {
+      .center-container-elements {
+        text-align: center;
+        width: 100%;
         color: $active-color;
 
-        span {
-          font-size: .5rem;
-          transition: font-size .4s ease;
-        }
-
-        &:hover {
-          color: darken($active-color, 25%);
+        a {
+          color: $active-color;
 
           span {
-            font-size: 1.2rem;
+            font-size: .5rem;
+            transition: font-size .4s ease;
+          }
+
+          &:hover {
+            color: darken($active-color, 25%);
+
+            span {
+              font-size: 1.2rem;
+            }
+          }
+        }
+
+        .active {
+          color: $active-color;
+          text-decoration: underline;
+          text-underline-offset: 7px;
+
+          span {
+            font-size: 1rem;
           }
         }
       }
 
-      .active {
-        color: $active-color;
-        text-decoration: underline;
-        text-underline-offset: 7px;
+      .fullscreen-sidenav-container {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
 
-        span {
-          font-size: 1rem;
+        mat-sidenav {
+          width: 100vw;
+          text-align: center;
         }
-      }
-    }
-
-    .fullscreen-sidenav-container {
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      position: absolute;
-
-      mat-sidenav {
-        width: 100vw;
-        text-align: center;
       }
     }
   }
 }
 
-@keyframes glow {
-  from {filter: drop-shadow(0 0 0 rgba(0, 0, 0, 1));}
-  to {filter: drop-shadow(0 0 7px rgba(0, 0, 0, 1));}
+img.tools {
+  display: inline;
 }
 
 button[mat-menu-item], mat-radio-button.glow {

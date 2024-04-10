@@ -18,6 +18,7 @@ import { Subscription } from 'rxjs';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
+import {MatDivider} from "@angular/material/divider";
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,7 @@ import { AppService } from '../app.service';
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
     RouterLinkActive, MatGridTile, AsyncPipe,
     NgOptimizedImage, TranslocoDirective, MatTooltip, NgStyle,
-    NgClass, MatSlideToggle, MatRadioGroup, MatRadioButton, NgIf
+    NgClass, MatSlideToggle, MatRadioGroup, MatRadioButton, NgIf, MatDivider
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

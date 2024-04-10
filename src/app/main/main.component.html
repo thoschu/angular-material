@@ -1,4 +1,4 @@
-<main>
+<main class="animate__animated animate__fadeInUpBig animate__slower">
   <mat-grid-list  cols="10" rowHeight="300px">
     <mat-grid-tile [colspan]="10" [rowspan]="1">
       <svg class="glow-svg" width="256" height="256" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,6 @@
       </svg>
     </mat-grid-tile>
   </mat-grid-list>
-
   <mat-grid-list cols="1" rowHeight="64px">
     <mat-grid-tile [colspan]="1" [rowspan]="1" >
       <ng-container *transloco="let t; prefix: 'main'">
@@ -66,6 +65,8 @@
       </ng-container>
     </mat-grid-tile>
   </mat-grid-list>
+
+  <!-- Router Outlet Start -->
   <mat-grid-list cols="1" rowHeight="fit" [style.height]="routerOutletGridListHeight">
     <mat-grid-tile class="animate__animated animate__fadeIn animate__delay-1s"
      [colspan]="1"
@@ -75,6 +76,7 @@
       <router-outlet (activate)="onActivate($event)" />
     </mat-grid-tile>
   </mat-grid-list>
+  <!-- Router Outlet End -->
 
   <mat-grid-list cols="5" rowHeight="256px" gutterSize="0">
     <mat-grid-tile [colspan]="1" [rowspan]="1">&nbsp;</mat-grid-tile>
