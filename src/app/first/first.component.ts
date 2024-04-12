@@ -22,41 +22,77 @@ import {MatDivider} from "@angular/material/divider";
   styleUrl: './first.component.scss'
 })
 export class FirstComponent implements AfterViewInit {
-  private hljsLoader: HighlightLoader = inject<HighlightLoader>(HighlightLoader);
   protected readonly code: string  = ` private async ngAfterViewInit(): Promise<void> {};
- private readonly title: string = 'First Component';`;
+    private readonly title: string = 'First Component';`;
+
+  private readonly foo: unknown = '';
 
   protected readonly codeBadSRP: string  = ` class Employee {
-    calculateSalary(hours: number, hourlyRate: number) {
+    public readonly employeeId: number;
+
+    constructor(id: number) {
+      this.employeeId = id;
+    }
+
+    public calculateSalary(hours: number, hourlyRate: number): number {
       return hours * hourlyRate;
     }
 
-    saveToDatabase(employeeData: any) {
+    public saveToDatabase(employeeData: any): void {
       // Save to database logic
     }
 
-    generateReport(employeeId: number) {
+    public generateReport(employeeId: number = this.employeeId): unknown {
       // Generate report logic
     }
-  }`;
+  }
+
+  const employee: Employee = new Employee(325);
+  const salary: number = employee.calculateSalary(160, 55);
+
+  employee.saveToDatabase(salary);
+
+  // [...]
+
+  `;
 
   protected readonly codeGoodSRP: string  = ` class Employee {
-    calculateSalary(hours: number, hourlyRate: number) {
+    public readonly employeeId: number;
+
+    constructor(id: number) {
+      this.employeeId = id;
+    }
+
+    public calculateSalary(hours: number, hourlyRate: number): number {
       return hours * hourlyRate;
     }
   }
 
   class DatabaseManager {
-    saveToDatabase(employeeData: any) {
+    public saveToDatabase(employeeData: any): void {
       // Save to database logic
     }
   }
 
   class ReportGenerator {
-    generateReport(employeeId: number) {
+    public generateReport(employeeId: number): unknown {
       // Generate report logic
     }
-  }`;
+  }
+
+
+  const employee: Employee = new Employee(325);
+  const salary: number = employee.calculateSalary(160, 55);
+
+  const databaseManager: DatabaseManager = new DatabaseManager();
+  databaseManager.saveToDatabase(salary);
+
+  const reportGenerator: ReportGenerator = new ReportGenerator();
+  reportGenerator.generateReport(employee.employeeId);
+
+  // [...]
+
+  `;
 
   constructor() {}
 

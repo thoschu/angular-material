@@ -1,5 +1,9 @@
 @import 'highlight.js/styles/github.css';
 
+@mixin font-fam {
+  font-family: 'Comfortaa', sans-serif;
+}
+
 :host {
   width: 100vw;
   position: absolute;
@@ -10,8 +14,36 @@
     width: 98vw;
     margin: 1rem;
 
+    mat-expansion-panel {
+      mat-expansion-panel-header {
+        mat-panel-title, mat-panel-description {
+          @include font-fam;
+        }
+      }
+
+      p {
+        @include font-fam;
+      }
+    }
+
     mat-divider {
       margin: 1em 0;
+    }
+
+    .good, .bad {
+      display: flex;
+      justify-content: space-around;
+      align-items:center;
+
+      p {
+        mat-icon[fontIcon="block"] {
+          color: red;
+        }
+
+        mat-icon[fontIcon="done_outline"] {
+          color: green;
+        }
+      }
     }
   }
 

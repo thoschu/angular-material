@@ -84,13 +84,13 @@
     <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
       <p class="center-text" matTooltip="🇩🇪">
-        <span>⚓</span> Hamburg © 2024
+        Hamburg<mat-icon aria-hidden="false" aria-label="copyright-icon" fontIcon="copyright" />2024
       </p>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
       <ng-container *transloco="let t; prefix: 'footer'">
         <a href="/imprint" title="">
-          <span [innerText]="t('imprint-link')"></span>
+          <span [innerText]="t('imprint')"></span>&nbsp;⏺&nbsp;<span [innerText]="t('gdpr')"></span>
         </a>
       </ng-container>
     </mat-grid-tile>

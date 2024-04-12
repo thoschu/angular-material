@@ -2,19 +2,41 @@
   <mat-tab label="SOLID">
     <ng-template mat-tab-label>SOLID</ng-template>
     <mat-tab-group>
-
       <mat-tab>
         <ng-template mat-tab-label>
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Single Responsibility Principle'">Ⓢ</span>
         </ng-template>
         <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <pre><code><b>Single Responsibility Principle (SRP)</b></code></pre>
-          <pre><code>Eine Klasse sollte nur eine einzige Verantwortlichkeit haben.</code></pre>
-          <mat-divider></mat-divider>
-          <mat-divider></mat-divider>
-          <pre>❌<code [highlightAuto]="codeBadSRP" [startFrom]="1" lineNumbers></code></pre>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b>S R P</b>
+              </mat-panel-title>
+              <mat-panel-description>
+                Single Responsibility Principle
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+              Das Single Responsibility Principle (SRP) ist eines der SOLID-Designprinzipien in der Softwareentwicklung und steht für das Prinzip der Einzelverantwortung.
+              Es besagt, dass eine Klasse oder ein Modul nur aus einem einzigen Grund geändert werden sollte.
+              Dieses Prinzip zielt darauf ab, die Komplexität zu reduzieren, indem sichergestellt wird, dass eine Klasse nur eine Verantwortung hat und diese vollständig kapselt.
+              Dies führt zu einem einfacheren Verständnis, leichterer Wartbarkeit und Erweiterbarkeit des Codes.
+            </p>
+          </mat-expansion-panel>
+          <br>
+          <div class="bad">
+            <p [matTooltip]="'BAD'">
+              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
+            </p>
+          </div>
+          <pre><code [highlightAuto]="codeBadSRP" [startFrom]="1" lineNumbers></code></pre>
           <mat-divider />
-          <pre>✅<code [highlightAuto]="codeGoodSRP" lineNumbers></code></pre>
+          <div class="good">
+            <p [matTooltip]="'GOOD'">
+              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
+            </p>
+          </div>
+          <pre><code [highlightAuto]="codeGoodSRP" lineNumbers></code></pre>
         </cdk-virtual-scroll-viewport>
       </mat-tab>
 
@@ -23,8 +45,8 @@
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Open Closed Principle'">Ⓞ</span>
         </ng-template>
         <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <pre><code><b>Open Closed Principle (OCP)</b></code></pre>
-          <pre><code>Eine Klasse sollte für Erweiterungen offen, aber für Modifikationen geschlossen sein.</code></pre>
+          <pre><code><b>O C P</b></code></pre>
+          <pre><code>Open Closed Principle</code></pre>
           <mat-divider></mat-divider>
           <mat-divider></mat-divider>
           <pre><code [highlightAuto]="code" [startFrom]="1" lineNumbers></code></pre>
@@ -62,8 +84,8 @@
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Liskov Substitution Principle'">Ⓛ</span>
         </ng-template>
         <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <pre><code><b>Liskov Substitution Principle (LSP)</b></code></pre>
-          <pre><code>Objekte einer Superklasse sollten durch Objekte ihrer Unterklassen ersetzbar sein, ohne dass sich die Korrektheit des Programms ändert.</code></pre>
+          <pre><code><b>L S P</b></code></pre>
+          <pre><code>Liskov Substitution Principle</code></pre>
           <mat-divider></mat-divider>
           <mat-divider></mat-divider>
           <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
@@ -75,8 +97,8 @@
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Interface Segregation Principle'">Ⓘ</span>
         </ng-template>
         <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <pre><code><b>Interface Segregation Principle (ISP)</b></code></pre>
-          <pre><code>Es ist besser, viele spezifische Schnittstellen zu haben, als eine allgemeine Schnittstelle, die von den Klienten nicht vollständig genutzt wird.</code></pre>
+          <pre><code><b>I S P</b></code></pre>
+          <pre><code>Interface Segregation Principle</code></pre>
           <mat-divider></mat-divider>
           <mat-divider></mat-divider>
           <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
@@ -88,8 +110,8 @@
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Dependency Inversion Principle'">Ⓓ</span>
         </ng-template>
         <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <pre><code><b>Dependency Inversion Principle (DIP)</b></code></pre>
-          <pre><code>Abhängigkeiten sollten von abstrakten Klassen oder Schnittstellen abhängen, nicht von konkreten Implementierungen.</code></pre>
+          <pre><code><b>D I P</b></code></pre>
+          <pre><code>Dependency Inversion Principle</code></pre>
           <mat-divider></mat-divider>
           <mat-divider></mat-divider>
           <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
@@ -108,18 +130,11 @@
     <ng-template mat-tab-label>
       Atomic Design
     </ng-template>
-    <img ngSrc="//i.pinimg.com/originals/c9/ef/4d/c9ef4d8eea3b9ae322c0163480be7c7c.gif" width="400" height="200" priority alt="under-construction">
+    <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
   </mat-tab>
-  <mat-tab label="ddd-1">
-    <ng-template mat-tab-label>
-      DDD 1
-    </ng-template>
+  <mat-tab label="ddd">
+    <ng-template mat-tab-label>Domain Driven Design</ng-template>
     <img ngSrc="assets/img/ddd.png" width="400" height="200" priority alt="under-construction">
-  </mat-tab>
-  <mat-tab label="ddd-2">
-    <ng-template mat-tab-label>
-      DDD 2
-    </ng-template>
     <img ngSrc="assets/img/ddd-2.png" width="400" height="200" priority alt="under-construction">
   </mat-tab>
 </mat-tab-group>

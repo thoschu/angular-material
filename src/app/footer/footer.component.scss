@@ -26,6 +26,10 @@
           flex-direction: row;
           justify-content: center;
           align-items: center;
+
+          mat-icon {
+            transform: scale(.7);
+          }
         }
 
         .icons {
@@ -43,10 +47,6 @@
         mat-grid-tile {
           p {
             margin-top: 17px;
-
-            span {
-              mix-blend-mode: color-burn;
-            }
           }
 
           a {
