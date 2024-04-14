@@ -1,13 +1,23 @@
 @import 'highlight.js/styles/github.css';
 
 @mixin font-fam {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1rem;
 }
 
 :host {
   width: 100vw;
   position: absolute;
   top: 0;
+
+  .matTabFont {
+    @include font-fam;
+
+    &:hover {
+      color: black;
+    }
+  }
 
   .viewport {
     height: 490px;

@@ -9,7 +9,7 @@ import {
 } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-second',
+  selector: 'app-opentelemetry',
   standalone: true,
   imports: [
     NgOptimizedImage,
@@ -18,10 +18,10 @@ import {
     MatAccordion,
     MatExpansionModule
   ],
-  templateUrl: './second.component.html',
-  styleUrl: './second.component.scss'
+  templateUrl: './opentelemetry.component.html',
+  styleUrl: './opentelemetry.component.scss'
 })
-export class SecondComponent {
+export class OpentelemetryComponent {
   panelOpenState = false;
 
   constructor() {

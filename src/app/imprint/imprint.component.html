@@ -5,10 +5,13 @@
    mat-align-tabs="center"
 >
   <ng-container *transloco="let t; prefix: 'imprint'">
-    <mat-tab [label]="t('imprint')">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="matTab" [textContent]="t('imprint')"></span>
+      </ng-template>
       <cdk-virtual-scroll-viewport itemSize="50" class="virtual-scroll-viewport">
         <div class='imprint'>
-          <p>Angaben gemäß § 5 TMG</p>
+          <p><strong><u>Angaben gemäß § 5 TMG</u></strong></p>
           <p>
             Thomas-Laurenz Schulte <br>
             Holsteiner Chaussee 181<br>
@@ -104,7 +107,10 @@
         </div>
       </cdk-virtual-scroll-viewport>
     </mat-tab>
-    <mat-tab [label]="t('gdpr')">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="matTab" [textContent]="t('gdpr')"></span>
+      </ng-template>
       <cdk-virtual-scroll-viewport itemSize="50" class="virtual-scroll-viewport">
         <div class="gdpr">
           @if (false) {

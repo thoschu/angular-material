@@ -1,14 +1,15 @@
-// @import 'ol/ol.css';
+@import 'ol/ol.css';
 
 :host {
-  color: #555;
+  color: rgb(91, 91 , 91);
 
   footer {
     background-color: #ababab;
-    font-family: 'Comfortaa', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 900;
     font-style: normal;
-    font-size: inherit;
+    font-size: 1rem;
+    font-optical-sizing: auto;
 
     mat-grid-list {
       mat-grid-tile {
@@ -47,10 +48,6 @@
         mat-grid-tile {
           p {
             margin-top: 17px;
-          }
-
-          a {
-            color: #555;
           }
         }
       }

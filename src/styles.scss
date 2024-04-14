@@ -16,7 +16,7 @@ $dark-accent: mat.define-palette(mat.$grey-palette, A400, A200, A700);
 $default-warn: mat.define-palette(mat.$red-palette);
 
 $custom-typography-config: mat.define-typography-config(
-  $body-1: mat.define-typography-level(inherit, inherit, inherit, $font-family: 'Comfortaa'),
+  $body-1: mat.define-typography-level(inherit, inherit, inherit, $font-family: 'Quicksand'),
 );
 
 $light-theme: mat.define-light-theme((
@@ -40,7 +40,7 @@ $dark-theme: mat.define-dark-theme((
 ));
 
 html, body { height: 100%; scroll-behavior: smooth; }
-body { margin: 0; font-family: Comfortaa, sans-serif; }
+body { margin: 0; font-family: Quicksand, sans-serif; }
 
 @include mat.core-color($light-theme);
 @include mat.all-component-themes($light-theme);

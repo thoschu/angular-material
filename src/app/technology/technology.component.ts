@@ -10,7 +10,7 @@ import { HighlightLineNumbers } from 'ngx-highlightjs/line-numbers';
 import {MatDivider} from "@angular/material/divider";
 
 @Component({
-  selector: 'app-first',
+  selector: 'app-technology',
   standalone: true,
   imports: [
     NgOptimizedImage, MatTabGroup, MatTab, MatIcon, MatTabLabel,
@@ -18,15 +18,87 @@ import {MatDivider} from "@angular/material/divider";
     MatAccordion,
     MatExpansionModule, CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, MatTooltip, MatDivider
   ],
-  templateUrl: './first.component.html',
-  styleUrl: './first.component.scss'
+  templateUrl: './technology.component.html',
+  styleUrl: './technology.component.scss'
 })
-export class FirstComponent implements AfterViewInit {
-  protected readonly code: string  = ` private async ngAfterViewInit(): Promise<void> {};
-    private readonly title: string = 'First Component';`;
+export class TechnologyComponent implements AfterViewInit {
+  protected readonly code: string  = ` protected async ngAfterViewInit(): Promise<void> {
+   console.log('Under Construction');
+ };`;
 
-  private readonly foo: unknown = '';
+  protected readonly codeBadDIP: string  = `${this.code}`;
+  protected readonly codeGoodDIP: string  = `${this.code}`;
 
+  protected readonly codeBadISP: string  = ` interface Worker {
+    workOnTask(): void;
+    takeBreak(): boolean;
+    attendMeeting(): void;
+  }
+
+  class Developer implements Worker {
+    public workOnTask(): void {
+      console.log("Developing software");
+    }
+
+    public takeBreak(): boolean {
+      console.log("Taking a short break");
+      return true;
+    }
+
+    public attendMeeting(): void {
+      console.log("Attending a code review meeting");
+    }
+  }
+
+  class Robot implements Worker {
+    workOnTask() {
+      console.log("Assembling parts");
+    }
+
+    takeBreak() {
+      // Robots don't take breaks but must implement this method
+      console.log("Break not applicable");
+    }
+
+    attendMeeting() {
+      // Robots don't attend meetings but must implement this method
+      console.log("Meeting not applicable");
+    }
+  }`;
+  protected readonly codeGoodISP: string  = `interface TaskWorker {
+  workOnTask(): void;
+}
+
+interface HumanWorker {
+  takeBreak(): void;
+  attendMeeting(): void;
+}
+
+class Developer implements TaskWorker, HumanWorker {
+  workOnTask() {
+    console.log("Developing software");
+  }
+
+  takeBreak() {
+    console.log("Taking a short break");
+  }
+
+  attendMeeting() {
+    console.log("Attending a code review meeting");
+  }
+}
+
+class Robot implements TaskWorker {
+  workOnTask() {
+    console.log("Assembling parts");
+  }
+}`;
+
+  protected readonly codeBadLSP: string  = `${this.code}`;
+  protected readonly codeGoodLSP: string  = `${this.code}`;
+
+  protected readonly codeBadOCP: string  = `${this.code}`;
+  protected readonly codeGoodOCP: string  = `${this.code}`;
   protected readonly codeBadSRP: string  = ` class Employee {
     public readonly employeeId: number;
 
