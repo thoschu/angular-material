@@ -36,6 +36,13 @@ $fontColorImprint: rgb(51, 51, 51);
         text-align: center;
         font-weight: 600;
       }
+
+      p#download {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+      }
     }
   }
 }

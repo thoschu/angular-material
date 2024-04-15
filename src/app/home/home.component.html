@@ -1,11 +1,13 @@
 <ng-container *transloco="let t; prefix: 'main.home'">
-  <h2 [innerText]="t('welcome')"></h2>
-  <hr>
-  <section>
-      <p [innerText]="t('p1')"></p>
-      <p [innerText]="t('p2')"></p>
-      <p [innerText]="t('p3')"></p>
-      <mat-divider />
-      <p [innerText]="t('p4')"></p>
-  </section>
+  <cdk-virtual-scroll-viewport itemSize="50" class="virtual-scroll-viewport">
+    <h2 [innerText]="t('welcome')"></h2>
+    <hr>
+    <section>
+        <p [innerText]="t('p1')"></p>
+        <p [innerText]="t('p2')"></p>
+        <p [innerText]="t('p3')"></p>
+        <mat-divider />
+        <p [innerText]="t('p4')"></p>
+    </section>
+  </cdk-virtual-scroll-viewport>
 </ng-container>
