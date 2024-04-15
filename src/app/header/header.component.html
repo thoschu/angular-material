@@ -1,103 +1,71 @@
 <ng-container *transloco="let t; prefix: 'header'">
-  <header id="topAnchor" class="animate__animated animate__fadeInDownBig animate__slower">
+  <header id="topAnchor">
     @if(wideScreen) {
       <mat-grid-list cols="1" rowHeight="65px">
         <mat-grid-tile [colspan]="'1'" [rowspan]="'1'" [style.background]="'transparent'">
           <mat-toolbar [@fixedStatic]="isFixedPosition ? 'static' : 'fixed'" color="none">
             <div class="center-container-elements">
-              <a mat-button routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                <mat-icon color="primary">home</mat-icon>
-                <span [innerText]="t('home')"></span>
-              </a>
-              <span>┃</span>
-              <a mat-button routerLink="/imprint" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                <mat-icon color="primary">view_comfy_alt</mat-icon>
-                <span [innerText]="t('imprint')"></span>
-              </a>
-              <span>┃</span>
-              <a mat-button routerLink="/technology" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                <mat-icon color="primary">star</mat-icon>
-                <span [innerText]="t('technology')"></span>
-              </a>
-              <span>┃</span>
+              @for (link of mainLinks; track link) {
+                <a mat-button routerLink="/{{link}}" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
+                  <mat-icon color="primary">home</mat-icon>
+                  <span [innerText]="t(link)"></span>
+                </a>
+                <span>┃</span>
+              }
               <a mat-button [matMenuTriggerFor]="more">
                 <mat-icon color="primary">more_vert</mat-icon>
                 <span [innerText]="t('links')"></span>
               </a>
               <mat-menu #more>
-                <a mat-menu-item href="//portainer.techstack.ch" target="_blank" title="Portainer" rel="nofollow">
-                  <img class="tools" height="20" width="20" ngSrc="//cdn.simpleicons.org/portainer/black" alt="portainer.techstach.ch" priority>
-                  &nbsp;&nbsp;
-                  <span>Portainer</span>
-                </a>
-                <a mat-menu-item href="//jenkins.techstack.ch" target="_blank" title="Jenkins" rel="nofollow">
-                  <img class="tools" height="20" width="20" ngSrc="//cdn.simpleicons.org/jenkins/black" alt="iam.techstach.ch" priority >
-                  &nbsp;&nbsp;
-                  <span>Jenkins</span>
-                </a>
-                <a mat-menu-item href="//iam.techstack.ch" target="_blank" title="Keycloak" rel="nofollow">
-                  <img class="tools" height="20" width="20" ngSrc="//cdn.simpleicons.org/keycloak/black" alt="iam.techstach.ch" priority>
-                  &nbsp;&nbsp;
-                  <span>Keycloak</span>
-                </a>
-                <a mat-menu-item href="//analytics.thomas-schulte.de" target="_blank" title="Keycloak" rel="nofollow">
-                  <img class="tools" height="20" width="20" ngSrc="//cdn.simpleicons.org/matomo/black" alt="analytics.thomas-schulte.de" priority>
-                  &nbsp;&nbsp;
-                  <span>Matomo</span>
-                </a>
-                <a mat-menu-item href="//storybook.thomas-schulte.de" target="_blank" title="Storybook" rel="nofollow">
-                  <img class="tools" height="20" width="20" ngSrc="//cdn.simpleicons.org/storybook/black" alt="analytics.thomas-schulte.de" priority>
-                  &nbsp;&nbsp;
-                  <span>Storybook</span>
-                </a>
+                @for(link of homeLinks; track link.href) {
+                  <a mat-menu-item href="//{{link.href}}" target="_blank" title="{{link.icon}}" rel="nofollow">
+                    <img class="tools" height="20" width="20" ngSrc="//cdn.simpleicons.org/{{link.icon}}/black" alt="{{link.href}}" priority>
+                    &nbsp;&nbsp;
+                    <span>{{link.icon | titlecase}}</span>
+                  </a>
+                }
                 <mat-divider></mat-divider>
                 <a mat-menu-item [matMenuTriggerFor]="contrast">
                   <mat-icon>contrast</mat-icon>
                   <span [innerText]="t('modus')"></span>
                 </a>
                 <mat-menu #contrast>
-                  <button mat-menu-item (click)="toggleTheme(true, $event)">
-                    <mat-icon>dark_mode</mat-icon>
-                    <span [innerText]="t('dark')"></span>
-                  </button>
-                  <button mat-menu-item (click)="toggleTheme(false, $event)">
-                    <mat-icon>light_mode</mat-icon>
-                    <span [innerText]="t('light')"></span>
-                  </button>
+                  @for(button of themeButtons; track button) {
+                    <button mat-menu-item (click)="toggleTheme(button === 'dark', $event)">
+                      <mat-icon>{{button}}_mode</mat-icon>
+                      <span [innerText]="t(button)"></span>
+                    </button>
+                  }
                 </mat-menu>
-                  <button mat-menu-item [matMenuTriggerFor]="language">
-                    <mat-icon>language</mat-icon>
-                    <span [innerText]="t('language')"></span>
-                  </button>
+                <button mat-menu-item [matMenuTriggerFor]="language">
+                  <mat-icon>language</mat-icon>
+                  <span [innerText]="t('language')"></span>
+                </button>
                 <mat-menu #language>
-                  <button
-                    mat-menu-item matTooltipPosition="right"
-                    [matTooltip]="translocoService.getActiveLang() === 'de' ? 'Deutsch' : 'German'"
-                    [ngClass]="{'active-lang': translocoService.getActiveLang() === 'de'}"
-                    (click)="this.setActiveLang('de')">
-                    <span>🇩🇪</span>&nbsp;&nbsp;&nbsp;&nbsp; DE
-                  </button>
-                  <button
-                    mat-menu-item matTooltipPosition="right"
-                    [matTooltip]="translocoService.getActiveLang() === 'en' ? 'English' : 'Englisch'"
-                    [ngClass]="{'active-lang': translocoService.getActiveLang() === 'en'}"
-                    (click)="this.setActiveLang('en')">
-                    <span>🇬🇧</span>&nbsp;&nbsp;&nbsp;&nbsp; EN
-                  </button>
+                  @for(button of languageButtons; track button) {
+                    <button
+                      mat-menu-item
+                      [ngClass]="{'active-lang': translocoService.getActiveLang() === button}"
+                      (click)="this.setActiveLang(button)">
+                      @if(button === 'de') {
+                        <span matTooltipPosition="right" [matTooltip]="translocoService.getActiveLang() === 'de' ? 'Deutsch' : 'German'">🇩🇪</span>
+                      } @else {
+                        <span matTooltipPosition="right" [matTooltip]="translocoService.getActiveLang() === 'en' ? 'English' : 'Englisch'">🇬🇧</span>
+                      } &nbsp;&nbsp;&nbsp;&nbsp; {{ button | uppercase }}
+                    </button>
+                  }
                 </mat-menu>
                   <button mat-menu-item [matMenuTriggerFor]="other">
                     <mat-icon>info</mat-icon>
                     <span [innerText]="t('other')"></span>
                   </button>
                 <mat-menu #other>
-                  <a mat-menu-item href="//chat.techstack.ch" target="_blank" title="" matTooltip="chat.techstack.ch" rel="nofollow">
-                    <mat-icon>chat</mat-icon>
-                    <span>WebRTC Chat</span>
-                  </a>
-                  <a mat-menu-item href="//techstack.ch/snake" target="_blank" title="" matTooltip="techstack.ch/snake" rel="nofollow">
-                    <mat-icon>videogame_asset</mat-icon>
-                    <span>Game</span>
-                  </a>
+                  @for(other of otherLinks; track other.href) {
+                    <a mat-menu-item href="//{{other.href}}" target="_blank" title="{{other.href}}" matTooltip="{{other.href}}" rel="nofollow">
+                      <mat-icon>{{other.icon}}</mat-icon>
+                      <span>{{other.text}}</span>
+                    </a>
+                  }
                 </mat-menu>
               </mat-menu>
             </div>
@@ -110,18 +78,28 @@
           <mat-sidenav-container class="fullscreen-sidenav-container">
             <mat-sidenav #sidenav>
               <mat-nav-list (click)="closeSidenav(sidenav)">
-                <a mat-list-item routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                  <mat-icon color="primary" [matTooltip]="t('home')">home</mat-icon>
-                </a>
-                <a mat-list-item routerLink="/imprint" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                  <mat-icon color="primary" [matTooltip]="t('imprint')">view_comfy_alt</mat-icon>
-                </a>
-                <a mat-list-item routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                  <mat-icon color="primary" [matTooltip]="t('technologies')">gpp_maybe</mat-icon>
-                </a>
+                @for (link of mainLinks; track link) {
+                  <a mat-list-item
+                     routerLink="/{{link}}"
+                     routerLinkActive="active"
+                     ariaCurrentWhenActive="page"
+                     (click)="viewportScroller.scrollToAnchor('topAnchor')"
+                  >
+                    <mat-icon color="primary" [matTooltip]="t(link)">
+                      @if(link === 'technology') {
+                        gpp_maybe
+                      } @else if (link === 'imprint') {
+                        view_comfy_alt
+                      } @else {
+                        {{link}}
+                      }
+                    </mat-icon>
+                  </a>
+                }
                 <section class="burger-menu-section">
                   <mat-radio-group *ngIf="translocoService.getActiveLang() as activeLang" (change)="toggleLanguage()">
-                    <mat-radio-button class="example-margin" value="primary"
+                    @for(button of languageButtons; track button) {}
+                    <mat-radio-button class="example-margin"
                       #de
                       [checked]="activeLang === 'de'"
                       [matTooltip]="activeLang === 'de' ? 'Deutsch' : 'German'"
@@ -130,7 +108,7 @@
                     >
                       <span>🇩🇪</span>
                     </mat-radio-button>
-                    <mat-radio-button class="example-margin" value="accent"
+                    <mat-radio-button class="example-margin"
                       #en
                       [checked]="activeLang === 'en'"
                       [matTooltip]="activeLang=== 'en' ? 'English' : 'Englisch'"

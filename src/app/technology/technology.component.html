@@ -130,32 +130,25 @@
               <mat-panel-description>Interface Segregation Principle</mat-panel-description>
             </mat-expansion-panel-header>
             <p>
-              Das Interface Segregation Principle (ISP) in den SOLID-Prinzipien empfiehlt, dass Klassen nicht dazu gezwungen werden sollten,
+              Das Interface Segregation Principle (ISP) in den SOLID-Prinzipien empfiehlt,
+              dass Klassen nicht dazu gezwungen werden sollten,
               Schnittstellen zu implementieren, die sie nicht nutzen. Dies führt zu einer klaren Trennung und verhindert,
               dass Klassen überladen werden mit Methoden, die sie nicht verwenden.
               Dies ist besonders wichtig, um die Klarheit und Wartbarkeit des Codes zu erhalten.
             </p>
           </mat-expansion-panel>
           <br>
-          <div class="bad">
-            <p><mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon></p>
-            <p><mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon></p>
-            <p [matTooltip]="'BAD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
-            </p>
-            <p><mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon></p>
-            <p><mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon></p>
+          <div id="bad" [matTooltip]="'BAD'">
+            <mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon>
           </div>
           <pre><code [highlightAuto]="codeBadISP" [startFrom]="1" lineNumbers></code></pre>
           <mat-divider />
-          <div class="good">
-            <p><mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon></p>
-            <p><mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon></p>
-            <p [matTooltip]="'GOOD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
-            </p>
-            <p><mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon></p>
-            <p><mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon></p>
+          <div id="good" [matTooltip]="'GOOD'">
+            <mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon>
           </div>
           <pre><code [highlightAuto]="codeGoodISP" lineNumbers></code></pre>
         </cdk-virtual-scroll-viewport>

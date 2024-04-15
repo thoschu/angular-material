@@ -1,6 +1,15 @@
-import { animate, AnimationTriggerMetadata, state, style, transition, trigger } from '@angular/animations';
+import {animate, AnimationTriggerMetadata, group, state, style, transition, trigger} from '@angular/animations';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe, ViewportScroller, NgOptimizedImage, NgStyle, NgClass, NgIf } from '@angular/common';
+import {
+  AsyncPipe,
+  ViewportScroller,
+  NgOptimizedImage,
+  NgStyle,
+  NgClass,
+  NgIf,
+  UpperCasePipe,
+  TitleCasePipe
+} from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatDrawerToggleResult, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -30,12 +39,12 @@ import {MatDivider} from "@angular/material/divider";
     MatMenuTrigger, MatMenu, MatMenuItem, MatGridList,
     RouterLinkActive, MatGridTile, AsyncPipe,
     NgOptimizedImage, TranslocoDirective, MatTooltip, NgStyle,
-    NgClass, MatSlideToggle, MatRadioGroup, MatRadioButton, NgIf, MatDivider
+    NgClass, MatSlideToggle, MatRadioGroup, MatRadioButton, NgIf, MatDivider, UpperCasePipe, TitleCasePipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   exportAs: 'appHeader',
-  animations: [ HeaderComponent.trigger ]
+  animations: [ HeaderComponent.triggerFixedStatic ]
 })
 export class HeaderComponent implements OnDestroy, OnInit {
   private landscapeSubscription?: Subscription;
@@ -44,6 +53,27 @@ export class HeaderComponent implements OnDestroy, OnInit {
   protected wideScreen: boolean = true;
   protected rowHeightSmallDevice: number = 65;
   protected readonly title: string = 'Tom S.';
+  protected readonly mainLinks: Array<string> = ['home', 'imprint', 'technology'];
+  protected readonly homeLinks: Array<Record<'href' | 'icon', string>> = [
+    { href: 'portainer.techstack.ch', icon: 'portainer' },
+    { href: 'jenkins.techstack.ch', icon: 'jenkins' },
+    { href: 'iam.techstack.ch', icon: 'keycloak' },
+    { href: 'analytics.thomas-schulte.de', icon: 'matomo' },
+    { href: 'storybook.thomas-schulte.de', icon: 'storybook' }
+  ];
+  protected readonly themeButtons: Array<string> = ['dark', 'light'];
+  protected readonly languageButtons: Array<string> = ['de', 'en'];
+  protected readonly otherLinks: Array<Record<'href' | 'icon' | 'text', string>> = [
+    {
+      href: 'chat.techstack.ch',
+      icon: 'chat',
+      text: 'WebRTC Chat'
+    }, {
+      href: 'techstack.ch/snake',
+      icon: 'videogame_asset',
+      text: 'Game'
+    }
+  ];
   protected static readonly THUMBUP_ICON: string = `
     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px">
       <path d="M0 0h24v24H0z" fill="none"/>
@@ -51,18 +81,18 @@ export class HeaderComponent implements OnDestroy, OnInit {
     </svg>
   `;
 
-  private static trigger: AnimationTriggerMetadata = trigger('fixedStatic', [
+  private static triggerFixedStatic: AnimationTriggerMetadata = trigger('fixedStatic', [
     state('fixed', style({
       position: 'fixed',
       top: 0,
-      height: '65px',
+      height: '60px',
       'z-index': 10000000,
       background: '#FFFFFF'
     })),
     state('static', style({
       position: 'static',
       background: 'transparent',
-      height: '0',
+      height: '0'
     })),
     transition('fixed => static', [
       animate('.5s')
@@ -151,6 +181,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
   @HostListener('window:scroll', [])
   private onScroll(): void {
     const scrollPosition: number = window.scrollY;
+
+    console.log(scrollPosition < 500);
 
     this.isFixedPosition = scrollPosition < 500;
   }

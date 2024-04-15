@@ -40,18 +40,20 @@
       margin: 1em 0;
     }
 
-    .good, .bad {
+    #good, #bad {
       display: flex;
       justify-content: space-around;
       align-items:center;
 
-      p {
-        mat-icon[fontIcon="block"] {
-          color: red;
-        }
-
-        mat-icon[fontIcon="done_outline"] {
+      &#good {
+        mat-icon {
           color: green;
+        }
+      }
+
+      &#bad {
+        mat-icon {
+          color: red;
         }
       }
     }
