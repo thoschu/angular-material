@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {AsyncPipe, NgOptimizedImage} from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { CdkObserveContent } from '@angular/cdk/observers';
@@ -46,7 +46,7 @@ export class AppComponent implements OnDestroy, OnInit {
     this._snackBar.open('🚨 Under Construction 🚨', 'OK', {
       horizontalPosition: this._horizontalPosition,
       verticalPosition: this._verticalPosition,
-      duration: 13000,
+      duration: 7000,
       politeness: 'assertive'
     });
 

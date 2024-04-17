@@ -4,6 +4,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { AsyncPipe, NgClass, NgOptimizedImage } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { MatAnchor } from '@angular/material/button';
+import { TranslocoDirective } from '@jsverse/transloco';
+import { Store } from '@ngrx/store';
 
 import Map from 'ol/Map.js';
 import OSM from 'ol/source/OSM.js';
@@ -13,11 +16,13 @@ import proj4 from 'proj4';
 import { ScaleLine } from 'ol/control.js';
 import { fromLonLat } from 'ol/proj.js';
 import { register } from 'ol/proj/proj4.js';
+import { Observable } from 'rxjs';
 import { prop } from 'ramda';
 
+import { FooterState } from './store/footer.reducers';
+import {initAction, setTownAction, setTownHamburgAction} from './store/footer.actions';
+import { selectorsFooter, selectorsFooterTownUpperCase, selectorsFooterYear } from './store/footer.selectors';
 import { AppService } from '../app.service';
-import {MatAnchor} from "@angular/material/button";
-import {TranslocoDirective} from "@jsverse/transloco";
 
 type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', string>;
 
@@ -30,13 +35,15 @@ type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', 
     NgClass, NgOptimizedImage,
     MatTooltipModule, MatIcon, MatAnchor, TranslocoDirective
   ],
+  providers: [],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
-  exportAs: 'appFooter'
+  styleUrl: './footer.component.scss'
 })
 export class FooterComponent implements OnInit {
   private map?: Map;
   private simpleIconsCdn: string = '//cdn.simpleicons.org/';
+  protected year$: Observable<number>;
+  protected town$: Observable<string>;
   protected firstFooterArea: number[] = [2, 2, 2, 2, 2];
   protected lastFooterArea: (string | number)[] = [2, 1];
   protected lastFooterRowHeight: string = '100px';
@@ -75,10 +82,30 @@ export class FooterComponent implements OnInit {
   ];
 
   constructor(
+    protected readonly store: Store<Record<'footer', FooterState>>,
     protected readonly appService: AppService,
     private readonly domSanitizer: DomSanitizer,
-    private readonly matIconRegistry: MatIconRegistry
+    private readonly matIconRegistry: MatIconRegistry,
   ) {
+    // const footerStore$: Observable<FooterState> = this.store.select('footer');
+    const footerStore$: Observable<FooterState> = this.store.select(selectorsFooter);
+
+    this.year$ = this.store.select(selectorsFooterYear);
+    // this.year$ = footerStore$.pipe(map((state: FooterState) => state.year));
+    // this.year$ = this.store.select<number>((state: Record<'footer', FooterState>): number => {
+    //   return state.footer.year;
+    // });
+    // this.town$ = footerStore$.pipe(map((state: FooterState) => state.town));
+    this.town$ = this.store.select(selectorsFooterTownUpperCase);
+
+    this.store.dispatch(setTownHamburgAction());
+
+    setTimeout((that: FooterComponent): void => {
+      that.store.dispatch(setTownAction({town: 'Hamburg'}));
+    }, 5000, this);
+
+    this.store.dispatch(initAction());
+
     proj4.defs(
       'Indiana-East',
       'PROJCS["IN83-EF",GEOGCS["LL83",DATUM["NAD83",' +
@@ -94,7 +121,7 @@ export class FooterComponent implements OnInit {
     register(proj4);
 
     this.matIconRegistry.addSvgIcon(
-      "github",
+      'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/img/github.svg')
     );
   }
@@ -116,7 +143,7 @@ export class FooterComponent implements OnInit {
       })
     });
 
-    this.map.addControl(new ScaleLine({units: 'imperial'}));
+    this.map.addControl(new ScaleLine({ units: 'imperial' }));
 
     this.appService.breakpointsPortrait$.subscribe((res: Record<string, string>): void => {
       const xSmall: string = prop<string, Record<string, string>>('Breakpoints.XSmall', res);

@@ -7,7 +7,13 @@
             <div class="center-container-elements">
               @for (link of mainLinks; track link) {
                 <a mat-button routerLink="/{{link}}" routerLinkActive="active" ariaCurrentWhenActive="page" (click)="viewportScroller.scrollToAnchor('topAnchor')">
-                  <mat-icon color="primary">home</mat-icon>
+                  @if(link === 'home') {
+                    <mat-icon color="primary">{{link}}</mat-icon>
+                  } @else if (link === 'imprint') {
+                    <mat-icon color="primary">star</mat-icon>
+                  } @else {
+                    <mat-icon color="primary">apps</mat-icon>
+                  }
                   <span [innerText]="t(link)"></span>
                 </a>
                 <span>┃</span>
@@ -99,7 +105,7 @@
                 <section class="burger-menu-section">
                   <mat-radio-group *ngIf="translocoService.getActiveLang() as activeLang" (change)="toggleLanguage()">
                     @for(button of languageButtons; track button) {}
-                    <mat-radio-button class="example-margin"
+                    <mat-radio-button
                       #de
                       [checked]="activeLang === 'de'"
                       [matTooltip]="activeLang === 'de' ? 'Deutsch' : 'German'"
@@ -108,7 +114,7 @@
                     >
                       <span>🇩🇪</span>
                     </mat-radio-button>
-                    <mat-radio-button class="example-margin"
+                    <mat-radio-button
                       #en
                       [checked]="activeLang === 'en'"
                       [matTooltip]="activeLang=== 'en' ? 'English' : 'Englisch'"

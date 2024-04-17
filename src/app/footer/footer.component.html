@@ -66,7 +66,7 @@
     <mat-grid-tile [colspan]="lastFooterArea[0]" [rowspan]="1">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
       <p class="center-text" matTooltip="🇩🇪">
-        Hamburg<mat-icon aria-hidden="false" aria-label="copyright-icon" fontIcon="copyright" />2024
+        {{ town$ | async }}<mat-icon aria-hidden="false" aria-label="copyright-icon" fontIcon="copyright" />{{ year$ | async }}
       </p>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="lastFooterArea[1]" [rowspan]="1">
