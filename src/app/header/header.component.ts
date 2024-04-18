@@ -22,12 +22,12 @@ import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
+import { MatDivider } from '@angular/material/divider';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { Subscription } from 'rxjs';
 import { head, keys } from 'ramda';
 
 import { AppService } from '../app.service';
-import {MatDivider} from "@angular/material/divider";
 
 @Component({
   selector: 'app-header',
@@ -59,7 +59,9 @@ export class HeaderComponent implements OnDestroy, OnInit {
     { href: 'jenkins.techstack.ch', icon: 'jenkins' },
     { href: 'iam.techstack.ch', icon: 'keycloak' },
     { href: 'analytics.thomas-schulte.de', icon: 'matomo' },
-    { href: 'storybook.thomas-schulte.de', icon: 'storybook' }
+    { href: 'storybook.thomas-schulte.de', icon: 'storybook' },
+    { href: 'gitlab.techstack.ch', icon: 'gitlab' },
+    { href: 'techstack.ch/cadvisor', icon: 'linuxcontainers' }
   ];
   protected readonly themeButtons: Array<string> = ['dark', 'light'];
   protected readonly languageButtons: Array<string> = ['de', 'en'];
@@ -179,10 +181,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
   }
 
   @HostListener('window:scroll', [])
-  private onScroll(): void {
+  private (): void {
     const scrollPosition: number = window.scrollY;
-
-    console.log(scrollPosition < 500);
 
     this.isFixedPosition = scrollPosition < 500;
   }
@@ -192,7 +192,7 @@ export class HeaderComponent implements OnDestroy, OnInit {
     this.appService.setThemeMode(darkMode);
   }
 
-  toggleLanguage() {
-    console.log();
+  protected toggleLanguage(activeLang: string): void {
+    console.log(activeLang);
   }
 }

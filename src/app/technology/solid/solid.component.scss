@@ -1,0 +1,57 @@
+// @import 'highlight.js/styles/github.css';
+
+@mixin font-fam {
+  font-family: 'Quicksand', sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1rem;
+}
+
+:host {
+  .mdc-tab__text-label {
+    @include font-fam;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  .viewport {
+    height: 490px;
+    width: 98vw;
+    margin: 1rem;
+
+    mat-expansion-panel {
+      mat-expansion-panel-header {
+        mat-panel-title, mat-panel-description {
+          @include font-fam;
+        }
+      }
+
+      p {
+        @include font-fam;
+      }
+    }
+
+    mat-divider {
+      margin: 1em 0;
+    }
+
+    #good, #bad {
+      display: flex;
+      justify-content: space-around;
+      align-items:center;
+
+      &#good {
+        mat-icon {
+          color: green;
+        }
+      }
+
+      &#bad {
+        mat-icon {
+          color: red;
+        }
+      }
+    }
+  }
+}

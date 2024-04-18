@@ -1,1 +1,27 @@
-<p>solid works!</p>
+<cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <b>{{title}}</b>
+      </mat-panel-title>
+      <mat-panel-description>{{description}}</mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      {{content}}
+    </p>
+  </mat-expansion-panel>
+  <br>
+  <div id="bad" [matTooltip]="'BAD'">
+    <mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon>
+  </div>
+  <pre><code [highlightAuto]="badCode" [startFrom]="1" lineNumbers></code></pre>
+  <mat-divider />
+  <div id="good" [matTooltip]="'GOOD'">
+    <mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
+    <mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon>
+  </div>
+  <pre><code [highlightAuto]="goodCode" lineNumbers></code></pre>
+</cdk-virtual-scroll-viewport>

@@ -23,6 +23,7 @@ import { FooterState } from './store/footer.reducers';
 import {initAction, setTownAction, setTownHamburgAction} from './store/footer.actions';
 import { selectorsFooter, selectorsFooterTownUpperCase, selectorsFooterYear } from './store/footer.selectors';
 import { AppService } from '../app.service';
+import {AppState} from "../store";
 
 type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', string>;
 
@@ -82,11 +83,12 @@ export class FooterComponent implements OnInit {
   ];
 
   constructor(
-    protected readonly store: Store<Record<'footer', FooterState>>,
+    protected readonly store: Store<AppState>,
     protected readonly appService: AppService,
     private readonly domSanitizer: DomSanitizer,
     private readonly matIconRegistry: MatIconRegistry,
   ) {
+    this.store.subscribe(console.log);
     // const footerStore$: Observable<FooterState> = this.store.select('footer');
     const footerStore$: Observable<FooterState> = this.store.select(selectorsFooter);
 

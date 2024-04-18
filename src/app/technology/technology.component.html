@@ -8,182 +8,61 @@
         <ng-template mat-tab-label>
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Single Responsibility Principle'">🅂</span>
         </ng-template>
-        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <b>S R P</b>
-              </mat-panel-title>
-              <mat-panel-description>
-                Single Responsibility Principle
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>
-              Das Single Responsibility Principle (SRP) ist eines der SOLID-Designprinzipien in der Softwareentwicklung und steht für das Prinzip der Einzelverantwortung.
-              Es besagt, dass eine Klasse oder ein Modul nur aus einem einzigen Grund geändert werden sollte.
-              Dieses Prinzip zielt darauf ab, die Komplexität zu reduzieren, indem sichergestellt wird, dass eine Klasse nur eine Verantwortung hat und diese vollständig kapselt.
-              Dies führt zu einem einfacheren Verständnis, leichterer Wartbarkeit und Erweiterbarkeit des Codes.
-            </p>
-          </mat-expansion-panel>
-          <br>
-          <div class="bad">
-            <p [matTooltip]="'BAD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeBadSRP" [startFrom]="1" lineNumbers></code></pre>
-          <mat-divider />
-          <div class="good">
-            <p [matTooltip]="'GOOD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeGoodSRP" lineNumbers></code></pre>
-        </cdk-virtual-scroll-viewport>
+        <app-solid
+          [title]="'S R P'"
+          [description]="'Single Responsibility Principle'"
+          [content]="srpText"
+          [badCode]="codeBadSRP"
+          [goodCode]="codeGoodSRP"
+        />
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Open Closed Principle'">🄾</span>
         </ng-template>
-        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <b>O C P</b>
-              </mat-panel-title>
-              <mat-panel-description>Open Closed Principle</mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>
-              Das Open-Closed Principle (OCP) ist eines der fünf SOLID-Designprinzipien des Softwareentwurfs, formuliert von Bertrand Meyer und besagt,
-              dass Softwareartefakte, respektive Softwareentitäten (wie Klassen, Module, Funktionen usw.) für Erweiterungen offen,
-              aber für Modifikationen geschlossen sein sollten.
-              Das Ziel ist es, die Notwendigkeit zu minimieren, bestehenden Code zu ändern, wenn die Funktionalität erweitert wird.
-              Stattdessen sollten Erweiterungen durch das Hinzufügen von neuen Code erfolgen.
-              Das bedeutet mithin, dass das Verhalten einer Entität durch Hinzufügen neuer Code erweitert werden kann,
-              ohne den bestehenden Code zu ändern.
-            </p>
-          </mat-expansion-panel>
-          <br>
-          <div class="bad">
-            <p [matTooltip]="'BAD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeBadOCP" [startFrom]="1" lineNumbers></code></pre>
-          <mat-divider />
-          <div class="good">
-            <p [matTooltip]="'GOOD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeGoodOCP" lineNumbers></code></pre>
-        </cdk-virtual-scroll-viewport>
+        <app-solid
+          [title]="'O C P'"
+          [description]="'Open Closed Principle'"
+          [content]="ocpText"
+          [badCode]="codeBadOCP"
+          [goodCode]="codeGoodOCP"
+        />
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Liskov Substitution Principle'">🄻</span>
         </ng-template>
-        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <b>L S P</b>
-              </mat-panel-title>
-              <mat-panel-description>Liskov Substitution Principle</mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>
-              Liskov Substitution Principle (LSP) in SOLID ist darauf ausgelegt, sicherzustellen, dass Subklassen ihre Basisklassen ersetzen können,
-              ohne die Funktionalität des Programms zu beeinträchtigen. Hier sind zwei Beispiele für TypeScript, die demonstrieren,
-              wie das LSP korrekt angewendet und wie es verletzt wird.
-
-              Das Liskovsche Substitutionsprinzip (LSP) ist eines der SOLID-Prinzipien im Software-Engineering, das besagt,
-              dass Objekte einer Basisklasse durch Objekte einer davon abgeleiteten Klasse ersetzt werden können,
-              ohne dass dies die Korrektheit des Programms beeinträchtigt.
-            </p>
-          </mat-expansion-panel>
-          <br>
-          <div class="bad">
-            <p [matTooltip]="'BAD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeBadLSP" [startFrom]="1" lineNumbers></code></pre>
-          <mat-divider />
-          <div class="good">
-            <p [matTooltip]="'GOOD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeGoodLSP" lineNumbers></code></pre>
-        </cdk-virtual-scroll-viewport>
+        <app-solid
+          [title]="'L S P'"
+          [description]="'Liskov Substitution Principle'"
+          [content]="lspText"
+          [badCode]="codeBadLSP"
+          [goodCode]="codeGoodLSP"
+        />
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Interface Segregation Principle'">🄸</span>
         </ng-template>
-        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <b>I S P</b>
-              </mat-panel-title>
-              <mat-panel-description>Interface Segregation Principle</mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>
-              Das Interface Segregation Principle (ISP) in den SOLID-Prinzipien empfiehlt,
-              dass Klassen nicht dazu gezwungen werden sollten,
-              Schnittstellen zu implementieren, die sie nicht nutzen. Dies führt zu einer klaren Trennung und verhindert,
-              dass Klassen überladen werden mit Methoden, die sie nicht verwenden.
-              Dies ist besonders wichtig, um die Klarheit und Wartbarkeit des Codes zu erhalten.
-            </p>
-          </mat-expansion-panel>
-          <br>
-          <div id="bad" [matTooltip]="'BAD'">
-            <mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon>
-            <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
-            <mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon>
-          </div>
-          <pre><code [highlightAuto]="codeBadISP" [startFrom]="1" lineNumbers></code></pre>
-          <mat-divider />
-          <div id="good" [matTooltip]="'GOOD'">
-            <mat-icon aria-hidden="false" aria-label="chevron_right-icon" fontIcon="chevron_right"></mat-icon>
-            <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
-            <mat-icon aria-hidden="false" aria-label="chevron_left-icon" fontIcon="chevron_left"></mat-icon>
-          </div>
-          <pre><code [highlightAuto]="codeGoodISP" lineNumbers></code></pre>
-        </cdk-virtual-scroll-viewport>
+        <app-solid
+          [title]="'I S P'"
+          [description]="'Interface Segregation Principle'"
+          [content]="ispText"
+          [badCode]="codeBadISP"
+          [goodCode]="codeGoodISP"
+        />
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label>
           <span class="text-lg subpixel-antialiased" [matTooltip]="'Dependency Inversion Principle'">🄳</span>
         </ng-template>
-        <cdk-virtual-scroll-viewport appendOnly itemSize="100" class="viewport">
-          <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <b>D I P</b>
-              </mat-panel-title>
-              <mat-panel-description>Dependency Inversion Principle</mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>
-              xxx
-            </p>
-          </mat-expansion-panel>
-          <br>
-          <div class="bad">
-            <p [matTooltip]="'BAD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="block"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeBadDIP" [startFrom]="1" lineNumbers></code></pre>
-          <mat-divider />
-          <div class="good">
-            <p [matTooltip]="'GOOD'">
-              <mat-icon aria-hidden="false" aria-label="ok icon" fontIcon="done_outline"></mat-icon>
-            </p>
-          </div>
-          <pre><code [highlightAuto]="codeGoodDIP" lineNumbers></code></pre>
-        </cdk-virtual-scroll-viewport>
+        <app-solid
+          [title]="'D I P'"
+          [description]="'Dependency Inversion Principle'"
+          [content]="dipText"
+          [badCode]="codeBadDIP"
+          [goodCode]="codeGoodDIP"
+        />
       </mat-tab>
     </mat-tab-group>
   </mat-tab>

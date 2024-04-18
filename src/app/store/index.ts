@@ -6,7 +6,7 @@ import {
 } from '@ngrx/store';
 import { routerReducer, RouterState } from '@ngrx/router-store';
 
-import { footerReducers, FooterState, footerMetaReducers } from '../footer/store/footer.reducers';
+import { footerReducers, FooterState } from '../footer/store/footer.reducers';
 import { headerReducers, HeaderState } from '../header/store/header.reducers';
 import { mainReducers, MainState } from '../main/store/main.reducers';
 

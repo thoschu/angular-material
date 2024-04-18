@@ -103,7 +103,7 @@
                   </a>
                 }
                 <section class="burger-menu-section">
-                  <mat-radio-group *ngIf="translocoService.getActiveLang() as activeLang" (change)="toggleLanguage()">
+                  <mat-radio-group *ngIf="translocoService.getActiveLang() as activeLang" (change)="toggleLanguage(activeLang)">
                     @for(button of languageButtons; track button) {}
                     <mat-radio-button
                       #de

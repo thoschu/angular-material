@@ -1,9 +1,8 @@
 import { isDevMode } from '@angular/core';
 import { Action, ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
+import { TypedAction } from '@ngrx/store/src/models';
 
-import * as FooterActions from './footer.actions';
-import {TypedAction} from "@ngrx/store/src/models";
-import {FOOTER_SET_TOWN_ACTION_IDENTIFIER} from "./footer.actions";
+import { FooterActionTypes, initAction, setAction, setTownAction, setTownHamburgAction } from './footer.actions';
 
 const initFooterState: FooterState = {
   year: new Date().getFullYear() - 1,
@@ -29,18 +28,18 @@ export const footerMetaReducers: MetaReducer<FooterState>[] = isDevMode() ? [deb
 
 export const footerReducers: ActionReducer<FooterState> = createReducer<FooterState, Action, ActionReducer<FooterState, Action>>(
   initFooterState,
-  on(FooterActions.setTownHamburgAction, (state: FooterState): FooterState => {
+  on(setTownHamburgAction, (state: FooterState): FooterState => {
     return { ...state, town: 'HH' };
   }),
-  on(FooterActions.setTownAction, (state: FooterState, action: Record<'town', string> & TypedAction<typeof FOOTER_SET_TOWN_ACTION_IDENTIFIER> & { type: typeof FOOTER_SET_TOWN_ACTION_IDENTIFIER }): FooterState =>  {
+  on(setTownAction, (state: FooterState, action: Record<'town', string> & TypedAction<typeof FooterActionTypes.FOOTER_SET_TOWN_ACTION_IDENTIFIER> & { type: typeof FooterActionTypes.FOOTER_SET_TOWN_ACTION_IDENTIFIER }): FooterState =>  {
     return { ...state, town: action.town };
   }),
-  on(FooterActions.initAction, (state: FooterState, action: TypedAction<'[Footer Page] Init'> & Record<'type', '[Footer Page] Init'>): FooterState => {
+  on(initAction, (state: FooterState, action: TypedAction<'[Footer Page] Init'> & Record<'type', '[Footer Page] Init'>): FooterState => {
     // console.log(state);
     // console.log(action);
     return { ...state };
   }),
-  on(FooterActions.setAction, (state: FooterState, action): FooterState => {
+  on(setAction, (state: FooterState, action): FooterState => {
     // console.log(state);
     // console.log(action);
     return { ...state, town: action.payload };
