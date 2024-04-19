@@ -68,7 +68,7 @@ export class MainComponent {
   ngOnInit(): void {
     setTimeout((that: MainComponent): void => {
       that.store.dispatch(setTechnologyAction({ disabled: true }));
-    }, 10000, this);
+    }, 770000, this);
   }
 
   protected onActivate(event: Component): void {
