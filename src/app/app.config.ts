@@ -11,7 +11,7 @@ import { provideHighlightOptions } from 'ngx-highlightjs';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideEffects } from '@ngrx/effects';
 
-import { appReducers, appMetaReducers } from './store';
+import { appReducers, appMetaReducers } from './app.store';
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { AppService } from './app.service';

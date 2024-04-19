@@ -10,6 +10,8 @@ import { Highlight, HighlightAuto, HighlightLoader, HighlightModule } from 'ngx-
 import { HighlightLineNumbers } from 'ngx-highlightjs/line-numbers';
 
 import { SolidComponent } from './solid/solid.component';
+import {Store} from "@ngrx/store";
+import {setTechnologyAction} from "../main/store/main.actions";
 
 @Component({
   selector: 'app-technology',
@@ -199,7 +201,7 @@ class Robot implements TaskWorker {
 
   `;
 
-  constructor() {}
+  constructor(private readonly store: Store) {}
 
   async ngAfterViewInit(): Promise<void> {}
 }

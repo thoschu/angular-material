@@ -3,6 +3,7 @@ import { provideTranslocoScope } from '@jsverse/transloco';
 
 import { TechnologyComponent } from './technology/technology.component';
 import { HomeComponent } from './home/home.component';
+import {technologyGuard} from "./technology/technology.guard";
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,5 +15,13 @@ export const routes: Routes = [
       provideTranslocoScope('imprint')
     ]
   },
-  { path: 'technology', component: TechnologyComponent }
+  {
+    path: 'technology',
+    component: TechnologyComponent,
+    canActivate: [technologyGuard]
+  },
+  {
+    path: '**',
+    redirectTo: '/'
+  }
 ];

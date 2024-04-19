@@ -1,6 +1,6 @@
 <ng-container *transloco="let t; prefix: 'main.home'">
   <cdk-virtual-scroll-viewport itemSize="50" class="virtual-scroll-viewport">
-    <h2 [innerText]="t('welcome')"></h2>
+    <h2 [innerText]="t('welcome')" matTooltipPosition="above" [matTooltip]="(greetingTooltip$ | async) ?? ''"></h2>
     <hr>
     <section>
         <p [innerText]="t('p1')"></p>

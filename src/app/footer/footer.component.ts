@@ -20,10 +20,10 @@ import { Observable } from 'rxjs';
 import { prop } from 'ramda';
 
 import { FooterState } from './store/footer.reducers';
-import {initAction, setTownAction, setTownHamburgAction} from './store/footer.actions';
+import { initAction, setTownAction, setTownHamburgAction, FooterActions } from './store/footer.actions';
 import { selectorsFooter, selectorsFooterTownUpperCase, selectorsFooterYear } from './store/footer.selectors';
 import { AppService } from '../app.service';
-import {AppState} from "../store";
+import {AppState} from "../app.store";
 
 type FooterIcons = Record<'id', number> & Record<'href' | 'matTooltip' | 'src', string>;
 
@@ -88,7 +88,7 @@ export class FooterComponent implements OnInit {
     private readonly domSanitizer: DomSanitizer,
     private readonly matIconRegistry: MatIconRegistry,
   ) {
-    this.store.subscribe(console.log);
+    // this.store.subscribe(console.log);
     // const footerStore$: Observable<FooterState> = this.store.select('footer');
     const footerStore$: Observable<FooterState> = this.store.select(selectorsFooter);
 
@@ -100,13 +100,14 @@ export class FooterComponent implements OnInit {
     // this.town$ = footerStore$.pipe(map((state: FooterState) => state.town));
     this.town$ = this.store.select(selectorsFooterTownUpperCase);
 
-    this.store.dispatch(setTownHamburgAction());
+    this.store.dispatch({type: '[Footer Page] Set Hamburg'});
+    //this.store.dispatch(setTownHamburgAction());
 
     setTimeout((that: FooterComponent): void => {
-      that.store.dispatch(setTownAction({town: 'Hamburg'}));
+      that.store.dispatch(FooterActions.setTownAction({ town: 'Hamburg' }));
     }, 5000, this);
 
-    this.store.dispatch(initAction());
+    // this.store.dispatch(initAction());
 
     proj4.defs(
       'Indiana-East',

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, CreateEffectMetadata, ofType } from '@ngrx/effects';
 import { TypedAction } from '@ngrx/store/src/models';
 import { Action, Store } from '@ngrx/store';
-import {Observable, of, switchMap, tap, withLatestFrom} from 'rxjs';
+import { Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
 
-import {initAction, setAction, setTownAction} from './footer.actions';
+import { initAction, setAction, setTownAction } from './footer.actions';
 import { selectorsFooterTown, selectorsFooterTownUpperCase } from "./footer.selectors";
-import { FooterState } from "./footer.reducers";
+import { AppState } from '../../app.store';
 
 @Injectable()
 export class FooterEffects {
@@ -15,7 +15,7 @@ export class FooterEffects {
 
   constructor(
     private readonly actions$: Actions,
-    private readonly store: Store<Record<'footer', FooterState>>
+    private readonly store: Store<AppState>
   ) {
 
     this.load$ = createEffect(() => {

@@ -2,11 +2,11 @@ import { isDevMode } from '@angular/core';
 import { Action, ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 
-import { FooterActionTypes, initAction, setAction, setTownAction, setTownHamburgAction } from './footer.actions';
+import { initAction, setAction, setTownAction, setTownHamburgAction } from './footer.actions';
 
 const initFooterState: FooterState = {
   year: new Date().getFullYear() - 1,
-  town: 'Berlin'
+  town: 'Bielefeld'
 };
 
 export interface FooterState {
@@ -31,7 +31,7 @@ export const footerReducers: ActionReducer<FooterState> = createReducer<FooterSt
   on(setTownHamburgAction, (state: FooterState): FooterState => {
     return { ...state, town: 'HH' };
   }),
-  on(setTownAction, (state: FooterState, action: Record<'town', string> & TypedAction<typeof FooterActionTypes.FOOTER_SET_TOWN_ACTION_IDENTIFIER> & { type: typeof FooterActionTypes.FOOTER_SET_TOWN_ACTION_IDENTIFIER }): FooterState =>  {
+  on(setTownAction, (state: FooterState, action): FooterState =>  {
     return { ...state, town: action.town };
   }),
   on(initAction, (state: FooterState, action: TypedAction<'[Footer Page] Init'> & Record<'type', '[Footer Page] Init'>): FooterState => {

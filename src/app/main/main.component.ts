@@ -14,6 +14,7 @@ import { AppService } from '../app.service';
 
 import {selectorsMainName, selectorsMainTooltip} from "./store/main.selectors";
 import { MainState } from "./store/main.reducers";
+import {setTechnologyAction} from "./store/main.actions";
 
 @Component({
   selector: 'app-main',
@@ -62,6 +63,12 @@ export class MainComponent {
         return this.count++;
       }
     }
+  }
+
+  ngOnInit(): void {
+    setTimeout((that: MainComponent): void => {
+      that.store.dispatch(setTechnologyAction({ disabled: true }));
+    }, 60000, this);
   }
 
   protected onActivate(event: Component): void {
