@@ -1,7 +1,7 @@
 import { isDevMode } from '@angular/core';
 import { Action, ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
 
-import {setIconAction, setIpAction, setTechnologyAction} from './main.actions';
+import { setIconAction, setIpAction, setTechnologyAction } from './main.actions';
 
 const initMainState: MainState = {
   name: {
@@ -60,8 +60,7 @@ export const mainReducers: ActionReducer<MainState> = createReducer(
     };
   }),
   on(setIpAction, (state: MainState, action): MainState => {
-    console.log('+++++++++++++++!!!!!+++++++++++++++++');
-    console.log(action.ip);
+    // console.log(action.ip);
     return { ...state, imprint: {
         ...state.imprint,
         ...{

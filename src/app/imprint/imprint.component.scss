@@ -43,6 +43,17 @@ $fontColorImprint: rgb(51, 51, 51);
         align-items: center;
         height: 50vh;
       }
+
+      #json-container {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        white-space: pre-wrap; /* Maintains whitespace formatting */
+        font-family: "Courier New", Courier, monospace; /* Gives a typewriter-like font */
+        color: #333;
+      }
     }
   }
 }

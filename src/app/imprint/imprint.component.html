@@ -138,11 +138,30 @@
             <a href="//www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht</a>
           </div>
           <br>
-          <mat-divider></mat-divider>
-          <br>
-          <div>
-            {{ip$ | async | json}}
-          </div>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Info
+                </mat-panel-title>
+                <mat-panel-description>
+                  📍{{(ip$ | async)?.['ip']}} - {{(ip$ | async)?.['org']}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <pre id="json-container">
+                {{removeFirstLast(ip$ | async | json)}}
+              </pre>
+              <!--          <pre id="json-container">-->
+              <!--           @for (item of (ip$ | async) || {} | keyvalue; track item) {-->
+              <!--             {{ item.key | uppercase }} : {{ item.value }}-->
+              <!--           } @empty {-->
+              <!--             {{ip$ | async | json}}-->
+              <!--           }-->
+              <!--         </pre>-->
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
         </div>
       </cdk-virtual-scroll-viewport>
     </mat-tab>

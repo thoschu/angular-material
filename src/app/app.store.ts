@@ -28,8 +28,8 @@ export const appMetaReducers: MetaReducer<AppState>[] = isDevMode() ? [debug] : 
 
 function debug(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   return (state: AppState | undefined, action: Action) => {
-    console.log('state', state);
-    console.log('action', action);
+    // console.log('state', state);
+    // console.log('action', action);
     // Logging to OpenTelemetry-Collector
 
     return reducer(state, action);

@@ -34,7 +34,7 @@ export class MainEffects {
     actions$.subscribe((action: Action) => {
       // console.log('MainEffects', action);
       // console.log(action.type);
-      this.httpClient.get('http://localhost:3000/api').subscribe((data: any) => {});
+      // this.httpClient.get('http://localhost:3000/api').subscribe((data: any) => {});
     });
   }
 }
