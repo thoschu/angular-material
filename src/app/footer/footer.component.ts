@@ -159,6 +159,7 @@ export class FooterComponent implements OnInit {
         this.firstFooterArea = [0, 10, 0, 10, 0]
       }
     });
+
     this.appService.breakpointsLandscape$.subscribe((res: Record<string, string>): void => {
       const xSmall: string = prop<string, Record<string, string>>('Breakpoints.Small', res);
       const small: string = prop<string, Record<string, string>>('Breakpoints.Small', res);

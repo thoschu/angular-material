@@ -137,6 +137,12 @@
             Impressum vom <a href="//www.impressum-generator.de">Impressum Generator</a> der
             <a href="//www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht</a>
           </div>
+          <br>
+          <mat-divider></mat-divider>
+          <br>
+          <div>
+            {{ip$ | async | json}}
+          </div>
         </div>
       </cdk-virtual-scroll-viewport>
     </mat-tab>

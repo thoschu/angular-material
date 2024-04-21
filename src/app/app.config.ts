@@ -1,23 +1,23 @@
-import { APP_INITIALIZER, ApplicationConfig, isDevMode } from '@angular/core';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter } from '@angular/router';
-import { provideServiceWorker } from '@angular/service-worker';
-import { provideTransloco, TranslocoService } from '@jsverse/transloco';
-import { provideState, provideStore} from '@ngrx/store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { NgcCookieConsentConfig, provideNgcCookieConsent } from 'ngx-cookieconsent';
-import { provideHighlightOptions } from 'ngx-highlightjs';
-import { provideRouterStore, routerReducer } from '@ngrx/router-store';
-import { provideEffects } from '@ngrx/effects';
+import {APP_INITIALIZER, ApplicationConfig, isDevMode} from '@angular/core';
+import {HttpClient, provideHttpClient} from '@angular/common/http';
+import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
+import {provideRouter} from '@angular/router';
+import {provideServiceWorker} from '@angular/service-worker';
+import {provideTransloco, TranslocoService} from '@jsverse/transloco';
+import {provideStore} from '@ngrx/store';
+import {provideStoreDevtools} from '@ngrx/store-devtools';
+import {provideNgcCookieConsent} from 'ngx-cookieconsent';
+import {provideHighlightOptions} from 'ngx-highlightjs';
+import {provideRouterStore, RouterState} from '@ngrx/router-store';
+import {provideEffects} from '@ngrx/effects';
 
-import { appReducers, appMetaReducers } from './app.store';
-import { routes } from './app.routes';
-import { TranslocoHttpLoader } from './transloco-loader';
-import { AppService } from './app.service';
-import { FooterEffects } from './footer/store/footer.effects';
-import { HeaderEffects } from './header/store/header.effects';
-import { MainEffects } from './main/store/main.effects';
+import {appMetaReducers, appReducers} from './app.store';
+import {routes} from './app.routes';
+import {TranslocoHttpLoader} from './transloco-loader';
+import {AppService} from './app.service';
+import {FooterEffects} from './footer/store/footer.effects';
+import {HeaderEffects} from './header/store/header.effects';
+import {MainEffects} from './main/store/main.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -99,7 +99,16 @@ export const appConfig: ApplicationConfig = {
       },
       //themePath: 'path-to-theme.css'
     }),
-    provideStore(appReducers, { runtimeChecks: {}, metaReducers: appMetaReducers }),
+    provideStore(appReducers, {
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+        // like Date objects
+        strictActionSerializability: false,
+        strictStateSerializability: false
+      },
+      metaReducers: appMetaReducers
+    }),
     // provideStore({
     //   footer: headerReducers
     // }),
@@ -108,14 +117,17 @@ export const appConfig: ApplicationConfig = {
     //   router: routerReducer,
     // }),
     // provideState({ name: 'router', reducer: routerReducer }),
-    provideRouterStore(),
+    provideRouterStore({
+      stateKey: 'router',
+      routerState: RouterState.Minimal
+    }),
+    provideEffects([HeaderEffects, MainEffects, FooterEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
       autoPause: true,
       trace: true,
       traceLimit: 75
-    }),
-    provideEffects([HeaderEffects, MainEffects, FooterEffects])
+    })
   ]
 };

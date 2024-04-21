@@ -1,7 +1,8 @@
-import { createSelector } from '@ngrx/store';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 
 import { MainState } from './main.reducers';
 
+export const selectFeatureMainState = createFeatureSelector<MainState>('main');
 export const selectorsMain = (state: { main: MainState; }) => state.main;
 
 export const selectorsMainTooltip = createSelector(
@@ -16,6 +17,10 @@ export const selectorsMainHome = createSelector(
   selectorsMain,
   (main: MainState) => main.home
 );
+export const selectorsMainImprint = createSelector(
+  selectFeatureMainState,
+  (main: MainState) => main.imprint
+);
 
 export const selectorsMainTechnology = createSelector(
   selectorsMain,
@@ -28,6 +33,11 @@ export const selectorsMainHomeGreetingTooltip = createSelector(
 export const selectorsMainTechnologyDisabled = createSelector(
   selectorsMainTechnology,
   (technology) => technology.disabled
+);
+
+export const selectorsMainImprintIp = createSelector(
+  selectorsMainImprint,
+  (imprint) => imprint.ip
 );
 
 // export const selectorsMainNameFirst = createSelector(

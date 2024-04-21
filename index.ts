@@ -1,11 +1,9 @@
-console.log("Hello via Bun!");
-
-const  server = Bun.serve({
-  async fetch(req) {
-    const path = new URL(req.url).pathname;
+const server = Bun.serve({
+  async fetch(req: Request) {
+    const path: string = new URL(req.url).pathname;
 
     // respond with text/html
-    if (path === "/") return new Response("Welcome to Bun!");
+    if (path === "/") return new Response("Welcome!!!");
 
     // redirect
     if (path === "/abc") return Response.redirect("/source", 301);
@@ -14,7 +12,7 @@ const  server = Bun.serve({
     if (path === "/source") return new Response(Bun.file(import.meta.file));
 
     // respond with JSON
-    if (path === "/api") return Response.json({some: "buns", for: "you"}, {
+    if (path === "/api") return Response.json({id: 13, name: "Tom S."}, {
       headers: {
         "Access-Control-Allow-Origin": "*"
       }

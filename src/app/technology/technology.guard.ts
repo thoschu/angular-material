@@ -14,7 +14,7 @@ export const technologyGuard: CanActivateFn = (route: ActivatedRouteSnapshot, st
 
   return technologyDisabled$.pipe(
     map((value: boolean) => !value),
-    tap(async (value: boolean) => {
+    tap(async (value: boolean): Promise<void> => {
       if(!value) {
         await router.navigate(['/'])
       }

@@ -12,6 +12,7 @@ import { HighlightLineNumbers } from 'ngx-highlightjs/line-numbers';
 import { SolidComponent } from './solid/solid.component';
 import {Store} from "@ngrx/store";
 import {setTechnologyAction} from "../main/store/main.actions";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-technology',
@@ -201,7 +202,7 @@ class Robot implements TaskWorker {
 
   `;
 
-  constructor(private readonly store: Store) {}
+  constructor(private readonly route: ActivatedRoute, private readonly store: Store) {}
 
   async ngAfterViewInit(): Promise<void> {}
 }

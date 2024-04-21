@@ -5,12 +5,12 @@ import { Action, Store } from '@ngrx/store';
 import { Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
 
 import { initAction, setAction, setTownAction } from './footer.actions';
-import { selectorsFooterTown, selectorsFooterTownUpperCase } from "./footer.selectors";
+import { selectorsFooterTown, selectorsFooterTownUpperCase } from './footer.selectors';
 import { AppState } from '../../app.store';
 
 @Injectable()
 export class FooterEffects {
-  public saveTown$: Observable<[Record<'town', string> & TypedAction<"[Footer Page] Set Town">, string]> & CreateEffectMetadata;
+  public saveTown$: Observable<[Record<'town', string> & TypedAction<'[Footer Page] Set Town'>, string]> & CreateEffectMetadata;
   public load$;
 
   constructor(

@@ -1,7 +1,7 @@
 import { isDevMode } from '@angular/core';
 import { Action, ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
 
-import {setIconAction, setTechnologyAction} from './main.actions';
+import {setIconAction, setIpAction, setTechnologyAction} from './main.actions';
 
 const initMainState: MainState = {
   name: {
@@ -16,7 +16,11 @@ const initMainState: MainState = {
   technology: {
     disabled: false
   },
-  imprint: {}
+  imprint: {
+    ip: {
+      id: null
+    }
+  }
 };
 
 export interface MainState {
@@ -29,7 +33,9 @@ export interface MainState {
   technology: {
     disabled: boolean;
   };
-  imprint: Record<any, any>;
+  imprint: {
+    ip: Record<string, unknown>;
+  };
 }
 
 export const mainMetaReducers: MetaReducer<MainState>[] = isDevMode() ? [] : [];
@@ -50,6 +56,17 @@ export const mainReducers: ActionReducer<MainState> = createReducer(
     return {...state, technology: {
         ...state.technology,
         ...newState
+      }
+    };
+  }),
+  on(setIpAction, (state: MainState, action): MainState => {
+    console.log('+++++++++++++++!!!!!+++++++++++++++++');
+    console.log(action.ip);
+    return { ...state, imprint: {
+        ...state.imprint,
+        ...{
+          ip: action.ip
+        }
       }
     };
   })

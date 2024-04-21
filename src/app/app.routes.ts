@@ -3,7 +3,8 @@ import { provideTranslocoScope } from '@jsverse/transloco';
 
 import { TechnologyComponent } from './technology/technology.component';
 import { HomeComponent } from './home/home.component';
-import {technologyGuard} from "./technology/technology.guard";
+import { technologyGuard } from './technology/technology.guard';
+import { imprintResolver } from './imprint/imprint.resolver';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,7 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./imprint/imprint.component').then(c => c.ImprintComponent),
     providers: [
       provideTranslocoScope('imprint')
-    ]
+    ],
+    resolve: {
+      imprint: imprintResolver
+    }
   },
   {
     path: 'technology',

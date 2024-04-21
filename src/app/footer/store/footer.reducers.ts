@@ -17,8 +17,8 @@ export interface FooterState {
 // console.log all actions
 export function debug(reducer: ActionReducer<FooterState>): ActionReducer<FooterState> {
   return function(state: FooterState | undefined, action: Action) {
-    console.log('state', state);
-    console.log('action', action);
+    // console.log('state', state);
+    // console.log('action', action);
 
     return reducer(state, action);
   };
@@ -29,9 +29,15 @@ export const footerMetaReducers: MetaReducer<FooterState>[] = isDevMode() ? [deb
 export const footerReducers: ActionReducer<FooterState> = createReducer<FooterState, Action, ActionReducer<FooterState, Action>>(
   initFooterState,
   on(setTownHamburgAction, (state: FooterState): FooterState => {
+    // ❗strictStateImmutability: false
+    // state.town = 'HH';
+    // return state;
+
+    // ❗strictStateImmutability: true
     return { ...state, town: 'HH' };
   }),
   on(setTownAction, (state: FooterState, action): FooterState =>  {
+    // ❗ action.town = 'HH';
     return { ...state, town: action.town };
   }),
   on(initAction, (state: FooterState, action: TypedAction<'[Footer Page] Init'> & Record<'type', '[Footer Page] Init'>): FooterState => {
