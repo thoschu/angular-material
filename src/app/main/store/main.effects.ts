@@ -21,6 +21,7 @@ export class MainEffects {
       ofType(loadIpAction),
       switchMap(() => this.httpClient.get('https://checkip.amazonaws.com/', { responseType: 'text' }).pipe(
         switchMap((data: string) => this.httpClient.get<Record<string, string>>(`https://ipapi.co/${data}/json/`)),
+        // https://api.apicagent.com/?ua=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_5)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/89.0.4389.114%20Safari/537.36
         map((ip: Record<string, string>) => setIpAction({ ip }))
       ))
     );
