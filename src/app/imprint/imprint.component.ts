@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {AsyncPipe, JsonPipe, KeyValuePipe, NgForOf, NgOptimizedImage, UpperCasePipe} from '@angular/common';
+import {AsyncPipe, JsonPipe, KeyValuePipe, NgForOf, NgIf, NgOptimizedImage, UpperCasePipe} from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -10,16 +10,8 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { TranslocoDirective } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import {selectorsMainImprintIp} from "../main/store/main.selectors";
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell,
-  MatHeaderCellDef, MatHeaderRow,
-  MatHeaderRowDef, MatRow, MatRowDef,
-  MatTable
-} from "@angular/material/table";
+
+import { selectorsMainImprintIp } from '../main/store/main.selectors';
 
 @Component({
   selector: 'app-imprint',
@@ -28,7 +20,8 @@ import {
     NgOptimizedImage, ScrollingModule,
     MatTab, MatTabGroup,
     MatTabLabel, MatExpansionModule,
-    MatDivider, TranslocoDirective, AsyncPipe, MatTooltip, JsonPipe, NgForOf, KeyValuePipe, UpperCasePipe, MatTable, MatColumnDef, MatHeaderCell, MatCell, MatHeaderCellDef, MatCellDef, MatHeaderRowDef, MatHeaderRow, MatRow, MatRowDef
+    MatDivider, TranslocoDirective, AsyncPipe,
+    MatTooltip, JsonPipe, NgForOf, KeyValuePipe, UpperCasePipe, NgIf
   ],
   templateUrl: './imprint.component.html',
   styleUrl: './imprint.component.scss'

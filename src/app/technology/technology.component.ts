@@ -1,18 +1,19 @@
 import { AfterViewInit, Component, inject, ViewEncapsulation} from '@angular/core';
 import { CdkFixedSizeVirtualScroll, CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { NgOptimizedImage, NgTemplateOutlet } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatDivider } from '@angular/material/divider';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { Store } from '@ngrx/store';
 import { Highlight, HighlightAuto, HighlightLoader, HighlightModule } from 'ngx-highlightjs';
 import { HighlightLineNumbers } from 'ngx-highlightjs/line-numbers';
 
 import { SolidComponent } from './solid/solid.component';
-import {Store} from "@ngrx/store";
-import {setTechnologyAction} from "../main/store/main.actions";
-import {ActivatedRoute} from "@angular/router";
+import { TechnologyService } from './technology.service';
 
 @Component({
   selector: 'app-technology',
@@ -26,7 +27,8 @@ import {ActivatedRoute} from "@angular/router";
   ],
   templateUrl: './technology.component.html',
   styleUrl: './technology.component.scss',
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
+  providers: [TechnologyService]
 })
 export class TechnologyComponent implements AfterViewInit {
   protected readonly code: string  = ` protected async ngAfterViewInit(): Promise<void> {
@@ -201,8 +203,23 @@ class Robot implements TaskWorker {
   // [...]
 
   `;
+  private readonly _horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  private readonly _verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private readonly route: ActivatedRoute, private readonly store: Store) {}
+  constructor(
+    private readonly _route: ActivatedRoute,
+    private readonly _store: Store,
+    private readonly _snackBar: MatSnackBar,
 
-  async ngAfterViewInit(): Promise<void> {}
+    protected readonly _technologyService: TechnologyService
+    ) {}
+
+  async ngAfterViewInit(): Promise<void> {
+    this._snackBar.open('🚨 Under Construction 🚨', '✅', {
+      horizontalPosition: this._horizontalPosition,
+      verticalPosition: this._verticalPosition,
+      duration: 13000,
+      politeness: 'assertive'
+    });
+  }
 }

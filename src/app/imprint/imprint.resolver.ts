@@ -16,7 +16,7 @@ export const imprintResolver: ResolveFn<any> =
       tap((): void => {
         store$.dispatch(loadIpAction());
       }),
-      map((appState: AppState, count) => {
+      map ((appState: AppState, count) => {
         // console.log(appState.main.imprint);
         return store$.select(selectorsMainImprintIp);
       })

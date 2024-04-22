@@ -40,6 +40,11 @@ export const selectorsMainImprintIp = createSelector(
   (imprint) => imprint.ip
 );
 
+export const selectorsMainTechnologyCrypto = createSelector(
+  selectorsMainImprint,
+  (imprint) => imprint
+);
+
 // export const selectorsMainNameFirst = createSelector(
 //   selectorsMain,
 //   (main: MainState) => main.name.first

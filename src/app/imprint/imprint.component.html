@@ -138,30 +138,38 @@
             <a href="//www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht</a>
           </div>
           <br>
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Info
-                </mat-panel-title>
-                <mat-panel-description>
-                  📍{{(ip$ | async)?.['ip']}} - {{(ip$ | async)?.['org']}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <pre id="json-container">
-                {{removeFirstLast(ip$ | async | json)}}
-              </pre>
-              <!--          <pre id="json-container">-->
-              <!--           @for (item of (ip$ | async) || {} | keyvalue; track item) {-->
-              <!--             {{ item.key | uppercase }} : {{ item.value }}-->
-              <!--           } @empty {-->
-              <!--             {{ip$ | async | json}}-->
-              <!--           }-->
-              <!--         </pre>-->
-            </mat-expansion-panel>
-          </mat-accordion>
-
-
+          <ng-container *ngIf="ip$ | async as ipData">
+            <mat-divider></mat-divider>
+            <mat-divider></mat-divider>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <svg matTooltip="{{ipData?.['org']}}" matTooltipPosition="right" id="info-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px" baseProfile="basic">
+                      <linearGradient id="dGHc29LQdrDCri2iW4cxJa" x1="1.956" x2="54.828" y1="1.956" y2="54.828" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#262626" stop-opacity="0"/>
+                        <stop offset="1" stop-color="#262626" stop-opacity=".8"/>
+                      </linearGradient>
+                      <circle cx="24" cy="24" r="20" fill="url(#dGHc29LQdrDCri2iW4cxJa)"/>
+                      <linearGradient id="dGHc29LQdrDCri2iW4cxJb" x1="5.958" x2="30.928" y1="-6.767" y2="36.482" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#262626" stop-opacity="0"/>
+                        <stop offset="1" stop-color="#262626" stop-opacity=".8"/>
+                      </linearGradient>
+                      <path fill="url(#dGHc29LQdrDCri2iW4cxJb)" d="M26,35h-4V23c0-1.657,1.343-3,3-3h1V35z M26.5,15.5c0,1.381-1.119,2.5-2.5,2.5	c-1.381,0-2.5-1.119-2.5-2.5S22.619,13,24,13C25.381,13,26.5,14.119,26.5,15.5z"/>
+                    </svg>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    📍{{ipData?.['ip']}}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <pre id="json-container">
+                  {{removeFirstLast(ipData | json)}}
+                </pre>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </ng-container>
         </div>
       </cdk-virtual-scroll-viewport>
     </mat-tab>

@@ -30,6 +30,10 @@ $fontColorImprint: rgb(51, 51, 51);
     .imprint, .gdpr {
       padding: 20px;
 
+      #info-icon {
+        filter: opacity(40%);
+      }
+
       h2 {
         color: #5b5b5b;
         font-size: 1.8rem;

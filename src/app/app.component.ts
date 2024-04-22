@@ -3,7 +3,6 @@ import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import { CdkObserveContent } from '@angular/cdk/observers';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
 import {
   NgcCookieConsentService,
@@ -32,30 +31,20 @@ import { LoaderComponent } from './loader/loader.component';
 })
 export class AppComponent implements OnDestroy, OnInit {
   protected readonly title: string = 'Tom S.';
-  private readonly _horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  private readonly _verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   private readonly _subscriptions: Subscription[] = [];
 
   constructor(
     private readonly _mediaMatcher: MediaMatcher,
-    private readonly _snackBar: MatSnackBar,
     private readonly _cookieService: NgcCookieConsentService,
     private readonly _translocoService: TranslocoService,
     private readonly appService: AppService
   ) {
-    this._snackBar.open('🚨 Under Construction 🚨', 'OK', {
-      horizontalPosition: this._horizontalPosition,
-      verticalPosition: this._verticalPosition,
-      duration: 7000,
-      politeness: 'assertive'
-    });
-
     this._translocoService.selectTranslate('cookie.message')
       .subscribe((value) => {
         // console.log(value);
       });
 
-    this._translocoService.load('en').subscribe(console.log);
+    // this._translocoService.load('en').subscribe(console.log);
 
     if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
       const mediaQueryListDark: MediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');

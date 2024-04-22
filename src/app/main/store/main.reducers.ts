@@ -1,7 +1,41 @@
 import { isDevMode } from '@angular/core';
 import { Action, ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
+import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 
 import { setIconAction, setIpAction, setTechnologyAction } from './main.actions';
+
+export type Crypto = {
+  "symbol": string;
+  "priceChange": string;
+  "priceChangePercent": string;
+  "weightedAvgPrice": string;
+  "prevClosePrice": string;
+  "lastPrice": string;
+  "lastQty": string;
+  "bidPrice": string;
+  "bidQty": string;
+  "askPrice": string;
+  "askQty": string;
+  "openPrice": string;
+  "highPrice": string;
+  "lowPrice": string;
+  "volume": string;
+  "quoteVolume": string;
+  "openTime": number;
+  "closeTime": number;
+  "firstId": number;
+  "lastId": number;
+  "count": number;
+}
+
+export interface MainEntityState extends EntityState<Crypto> {}
+export const adapter: EntityAdapter<Crypto> = createEntityAdapter<Crypto>();
+export const initMainEntityState = adapter.getInitialState();
+
+export const mainEntityReducers = createReducer(
+  initMainEntityState,
+  // on()
+);
 
 const initMainState: MainState = {
   name: {
