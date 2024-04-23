@@ -39,9 +39,6 @@ export class MainEffects {
       // console.log(action.type);
       // this.httpClient.get('http://localhost:3000/api').subscribe((data: any) => {});
     });
-
-    this.setTechnologyDisabledEffect$.pipe(take(1));
-    this.setImprintIpEffect$.pipe(take(1));
   }
 
   private parseConfig<T extends string>(inputString: string): Record<T, string> {
