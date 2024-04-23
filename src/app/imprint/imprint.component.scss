@@ -49,13 +49,13 @@ $fontColorImprint: rgb(51, 51, 51);
       }
 
       #json-container {
-        background-color: #f4f4f4;
-        border: 1px solid #ddd;
+        //background-color: lighten(#D6D6D6, 10%);
+        border-top: 1px solid #ABABAB;
         padding: 20px;
-        border-radius: 8px;
-        margin-top: 20px;
-        white-space: pre-wrap; /* Maintains whitespace formatting */
-        font-family: "Courier New", Courier, monospace; /* Gives a typewriter-like font */
+        //border-radius: 8px;
+        //margin-top: 20px;
+        white-space: pre-wrap;
+        font-family: "Quicksand", Courier, monospace;
         color: #333;
       }
     }
