@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { AppState } from '../app.store';
 
 export const technologyResolver: ResolveFn<Observable<unknown>> = (route, state) => {
-  const store$: Store<AppState> = inject(Store<AppState>);
+  const store$: Store<AppState> = inject<Store<AppState>>(Store<AppState>);
 
   return store$.pipe();
 };

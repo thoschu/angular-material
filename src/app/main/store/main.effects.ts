@@ -4,7 +4,7 @@ import { Actions, createEffect, CreateEffectMetadata, ofType } from '@ngrx/effec
 import { Action, Store } from '@ngrx/store';
 import { TypedAction } from '@ngrx/store/src/models';
 import { combineLatest, map, Observable, switchMap, take, tap } from 'rxjs';
-import { assoc, head, last } from 'ramda';
+import {assoc, head, last, mapObjIndexed} from 'ramda';
 
 import { loadIpAction, setIpAction, setTechnologyAction } from './main.actions';
 import { AppState } from '../../app.store';
@@ -27,7 +27,7 @@ export class MainEffects {
       map((res: [Record<string, string>, string]) => assoc<string | Record<string, string> | undefined, Record<string, string>, 'user'>('user', last<string | Record<string, string>>(res), head<Record<string, string>, string>(res))),
       map((ip: Record<string, string>) => setIpAction({ ip })),
     );
-  }, { dispatch: true });
+  },{ dispatch: true });
 
   constructor(
     private readonly actions$: Actions,

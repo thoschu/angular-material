@@ -161,11 +161,11 @@
                     </svg>
                   </mat-panel-title>
                   <mat-panel-description>
-                    📍{{ipData?.['ip']}}
+                    {{ipData?.['ip']}}
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 <pre id="json-container">
-                  {{removeFirstLast(ipData | json)}}
+                  {{imprintService.removeFirstLast(imprintService.addToKey(ipData) | json)}}
                 </pre>
               </mat-expansion-panel>
             </mat-accordion>
