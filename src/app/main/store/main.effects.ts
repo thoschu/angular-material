@@ -21,7 +21,7 @@ export class MainEffects {
   private readonly setImprintIpEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loadIpAction),
-      switchMap((action: TypedAction<"[Imprint Resolver] Load IP">) => this.httpClient.get('https://checkip.amazonaws.com/', { responseType: 'text' })),
+      switchMap((action: TypedAction<"[Imprint Resolver] Load IP">) => this.httpClient.get('https://checkip.amazonaws.com/',{ responseType: 'text' })),
       map((data: string) => this.httpClient.get<Record<string, string>>(`https://ipapi.co/${data}/json/`)),
       switchMap((res$: Observable<Record<string, string>>) => combineLatest<[Record<string, string>, string]>([res$, this.httpClient.get('https://1.1.1.1/cdn-cgi/trace',{ responseType: 'text' }).pipe(map((res: string) => this.parseConfig<'uag'>(res).uag))])),
       map((res: [Record<string, string>, string]) => assoc<string | Record<string, string> | undefined, Record<string, string>, 'user'>('user', last<string | Record<string, string>>(res), head<Record<string, string>, string>(res))),
