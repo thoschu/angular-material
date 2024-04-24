@@ -29,3 +29,13 @@
 } @error {
   <p>Failed to load the app-footer</p>
 }
+
+@defer (on viewport; on timer(7s)) {
+  <app-aside (cdkObserveContent)="footerContentChanged($event)" />
+} @placeholder {
+  <p>⒫ ⒧ ⒜ ⒞ ⒠ ⒣ ⒪ ⒧ ⒟ ⒠ ⒭</p>
+} @loading (after 100ms; minimum 3s) {
+  <img alt="loading..." ngSrc="assets/img/loading.svg" height="256" width="256" priority>
+} @error {
+  <p>Failed to load the app-aside</p>
+}

@@ -160,12 +160,10 @@
                       <path fill="url(#dGHc29LQdrDCri2iW4cxJb)" d="M26,35h-4V23c0-1.657,1.343-3,3-3h1V35z M26.5,15.5c0,1.381-1.119,2.5-2.5,2.5	c-1.381,0-2.5-1.119-2.5-2.5S22.619,13,24,13C25.381,13,26.5,14.119,26.5,15.5z"/>
                     </svg>
                   </mat-panel-title>
-                  <mat-panel-description>
-                    {{ipData?.['ip']}}
-                  </mat-panel-description>
+                  <mat-panel-description>Geolocation</mat-panel-description>
                 </mat-expansion-panel-header>
                 <pre id="json-container">
-                  {{imprintService.removeFirstLast(imprintService.addToKey(ipData) | json)}}
+                  <code>{{imprintService.removeFirstLast(imprintService.addToKey(ipData) | json)}}</code>
                 </pre>
               </mat-expansion-panel>
             </mat-accordion>

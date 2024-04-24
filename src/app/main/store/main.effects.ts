@@ -11,23 +11,21 @@ import { AppState } from '../../app.store';
 
 @Injectable()
 export class MainEffects {
-  private readonly setTechnologyDisabledEffect$: Observable<Record<"disabled", boolean>> & CreateEffectMetadata = createEffect(() => this.actions$.pipe(
+  private readonly setTechnologyDisabledEffect$: Observable<Record<'disabled', boolean>> & CreateEffectMetadata = createEffect(() => this.actions$.pipe(
     ofType(setTechnologyAction),
     tap((action: Record<'disabled', boolean>): void => {
       // console.log(action);
     })
   ), { dispatch: false });
 
-  private readonly setImprintIpEffect$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(loadIpAction),
-      switchMap((action: TypedAction<"[Imprint Resolver] Load IP">) => this.httpClient.get('https://checkip.amazonaws.com/',{ responseType: 'text' })),
-      map((data: string) => this.httpClient.get<Record<string, string>>(`https://ipapi.co/${data}/json/`)),
-      switchMap((res$: Observable<Record<string, string>>) => combineLatest<[Record<string, string>, string]>([res$, this.httpClient.get('https://1.1.1.1/cdn-cgi/trace',{ responseType: 'text' }).pipe(map((res: string) => this.parseConfig<'uag'>(res).uag))])),
-      map((res: [Record<string, string>, string]) => assoc<string | Record<string, string> | undefined, Record<string, string>, 'user'>('user', last<string | Record<string, string>>(res), head<Record<string, string>, string>(res))),
-      map((ip: Record<string, string>) => setIpAction({ ip })),
-    );
-  },{ dispatch: true });
+  private readonly setImprintIpEffect$: Observable<Record<'ip', Record<string, string>> & TypedAction<'[Footer Effect] Set IP'>> & CreateEffectMetadata = createEffect(() => this.actions$.pipe(
+    ofType(loadIpAction),
+    switchMap((action: TypedAction<'[Imprint Resolver] Load IP'>) => this.httpClient.get('https://checkip.amazonaws.com/',{ responseType: 'text' })),
+    map((data: string) => this.httpClient.get<Record<string, string>>(`https://ipapi.co/${data}/json/`)),
+    switchMap((res$: Observable<Record<string, string>>) => combineLatest<[Record<string, string>, string]>([res$, this.httpClient.get('https://1.1.1.1/cdn-cgi/trace',{ responseType: 'text' }).pipe(map((res: string) => this.parseConfig<'uag'>(res).uag))])),
+    map((res: [Record<string, string>, string]) => assoc<string | Record<string, string> | undefined, Record<string, string>, 'user'>('user', last<string | Record<string, string>>(res), head<Record<string, string>, string>(res))),
+    map((ip: Record<string, string>) => setIpAction({ ip })),
+  ),{ dispatch: true });
 
   constructor(
     private readonly actions$: Actions,

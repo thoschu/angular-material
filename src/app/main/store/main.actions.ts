@@ -9,13 +9,16 @@ export const setIconAction= createAction(
   MAIN_HOME_UPDATE_ICON_ACTION_IDENTIFIER,
   props<Record<'greetingTooltip', string>>()
 );
+
 export const setTechnologyAction= createAction(
   MAIN_HOME_SET_TECHNOLOGY_ACTION_IDENTIFIER,
   props<Record<'disabled', boolean>>()
 );
+
 export const loadIpAction = createAction(
   MAIN_LOAD_IP_ACTION_IDENTIFIER
 );
+
 export const setIpAction = createAction(
   MAIN_SET_IP_ACTION_IDENTIFIER,
   props<Record<'ip', Record<string, string>>>()
