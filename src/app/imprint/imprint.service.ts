@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
+import {} from 'ramda';
 
 @Injectable()
 export class ImprintService {
+  private readonly character: number;
 
-  constructor() { }
+  public constructor() {
+    this.character = 8998;
+  }
 
   public addToKey(res: Record<string, unknown>): Record<string, unknown> {
     const newRes: Record<string, unknown> = {};
-    let count: number = 187;
 
     for (let key in res) {
-      newRes[`${String.fromCharCode(count)} ${key}`] = res[key];
-      // count++;
+      newRes[`${String.fromCharCode(this.character)} ${key}`] = res[key];
     }
 
     return newRes;

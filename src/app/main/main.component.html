@@ -1,7 +1,7 @@
 <main class="animate__animated animate__fadeInUpBig animate__slower">
-  <mat-grid-list  cols="10" rowHeight="300px">
+  <mat-grid-list cols="10" rowHeight="300px">
     <mat-grid-tile [colspan]="10" [rowspan]="1">
-      <svg  class="glow-svg" width="256" height="256" viewBox="-123.0836 -24 247 247">
+      <svg class="glow-svg" width="256" height="256" viewBox="-123.0836 -24 247 247">
         <g id="svg_1" transform="matrix(1, 0, 0, 1, -123.08356475830078, -24)">
           <g>
             <path class="st0" fill="rgb(245, 245, 245)" d="M123.5,247C55.4,247,0,191.6,0,123.5S55.4,0,123.5,0S247,55.4,247,123.5S191.6,247,123.5,247z M123.5,15C63.7,15,15,63.7,15,123.5C15,183.4,63.7,232,123.5,232S232,183.4,232,123.5C232,63.7,183.4,15,123.5,15z"></path>
@@ -30,8 +30,6 @@
       </ng-container>
     </mat-grid-tile>
   </mat-grid-list>
-
-  <!-- Router Outlet Start -->
   <mat-grid-list cols="1" rowHeight="fit" [style.height]="routerOutletGridListHeight">
     <mat-grid-tile class="animate__animated animate__fadeIn animate__delay-1s"
      [colspan]="1"
@@ -41,8 +39,6 @@
       <router-outlet (activate)="onActivate($event)" />
     </mat-grid-tile>
   </mat-grid-list>
-  <!-- Router Outlet End -->
-
   <mat-grid-list cols="5" rowHeight="256px" gutterSize="0">
     <mat-grid-tile [colspan]="1" [rowspan]="1">&nbsp;</mat-grid-tile>
     <mat-grid-tile [colspan]="3" [rowspan]="1">

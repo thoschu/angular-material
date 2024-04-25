@@ -1,5 +1,5 @@
-import { Component, isDevMode } from '@angular/core';
-import {AsyncPipe, NgOptimizedImage, NgStyle, UpperCasePipe} from '@angular/common';
+import { Component, isDevMode, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { AsyncPipe, NgOptimizedImage, NgStyle, UpperCasePipe } from '@angular/common';
 import { MatGridList, MatGridTile } from "@angular/material/grid-list";
 import { RouterOutlet } from '@angular/router';
 import { MatTabGroup } from '@angular/material/tabs';
@@ -10,11 +10,10 @@ import { TranslocoDirective } from '@jsverse/transloco';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { selectorsMainName, selectorsMainTooltip } from './store/main.selectors';
+import { MainState } from './store/main.reducers';
+import { setTechnologyAction } from './store/main.actions';
 import { AppService } from '../app.service';
-
-import {selectorsMainName, selectorsMainTooltip} from "./store/main.selectors";
-import { MainState } from "./store/main.reducers";
-import {setTechnologyAction} from "./store/main.actions";
 
 @Component({
   selector: 'app-main',
@@ -29,7 +28,7 @@ import {setTechnologyAction} from "./store/main.actions";
   styleUrl: './main.component.scss',
   exportAs: 'appMain'
 })
-export class MainComponent {
+export class MainComponent implements AfterViewInit {
   private readonly _images: string[] = [
     'googlehome', 'amazonaws', 'angular', 'ansible', 'docker', 'assemblyscript', 'atlassian', 'auth0', 'css3', 'cucumber',
     'deno', 'dependabot', 'directus', 'duckduckgo', 'electron', 'eslint', 'esbuild', 'express', 'git', 'less', 'meteor', 'mocha',
@@ -87,4 +86,6 @@ export class MainComponent {
 
     return shuffledArray;
   }
+
+  ngAfterViewInit(): void {}
 }

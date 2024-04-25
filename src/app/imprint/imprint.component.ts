@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {AsyncPipe, JsonPipe, KeyValuePipe, NgForOf, NgIf, NgOptimizedImage, UpperCasePipe} from '@angular/common';
+import { AsyncPipe, JsonPipe, KeyValuePipe, NgForOf, NgIf, NgOptimizedImage, UpperCasePipe } from '@angular/common';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';

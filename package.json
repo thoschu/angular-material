@@ -37,6 +37,7 @@
     "animate.css": "^4.1.1",
     "cookieconsent": "^3.1.1",
     "highlight.js": "^11.9.0",
+    "html2canvas": "^1.4.1",
     "ngx-cookieconsent": "^6.0.0",
     "ngx-highlightjs": "^11.0.0-beta.1",
     "ol": "^9.1.0",
