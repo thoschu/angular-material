@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, inject, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, HostListener, inject, ViewEncapsulation} from '@angular/core';
 import { CdkFixedSizeVirtualScroll, CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { NgOptimizedImage, NgTemplateOutlet } from '@angular/common';
+import {NgIf, NgOptimizedImage, NgTemplateOutlet} from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { MatIcon } from '@angular/material/icon';
@@ -23,7 +23,7 @@ import { TechnologyService } from './technology.service';
     HighlightModule, HighlightLineNumbers, MatAccordion,
     MatExpansionModule, CdkVirtualScrollViewport,
     CdkFixedSizeVirtualScroll, MatTooltip, MatDivider,
-    SolidComponent, NgTemplateOutlet
+    SolidComponent, NgTemplateOutlet, NgIf
   ],
   templateUrl: './technology.component.html',
   styleUrl: './technology.component.scss',
@@ -31,17 +31,16 @@ import { TechnologyService } from './technology.service';
   providers: [TechnologyService]
 })
 export class TechnologyComponent implements AfterViewInit {
+  protected secretElement: boolean = false;
   protected readonly code: string  = ` protected async ngAfterViewInit(): Promise<void> {
-   console.log('Under Construction');
- };`;
-
+    console.log('Under Construction');
+  };`;
   protected readonly dipText: string  = `Das Dependency Inversion Principle (DIP), zu Deutsch das Prinzip der Abhängigkeitsumkehr.
     Dieses Prinzip besagt, dass hochrangige Module nicht von niederrangigen Modulen abhängig sein sollten;
     beide sollten von Abstraktionen abhängen. Zudem sollten Abstraktionen nicht von Details abhängen, sondern Details von Abstraktionen.
     Dies fördert eine lose Kopplung und erhöht die Modularität, was die Wartbarkeit und Flexibilität der Software verbessert.`;
   protected readonly codeBadDIP: string  = `${this.code}`;
   protected readonly codeGoodDIP: string  = `${this.code}`;
-
   protected readonly ispText: string  = `Das Interface Segregation Principle (ISP) in den SOLID-Prinzipien empfiehlt,
     dass Klassen nicht dazu gezwungen werden sollten,
     Schnittstellen zu implementieren, die sie nicht nutzen. Dies führt zu einer klaren Trennung und verhindert,
@@ -215,11 +214,20 @@ class Robot implements TaskWorker {
     ) {}
 
   async ngAfterViewInit(): Promise<void> {
-    this._snackBar.open('🚨 Under Construction 🚨', '✅', {
+    this._snackBar.open(`🚨 Under Construction ⚠️ Press Control...`, '✅', {
       horizontalPosition: this._horizontalPosition,
       verticalPosition: this._verticalPosition,
       duration: 13000,
-      politeness: 'assertive'
+      politeness: 'polite'
     });
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  private (event: KeyboardEvent): void {
+    const keyEvent: string = event.key;
+
+    if(keyEvent === 'Control') {
+      this.secretElement = !this.secretElement;
+    }
   }
 }

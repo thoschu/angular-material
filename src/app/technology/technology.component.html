@@ -1,5 +1,5 @@
 <mat-tab-group color="primary" class="animate__animated animate__fadeIn" [color]="'primary'" [animationDuration]="'1000ms'" [dynamicHeight]="'true'"  mat-stretch-tabs="false" mat-align-tabs="center">
-  <mat-tab label="SOLID">
+  <mat-tab *ngIf="secretElement" label="SOLID">
     <ng-template mat-tab-label>
       <span class="matTabFont">SOLID</span>
     </ng-template>
@@ -66,13 +66,13 @@
       </mat-tab>
     </mat-tab-group>
   </mat-tab>
-  <mat-tab label="12-fac-app">
+  <mat-tab *ngIf="secretElement" label="12-fac-app">
     <ng-template mat-tab-label>
       <span class="matTabFont">12 Factor App</span>
     </ng-template>
     <img ngSrc="//gieldon.de/baustelle.gif" width="450" height="400" priority alt="under-construction">
   </mat-tab>
-  <mat-tab label="ddd">
+  <mat-tab *ngIf="secretElement" label="ddd">
     <ng-template mat-tab-label>
       <span class="matTabFont">Domain Driven Design</span>
     </ng-template>

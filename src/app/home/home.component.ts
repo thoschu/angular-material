@@ -51,7 +51,7 @@ export class HomeComponent {
       // });
 
       that.store.dispatch(setIconAction({ greetingTooltip: that.randomElement<string>(that.icons) }));
-    }, 7000, this);
+    }, 77000, this);
   }
 
 
