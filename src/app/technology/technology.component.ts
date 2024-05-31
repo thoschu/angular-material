@@ -199,7 +199,7 @@ class Robot implements TaskWorker {
   const reportGenerator: ReportGenerator = new ReportGenerator();
   reportGenerator.generateReport(employee.employeeId);
 
-  // [...]
+  // [...] subsresouure, trstuded types
 
   `;
   private readonly _horizontalPosition: MatSnackBarHorizontalPosition = 'center';
